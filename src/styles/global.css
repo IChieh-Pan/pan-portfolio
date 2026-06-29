@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+/* ----------------------------------------------------------------------------
+   Design tokens
+   Change any value here and it propagates across the whole site.
+   ------------------------------------------------------------------------- */
+@theme {
+  /* Color — a warm off-white canvas, near-black ink, one electric accent. */
+  --color-page: #efece6; /* warm off-white background */
+  --color-ink: #1b1b18; /* near-black primary text */
+  --color-muted: #6c685f; /* secondary / meta text */
+  --color-line: #d9d5cc; /* hairline borders */
+  --color-surface: #f7f5f0; /* subtle raised surface */
+  --color-card: #ffffff; /* floating cards */
+  --color-accent: #1f44ff; /* electric blue — swap this to rebrand */
+
+  /* Type families */
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Radii */
+  --radius-card: 1.75rem;
+}
+
+/* ----------------------------------------------------------------------------
+   Base styles
+   ------------------------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-page);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv01";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* A small craft detail: custom text-selection color. */
+  ::selection {
+    background-color: var(--color-accent);
+    color: var(--color-page);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+/* Respect users who prefer less motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

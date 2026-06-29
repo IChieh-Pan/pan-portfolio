@@ -1,0 +1,263 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// ---------------------------------------------------------------------------
+// TODO: Replace all placeholder content below with your real details.
+// Everything here is data — edit these objects and the markup updates.
+// ---------------------------------------------------------------------------
+
+// Your location powers the live clock in the top bar. Change city + tz.
+const LOCATION = { city: "Taipei", tz: "Asia/Taipei" };
+
+const EMAIL = "hello@example.com"; // TODO: your email
+const SOCIALS = [
+  { label: "LinkedIn", href: "https://linkedin.com/in/your-handle" }, // TODO
+  { label: "Read.cv", href: "#" }, // TODO
+];
+
+// Selected work. Add/remove entries freely.
+const PROJECTS = [
+  {
+    title: "Project One",
+    subtitle: "A clear line that captures the outcome",
+    description:
+      "One or two sentences on the problem, your role, and the impact. Keep it concrete and outcome-focused.",
+    year: "2025",
+    role: "Product Design · Lead",
+  },
+  {
+    title: "Project Two",
+    subtitle: "Designing for complex, data-heavy flows",
+    description:
+      "What was hard, what you simplified, and how you measured success. Short and confident.",
+    year: "2024",
+    role: "Product Design",
+  },
+  {
+    title: "Project Three",
+    subtitle: "From research insight to shipped feature",
+    description:
+      "A line on the craft — the system, the interaction model, the result.",
+    year: "2024",
+    role: "Design · Prototyping",
+  },
+  {
+    title: "Project Four",
+    subtitle: "A concept exploration worth showing",
+    description:
+      "Even concept work tells a story about how you think. Frame it that way.",
+    year: "2023",
+    role: "Concept",
+  },
+];
+
+// About — short paragraphs, each with a two-word label (bold + serif).
+const ABOUT = [
+  {
+    labelBold: "Who",
+    labelSerif: "I am",
+    body: "I'm I-Chieh Pan, a product designer focused on turning complex problems into clear, human interfaces.",
+  },
+  {
+    labelBold: "What",
+    labelSerif: "I do",
+    body: "I work across research, interaction, and visual design — and I like to prototype to think.",
+  },
+  {
+    labelBold: "Right",
+    labelSerif: "now",
+    body: "Currently designing at [Company]. Open to selective freelance and collaborations.",
+  },
+];
+---
+
+<Layout>
+  <!-- ===================== Top bar ===================== -->
+  <header
+    class="fixed inset-x-0 top-0 z-50 mix-blend-difference"
+    style="color:#fff"
+  >
+    <div
+      class="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 sm:px-10"
+    >
+      <a href="#top" class="font-display text-sm font-semibold tracking-tight">
+        I-Chieh Pan
+      </a>
+      <nav class="flex items-center gap-6 font-sans text-xs tracking-wide">
+        <span class="hidden tabular-nums uppercase opacity-70 sm:inline">
+          {LOCATION.city}&nbsp;<span id="clock">--:--:--</span>
+        </span>
+        <a href="#work" class="hover:opacity-60">Work</a>
+        <a href="#about" class="hover:opacity-60">About</a>
+        <a href="#contact" class="hover:opacity-60">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="mx-auto max-w-[1400px] px-6 sm:px-10">
+    <!-- ===================== Hero ===================== -->
+    <section
+      class="flex min-h-[92svh] flex-col justify-center pt-28 pb-20"
+    >
+      <p
+        class="mb-8 max-w-md font-sans text-sm leading-relaxed text-muted sm:text-base"
+      >
+        Product designer crafting clear, human interfaces for complex products.
+      </p>
+      <h1
+        class="font-display font-semibold leading-[0.92] tracking-[-0.04em]"
+        style="font-size:clamp(2.75rem,9vw,8.5rem)"
+      >
+        <span class="block">Designing clear,</span>
+        <span class="block">
+          <span class="font-serif font-normal italic tracking-[-0.02em]"
+            >human</span
+          > interfaces
+        </span>
+        <span class="block">for complex products.</span>
+      </h1>
+      <a
+        href="#work"
+        class="group mt-12 inline-flex w-fit items-center gap-2 text-sm font-medium"
+      >
+        <span class="border-b border-ink/30 pb-0.5 group-hover:border-ink"
+          >See selected work</span
+        >
+        <span class="transition-transform group-hover:translate-y-0.5">↓</span>
+      </a>
+    </section>
+
+    <!-- ===================== Selected work ===================== -->
+    <section id="work" class="scroll-mt-24 py-16 sm:py-24">
+      <div class="mb-10 flex items-end justify-between">
+        <h2 class="font-display text-sm font-semibold uppercase tracking-wide">
+          Selected work
+        </h2>
+        <span class="font-sans text-sm text-muted">{PROJECTS.length} projects</span>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+        {
+          PROJECTS.map((p) => (
+            <article
+              class="group rounded-card bg-card p-7 shadow-[0_10px_40px_-24px_rgba(16,24,40,0.25)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_-24px_rgba(16,24,40,0.3)] sm:p-9"
+            >
+              {/* TODO: drop a project image/thumbnail here */}
+              <div
+                class="mb-7 flex aspect-[16/10] items-center justify-center rounded-2xl bg-surface text-xs uppercase tracking-wide text-muted"
+              >
+                Image
+              </div>
+              <div class="flex items-baseline justify-between gap-4">
+                <h3 class="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+                  {p.title}
+                </h3>
+                <span class="shrink-0 font-sans text-sm tabular-nums text-muted">
+                  {p.year}
+                </span>
+              </div>
+              <p class="mt-1 font-serif text-xl italic text-ink/80 sm:text-2xl">
+                {p.subtitle}
+              </p>
+              <p class="mt-4 max-w-prose font-sans text-sm leading-relaxed text-muted">
+                {p.description}
+              </p>
+              <div class="mt-6 flex items-center justify-between">
+                <span class="font-sans text-xs uppercase tracking-wide text-muted">
+                  {p.role}
+                </span>
+                <span class="font-sans text-sm font-medium text-accent opacity-0 transition-opacity group-hover:opacity-100">
+                  View project →
+                </span>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- ===================== About ===================== -->
+    <section id="about" class="scroll-mt-24 py-16 sm:py-24">
+      <h2
+        class="mb-10 font-display text-sm font-semibold uppercase tracking-wide"
+      >
+        About
+      </h2>
+      <div class="grid grid-cols-1 gap-x-10 gap-y-12 md:grid-cols-3">
+        {
+          ABOUT.map((a) => (
+            <div>
+              <p class="mb-3 font-display text-3xl font-semibold tracking-tight">
+                {a.labelBold}{" "}
+                <span class="font-serif font-normal italic">{a.labelSerif}</span>
+              </p>
+              <p class="font-sans leading-relaxed text-muted">{a.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- ===================== Contact ===================== -->
+    <section id="contact" class="scroll-mt-24 py-24 sm:py-36">
+      <p
+        class="font-display font-semibold leading-[0.95] tracking-[-0.03em]"
+        style="font-size:clamp(2rem,6vw,5rem)"
+      >
+        Let's make something
+        <span class="font-serif font-normal italic">worth keeping.</span>
+      </p>
+      <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3">
+        <a
+          href={`mailto:${EMAIL}`}
+          class="group inline-flex items-center gap-2 font-sans text-lg font-medium"
+        >
+          <span class="border-b border-ink/30 pb-0.5 group-hover:border-ink"
+            >{EMAIL}</span
+          >
+        </a>
+        {
+          SOCIALS.map((s) => (
+            <a
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-sans text-sm uppercase tracking-wide text-muted hover:text-ink"
+            >
+              {s.label}
+            </a>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== Footer ===================== -->
+  <footer class="border-t border-line">
+    <div
+      class="mx-auto flex max-w-[1400px] flex-col gap-2 px-6 py-8 font-sans text-sm text-muted sm:flex-row sm:items-center sm:justify-between sm:px-10"
+    >
+      <span>© {new Date().getFullYear()} I-Chieh Pan</span>
+      <span>Designed &amp; built in {LOCATION.city}</span>
+    </div>
+  </footer>
+
+  <!-- Live local clock — a small craft detail in the top bar. -->
+  <script is:inline define:vars={{ tz: LOCATION.tz }}>
+    const el = document.getElementById("clock");
+    if (el) {
+      const fmt = new Intl.DateTimeFormat("en-GB", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false,
+        timeZone: tz,
+      });
+      const tick = () => {
+        el.textContent = fmt.format(new Date());
+      };
+      tick();
+      setInterval(tick, 1000);
+    }
+  </script>
+</Layout>
