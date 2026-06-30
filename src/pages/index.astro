@@ -1,73 +1,25 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { projects } from "../data/projects";
 
-// ---------------------------------------------------------------------------
-// TODO: Replace all placeholder content below with your real details.
-// Everything here is data — edit these objects and the markup updates.
-// ---------------------------------------------------------------------------
-
-// Your location powers the live clock in the top bar. Change city + tz.
+// Your location powers the live clock in the top bar.
+// TODO: confirm your city (currently a guess).
 const LOCATION = { city: "Taipei", tz: "Asia/Taipei" };
 
-const EMAIL = "hello@example.com"; // TODO: your email
-const SOCIALS = [
-  { label: "LinkedIn", href: "https://linkedin.com/in/your-handle" }, // TODO
-  { label: "Read.cv", href: "#" }, // TODO
-];
+const LINKS = {
+  linkedin: "https://www.linkedin.com/in/ichieh-pan-919344b3/",
+  github: "https://github.com/ichieh-pan",
+  resume:
+    "https://drive.google.com/file/d/1MVwI1dfrhawCBHaIXMVsvl0lk-nT-ZiO/view?usp=sharing",
+  aiApp: "https://ai-content-aggregator.vercel.app/",
+};
 
-// Selected work. Add/remove entries freely.
-const PROJECTS = [
-  {
-    title: "Project One",
-    subtitle: "A clear line that captures the outcome",
-    description:
-      "One or two sentences on the problem, your role, and the impact. Keep it concrete and outcome-focused.",
-    year: "2025",
-    role: "Product Design · Lead",
-  },
-  {
-    title: "Project Two",
-    subtitle: "Designing for complex, data-heavy flows",
-    description:
-      "What was hard, what you simplified, and how you measured success. Short and confident.",
-    year: "2024",
-    role: "Product Design",
-  },
-  {
-    title: "Project Three",
-    subtitle: "From research insight to shipped feature",
-    description:
-      "A line on the craft — the system, the interaction model, the result.",
-    year: "2024",
-    role: "Design · Prototyping",
-  },
-  {
-    title: "Project Four",
-    subtitle: "A concept exploration worth showing",
-    description:
-      "Even concept work tells a story about how you think. Frame it that way.",
-    year: "2023",
-    role: "Concept",
-  },
-];
-
-// About — short paragraphs, each with a two-word label (bold + serif).
-const ABOUT = [
-  {
-    labelBold: "Who",
-    labelSerif: "I am",
-    body: "I'm I-Chieh Pan, a product designer focused on turning complex problems into clear, human interfaces.",
-  },
-  {
-    labelBold: "What",
-    labelSerif: "I do",
-    body: "I work across research, interaction, and visual design — and I like to prototype to think.",
-  },
-  {
-    labelBold: "Right",
-    labelSerif: "now",
-    body: "Currently designing at [Company]. Open to selective freelance and collaborations.",
-  },
+const CAREER = [
+  { org: "New Relic", role: "Sr. Product Designer", period: "2022 — now" },
+  { org: "dunnhumby", role: "Sr. Product Designer", period: "2021 — 2022" },
+  { org: "ITONICS", role: "UX/UI Designer", period: "2019 — 2020" },
+  { org: "Durch die Stadt", role: "UX/UI Designer", period: "2017 — 2018" },
+  { org: "ACER", role: "Design Specialist", period: "2015" },
 ];
 ---
 
@@ -97,34 +49,102 @@ const ABOUT = [
   <main id="top" class="mx-auto max-w-[1400px] px-6 sm:px-10">
     <!-- ===================== Hero ===================== -->
     <section
-      class="flex min-h-[92svh] flex-col justify-center pt-28 pb-20"
+      class="relative flex min-h-[92svh] flex-col items-center justify-center pt-28 pb-20 text-center"
     >
-      <p
-        class="mb-8 max-w-md font-sans text-sm leading-relaxed text-muted sm:text-base"
+      <!-- Floating image — left / upper (desktop only) -->
+      <figure
+        class="absolute left-0 top-[18%] z-0 hidden w-[clamp(180px,16vw,240px)] -rotate-3 xl:block"
       >
-        Product designer crafting clear, human interfaces for complex products.
-      </p>
-      <h1
-        class="font-display font-semibold leading-[0.92] tracking-[-0.04em]"
-        style="font-size:clamp(2.75rem,9vw,8.5rem)"
-      >
-        <span class="block">Designing clear,</span>
-        <span class="block">
-          <span class="font-serif font-normal italic tracking-[-0.02em]"
-            >human</span
-          > interfaces
-        </span>
-        <span class="block">for complex products.</span>
-      </h1>
-      <a
-        href="#work"
-        class="group mt-12 inline-flex w-fit items-center gap-2 text-sm font-medium"
-      >
-        <span class="border-b border-ink/30 pb-0.5 group-hover:border-ink"
-          >See selected work</span
+        <img
+          src="https://picsum.photos/seed/pan-desk/600/440"
+          alt=""
+          loading="lazy"
+          class="w-full rounded-2xl object-cover shadow-[0_18px_50px_-20px_rgba(16,24,40,0.35)]"
+        />
+        <figcaption
+          class="mt-2 text-left font-mono text-[11px] uppercase tracking-wide text-[#0041d9]"
         >
-        <span class="transition-transform group-hover:translate-y-0.5">↓</span>
-      </a>
+          [09:14] first coffee, first figma
+        </figcaption>
+      </figure>
+
+      <!-- Floating image — right / lower (desktop only) -->
+      <figure
+        class="absolute right-0 bottom-[14%] z-0 hidden w-[clamp(180px,16vw,240px)] rotate-3 xl:block"
+      >
+        <img
+          src="https://picsum.photos/seed/pan-screen/600/440"
+          alt=""
+          loading="lazy"
+          class="w-full rounded-2xl object-cover shadow-[0_18px_50px_-20px_rgba(16,24,40,0.35)]"
+        />
+        <figcaption
+          class="mt-2 text-right font-mono text-[11px] uppercase tracking-wide text-[#0041d9]"
+        >
+          [16:07] watching the model think
+        </figcaption>
+      </figure>
+
+      <!-- Hero text -->
+      <div class="relative z-10 max-w-3xl">
+        <p
+          class="mb-6 font-sans text-[22px] leading-relaxed text-[#0041d9] sm:whitespace-nowrap sm:text-[24px]"
+        >
+          7+ years designing complex, data-heavy products.
+        </p>
+        <h1
+          class="font-display font-semibold leading-[0.98] tracking-[-0.02em] text-[#0041d9]"
+          style="font-size:clamp(2.25rem,6vw,5.25rem)"
+        >
+          <span class="block">Now designing how</span>
+          <span class="block">
+            AI products
+            <span class="ml-[0.3em] font-serif font-normal italic tracking-[-0.01em]"
+              >think</span
+            >,
+          </span>
+          <span class="block">not just how they look.</span>
+        </h1>
+        <a
+          href="#work"
+          class="group mt-12 inline-flex items-center gap-2 text-sm font-medium"
+        >
+          <span class="border-b border-ink/30 pb-0.5 group-hover:border-ink"
+            >See selected work</span
+          >
+          <span class="transition-transform group-hover:translate-y-0.5">↓</span>
+        </a>
+      </div>
+
+      <!-- Image pair for tablet / mobile (below the text) -->
+      <div class="mt-14 grid w-full max-w-md grid-cols-2 gap-5 xl:hidden">
+        <figure class="-rotate-2">
+          <img
+            src="https://picsum.photos/seed/pan-desk/600/440"
+            alt=""
+            loading="lazy"
+            class="w-full rounded-2xl object-cover shadow-[0_18px_50px_-20px_rgba(16,24,40,0.35)]"
+          />
+          <figcaption
+            class="mt-2 text-left font-mono text-[11px] uppercase tracking-wide text-[#0041d9]"
+          >
+            [09:14] first coffee
+          </figcaption>
+        </figure>
+        <figure class="rotate-2">
+          <img
+            src="https://picsum.photos/seed/pan-screen/600/440"
+            alt=""
+            loading="lazy"
+            class="w-full rounded-2xl object-cover shadow-[0_18px_50px_-20px_rgba(16,24,40,0.35)]"
+          />
+          <figcaption
+            class="mt-2 text-left font-mono text-[11px] uppercase tracking-wide text-[#0041d9]"
+          >
+            [16:07] model thinking
+          </figcaption>
+        </figure>
+      </div>
     </section>
 
     <!-- ===================== Selected work ===================== -->
@@ -133,44 +153,49 @@ const ABOUT = [
         <h2 class="font-display text-sm font-semibold uppercase tracking-wide">
           Selected work
         </h2>
-        <span class="font-sans text-sm text-muted">{PROJECTS.length} projects</span>
+        <span class="font-sans text-sm text-muted">{projects.length} projects</span>
       </div>
 
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
         {
-          PROJECTS.map((p) => (
-            <article
-              class="group rounded-card bg-card p-7 shadow-[0_10px_40px_-24px_rgba(16,24,40,0.25)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_-24px_rgba(16,24,40,0.3)] sm:p-9"
+          projects.map((p) => (
+            <a
+              href={`/work/${p.slug}`}
+              class="group block overflow-hidden rounded-card bg-card shadow-[0_10px_40px_-24px_rgba(16,24,40,0.25)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_-24px_rgba(16,24,40,0.3)]"
             >
-              {/* TODO: drop a project image/thumbnail here */}
-              <div
-                class="mb-7 flex aspect-[16/10] items-center justify-center rounded-2xl bg-surface text-xs uppercase tracking-wide text-muted"
-              >
-                Image
+              <div class="overflow-hidden bg-surface">
+                <img
+                  src={p.cover}
+                  alt={`${p.client} — ${p.title}`}
+                  loading="lazy"
+                  class="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                />
               </div>
-              <div class="flex items-baseline justify-between gap-4">
-                <h3 class="font-display text-2xl font-semibold tracking-tight sm:text-3xl">
+              <div class="p-7 sm:p-8">
+                <div class="flex items-baseline justify-between gap-4">
+                  <p class="font-mono text-xs uppercase tracking-wide text-[#0041d9]">
+                    {p.client}
+                  </p>
+                  <span class="font-sans text-sm tabular-nums text-muted">
+                    {p.year}
+                  </span>
+                </div>
+                <h3 class="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
                   {p.title}
                 </h3>
-                <span class="shrink-0 font-sans text-sm tabular-nums text-muted">
-                  {p.year}
-                </span>
+                <p class="mt-1 font-serif text-xl italic text-ink/80 sm:text-2xl">
+                  {p.subtitle}
+                </p>
+                <div class="mt-5 flex items-center justify-between">
+                  <span class="font-sans text-xs uppercase tracking-wide text-muted">
+                    {p.role}
+                  </span>
+                  <span class="font-sans text-sm font-medium text-[#0041d9] opacity-0 transition-opacity group-hover:opacity-100">
+                    View case study →
+                  </span>
+                </div>
               </div>
-              <p class="mt-1 font-serif text-xl italic text-ink/80 sm:text-2xl">
-                {p.subtitle}
-              </p>
-              <p class="mt-4 max-w-prose font-sans text-sm leading-relaxed text-muted">
-                {p.description}
-              </p>
-              <div class="mt-6 flex items-center justify-between">
-                <span class="font-sans text-xs uppercase tracking-wide text-muted">
-                  {p.role}
-                </span>
-                <span class="font-sans text-sm font-medium text-accent opacity-0 transition-opacity group-hover:opacity-100">
-                  View project →
-                </span>
-              </div>
-            </article>
+            </a>
           ))
         }
       </div>
@@ -183,18 +208,60 @@ const ABOUT = [
       >
         About
       </h2>
-      <div class="grid grid-cols-1 gap-x-10 gap-y-12 md:grid-cols-3">
-        {
-          ABOUT.map((a) => (
-            <div>
-              <p class="mb-3 font-display text-3xl font-semibold tracking-tight">
-                {a.labelBold}{" "}
-                <span class="font-serif font-normal italic">{a.labelSerif}</span>
-              </p>
-              <p class="font-sans leading-relaxed text-muted">{a.body}</p>
-            </div>
-          ))
-        }
+      <div class="grid grid-cols-1 gap-10 md:grid-cols-[1.5fr_1fr] md:gap-16">
+        <div>
+          <p
+            class="font-display text-2xl font-semibold leading-snug tracking-tight sm:text-3xl"
+          >
+            I'm I-Chieh, a senior product designer at New Relic with 7+ years
+            delivering user-centered design for enterprise SaaS.
+          </p>
+          <div class="mt-6 space-y-5 text-lg leading-relaxed text-muted">
+            <p>
+              I specialise in observability and DevOps tooling — translating
+              massive, data-intensive systems into intuitive experiences that
+              empower technical users. Most recently, I led the product design
+              for Session Replay, a feature adopted by over 1,000 accounts and
+              generating $3.52M in monthly recurring revenue within nine months.
+            </p>
+            <p>
+              I'm constantly adding to my hands-on coding skills to build the
+              best digital products I can — I recently built {" "}
+              <a
+                href={LINKS.aiApp}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[#0041d9] underline-offset-4 hover:underline"
+                >an AI news app</a
+              > with Claude Code, designed to keep UX professionals informed and
+              inspired.
+            </p>
+          </div>
+
+          <dl class="mt-10 space-y-3 border-t border-line/70 pt-6">
+            {
+              CAREER.map((c) => (
+                <div class="flex items-baseline justify-between gap-4 text-sm">
+                  <dt>
+                    <span class="font-medium text-ink">{c.org}</span>
+                    <span class="text-muted"> · {c.role}</span>
+                  </dt>
+                  <dd class="shrink-0 font-mono text-xs tabular-nums text-muted">
+                    {c.period}
+                  </dd>
+                </div>
+              ))
+            }
+          </dl>
+        </div>
+
+        <div>
+          <img
+            src="/images/about/portrait.jpg"
+            alt="I-Chieh Pan"
+            class="w-full rounded-card object-cover shadow-[0_18px_50px_-24px_rgba(16,24,40,0.3)]"
+          />
+        </div>
       </div>
     </section>
 
@@ -209,25 +276,30 @@ const ABOUT = [
       </p>
       <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3">
         <a
-          href={`mailto:${EMAIL}`}
+          href={LINKS.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
           class="group inline-flex items-center gap-2 font-sans text-lg font-medium"
         >
           <span class="border-b border-ink/30 pb-0.5 group-hover:border-ink"
-            >{EMAIL}</span
+            >Connect on LinkedIn</span
           >
+          <span class="transition-transform group-hover:translate-x-0.5">→</span>
         </a>
-        {
-          SOCIALS.map((s) => (
-            <a
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="font-sans text-sm uppercase tracking-wide text-muted hover:text-ink"
-            >
-              {s.label}
-            </a>
-          ))
-        }
+        <a
+          href={LINKS.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-sans text-sm uppercase tracking-wide text-muted hover:text-ink"
+          >GitHub</a
+        >
+        <a
+          href={LINKS.resume}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="font-sans text-sm uppercase tracking-wide text-muted hover:text-ink"
+          >Résumé</a
+        >
       </div>
     </section>
   </main>
@@ -238,7 +310,7 @@ const ABOUT = [
       class="mx-auto flex max-w-[1400px] flex-col gap-2 px-6 py-8 font-sans text-sm text-muted sm:flex-row sm:items-center sm:justify-between sm:px-10"
     >
       <span>© {new Date().getFullYear()} I-Chieh Pan</span>
-      <span>Designed &amp; built in {LOCATION.city}</span>
+      <a href="#top" class="hover:text-ink">↑ Back to top</a>
     </div>
   </footer>
 

@@ -1,0 +1,238 @@
+---
+import CaseStudy from "../../layouts/CaseStudy.astro";
+import CaseSection from "../../components/CaseSection.astro";
+import Prose from "../../components/Prose.astro";
+import Figure from "../../components/Figure.astro";
+import Glance from "../../components/Glance.astro";
+import Stat from "../../components/Stat.astro";
+---
+
+<CaseStudy
+  slug="session-replay"
+  team="2 PMs, 9 engineers, a content writer & a support designer"
+  externalLabel="newrelic.com"
+  externalHref="https://newrelic.com/platform/session-replay"
+>
+  <Glance>
+    <Fragment slot="challenge">
+      When front-end developers troubleshoot, they need to know both what the
+      user was doing and how the application responded. New Relic previously
+      offered only data-centric logs and traces, forcing developers to translate
+      lengthy text into a best guess of user behaviour.
+    </Fragment>
+    <Fragment slot="strategy">
+      A unified diagnostic experience that synchronises three contexts into a
+      single, real-time frame of reference: the visual replay, the behavioural
+      event trail, and the technical session traces.
+    </Fragment>
+    <Fragment slot="impact">
+      Scaled to 1,000+ active accounts and 7M weekly sessions within six months,
+      generating $3.52M in monthly recurring revenue and cutting time-to-insight
+      from minutes to seconds.
+    </Fragment>
+  </Glance>
+
+  <CaseSection num="01" title="Discovery & definition">
+    <Prose>
+      <p>
+        Session Replay is our number one requested feature from current and
+        prospective customers. It provides visual context of what the end user
+        was doing alongside the telemetry data of how the application was
+        behaving. Session Replay also expands New Relic's capabilities from
+        traditional app monitoring to Digital Experience Monitoring (DEM).
+      </p>
+      <p>
+        Before I start, I need to understand what customers expect from a
+        session replay tool. I conducted a competitive analysis of session
+        replay features, mapping out the functional landscape and identifying
+        opportunities for differentiation.
+      </p>
+    </Prose>
+    <Figure
+      src="/images/session-replay/competitive-1.png"
+      caption="Competitive analysis — functional landscape"
+    />
+    <Figure
+      src="/images/session-replay/competitive-2.png"
+      caption="Competitive analysis — opportunities for differentiation"
+    />
+    <Prose>
+      <h3>Jobs-to-be-Done</h3>
+      <p>
+        I also conducted internal qualitative research with our engineers who
+        use Fullstory session replay on a daily basis. The interviews revealed
+        they prioritise time-to-insight — specifically the immediate visibility
+        of key events on the replay timeline — and they appreciate the ability
+        to quickly link errors, the user action, and data together for incident
+        triaging. I synthesised these findings into Jobs-to-be-Done statements.
+      </p>
+      <ul>
+        <li>
+          <strong>The reproduction:</strong> As a front-end engineer, when a
+          JavaScript error occurs, I need to see exactly what the user was doing
+          leading up to it, so I can recreate the issue.
+        </li>
+        <li>
+          <strong>The impact:</strong> As a front-end engineer, I need to see
+          how the application behaved during the error to determine if this was
+          an isolated incident or a critical failure affecting the entire user
+          journey.
+        </li>
+        <li>
+          <strong>The root cause:</strong> As a full-stack engineer, I need to
+          correlate user actions with back-end technical events on a single
+          timeline, so I can pinpoint the source of a bug without switching
+          contexts.
+        </li>
+      </ul>
+    </Prose>
+  </CaseSection>
+
+  <CaseSection num="02" title="Strategic framework">
+    <Prose>
+      <h3>The friction of context-switching</h3>
+      <p>
+        <strong>Why is troubleshooting so difficult?</strong> When developers troubleshoot
+        an issue, they hunt through a sea of fragmented data — logs, traces, and
+        timeline — to reconstruct what the user actually did leading up to an error.
+        Translating lines of text into a best guess of user behaviour creates cognitive
+        load and delays critical time-to-insight.
+      </p>
+      <p>
+        <strong>Design approach.</strong> When a developer is deep in a debugging
+        flow, the biggest productivity killer is context switching — jumping between
+        tabs to match a timestamp in a video to a specific line in a log file. I focused
+        on a unified view where the replay player, event trail, and session traces all
+        move together in real time. This follows the natural way developers troubleshoot:
+        they see a problem in the UI → identify the high-level event → reach for the granular
+        logs to find the root cause. By keeping these three layers side-by-side and in sync,
+        we remove the friction of context-switching, letting developers move from observing
+        what happened to understanding why it happened in one fluid motion.
+      </p>
+    </Prose>
+    <Figure
+      src="/images/session-replay/wireframe.png"
+      caption="Wireframe — unifying replay, event trail & session traces"
+    />
+  </CaseSection>
+
+  <CaseSection num="03" title="Distilling high-volume data">
+    <Prose>
+      <h3>Navigating the noise</h3>
+      <p>
+        Reviewing session replays is traditionally labour-intensive. By
+        overlaying event markers like JavaScript errors and route changes onto
+        the timeline, we provide engineers with clear visual cues. Here are some
+        explorations around designing a scrubber that doesn't just play back a
+        video, but actively surfaces the critical signals, allowing engineers to
+        jump straight to the root cause.
+      </p>
+    </Prose>
+    <Figure
+      src="/images/session-replay/scrubber.png"
+      caption="Scrubber explorations — surfacing critical signals"
+    />
+    <Prose>
+      <h3>Designing for high-density data</h3>
+      <p>
+        To help users parse long sessions without cognitive fatigue, I developed
+        a chapter system that organises dense route changes into a scannable
+        timeline. By clustering rapid-fire interactions, we reduce visual noise
+        while maintaining a 10px minimum hit-area for accessibility. This diagram
+        illustrates three logic models for grouping sub-second events — balancing
+        a high-level overview with granular accuracy.
+      </p>
+    </Prose>
+    <Figure
+      src="/images/session-replay/route-grouping.png"
+      caption="Three logic models for grouping sub-second route changes"
+    />
+    <Prose>
+      <h3>Responsive markers for better legibility</h3>
+      <p>
+        To ensure the timeline and error markers remain useful on any screen
+        size, I designed a merging mechanism for error markers — much like how a
+        map groups landmarks as you zoom out. This eagle-eye view automatically
+        clusters overlapping errors into a single interactive marker, maintaining
+        a clean workspace while preserving the detail within a tooltip.
+      </p>
+    </Prose>
+    <Figure
+      src="/images/session-replay/marker-merging.gif"
+      caption="Error markers merge as space tightens, like landmarks on a map"
+    />
+    <Figure
+      src="/images/session-replay/chapter-list.png"
+      caption="Chapter hover list across multiple URLs"
+    />
+  </CaseSection>
+
+  <CaseSection num="04" title="Validation">
+    <Prose>
+      <p>
+        I conducted an internal user test to validate this grouped approach
+        against the overlay (no-grouping) approach on the timeline. My goal was
+        to determine which pattern best helps users maintain an eagle-eye view of
+        a session in a small space. The findings were definitive for the grouped
+        approach:
+      </p>
+      <ul>
+        <li>
+          <strong>Cognitive ease:</strong> the grouped view was "easier for the
+          brain to digest" and "keeps things less cluttered" than the overlay
+          approach.
+        </li>
+        <li>
+          <strong>Precision:</strong> participants liked that they could click a
+          single square to see exactly what happened in that timeframe without
+          overlapping with other error sets.
+        </li>
+        <li>
+          <strong>Efficiency in investigation:</strong> the red deepens as more
+          errors cluster together, creating a natural heatmap that shows users
+          where the most issues occurred and where to start.
+        </li>
+      </ul>
+    </Prose>
+    <Figure
+      src="/images/session-replay/marker-test.png"
+      caption="Marker user test — grouped vs. overlay"
+    />
+  </CaseSection>
+
+  <CaseSection num="05" title="Seeing it all come together">
+    <Prose>
+      <p>
+        The final design of New Relic Session Replay is not just a video player
+        but a synchronised diagnostic tool. By unifying the video player (with
+        timeline scrubber) and the Event Trail and Session Trace components, I
+        ensured that every technical signal is perfectly in sync with the user's
+        visual journey. It lets developers see an error and the user's behaviour
+        side-by-side, at the exact moment it happened. This balance of granular
+        detail and intuitive context is what ultimately cuts time-to-insight from
+        minutes to seconds.
+      </p>
+    </Prose>
+    <Figure
+      src="/images/session-replay/final.gif"
+      caption="The final synchronised diagnostic experience"
+    />
+  </CaseSection>
+
+  <CaseSection num="06" title="Business & user impact">
+    <div class="grid gap-5 sm:grid-cols-3">
+      <Stat
+        value="1,000+"
+        label="Active accounts and 7M weekly sessions within six months of launch."
+      />
+      <Stat
+        value="$3.52M"
+        label="Monthly recurring revenue — a core pillar of New Relic's Browser capability."
+      />
+      <Stat
+        value="Minutes → seconds"
+        label="Eliminated context-switching with a single source of truth, from symptom to root cause."
+      />
+    </div>
+  </CaseSection>
+</CaseStudy>

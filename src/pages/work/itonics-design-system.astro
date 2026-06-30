@@ -1,0 +1,184 @@
+---
+import CaseStudy from "../../layouts/CaseStudy.astro";
+import CaseSection from "../../components/CaseSection.astro";
+import Prose from "../../components/Prose.astro";
+import Figure from "../../components/Figure.astro";
+import Glance from "../../components/Glance.astro";
+---
+
+<CaseStudy slug="itonics-design-system" team="6 people incl. PM & developers">
+  <Glance>
+    <Fragment slot="challenge">
+      ITONICS Cloud inherited components from a previous desktop version. Old and
+      new components mixed together created inconsistencies in style and
+      behaviour, and developers wasted time re-coding similar components.
+    </Fragment>
+    <Fragment slot="strategy">
+      A unified, standardised, reusable system — built on Atomic Design — with a
+      style guide, consolidated components, and a maintained UI library.
+    </Fragment>
+    <Fragment slot="impact">
+      One source of truth for designers and developers: a consistent experience,
+      clearer communication, faster low-fi iteration, and fewer redundant
+      components.
+    </Fragment>
+  </Glance>
+
+  <CaseSection num="01" title="Context">
+    <Prose>
+      <p>
+        ITONICS Cloud is a SaaS solution for innovation management that helps
+        users analyse data and translate it into insights. The Cloud had some
+        pre-existing components inherited from the previous desktop version. We
+        needed unified, standardised, and reusable rules to follow for the Cloud
+        version.
+      </p>
+      <h3>The challenges</h3>
+      <ul>
+        <li>
+          Old desktop-version components mixed with new components resulted in
+          inconsistencies and incoherence in styles and behaviours.
+        </li>
+        <li>
+          Developers were wasting time re-coding similar components that could
+          have been consolidated into one.
+        </li>
+      </ul>
+    </Prose>
+    <Figure
+      src="/images/itonics-design-system/uis.png"
+      caption="The existing interface — mixed, inconsistent components"
+    />
+  </CaseSection>
+
+  <CaseSection num="02" title="Purpose & process">
+    <Prose>
+      <h3>What the design system should achieve</h3>
+      <ul>
+        <li>Achieve a consistent user experience</li>
+        <li>
+          Provide clarity that improves communication between developers and
+          designers
+        </li>
+        <li>
+          Allow faster iteration — more frequent low-fi mockups, applying the
+          design system once we reach a concrete design decision
+        </li>
+      </ul>
+      <h3>Process</h3>
+      <ul>
+        <li>Inventory audit, to evaluate the experience and identify issues</li>
+        <li>
+          Create a style guide; specify UX rules and component usage where none
+          existed
+        </li>
+        <li>Consolidate extraneous or overlapping components and patterns</li>
+        <li>Document and maintain the UI library</li>
+      </ul>
+    </Prose>
+  </CaseSection>
+
+  <CaseSection num="03" title="UX audit — components & patterns">
+    <Prose>
+      <p>
+        <strong>UX auditing.</strong> The way I group elements is based on their
+        purpose and type, rather than appearance. This aligns with how we organise
+        the component library. Through this purpose-directed inventory, we can see
+        an overview of how elements are used in the system, what the behaviours
+        are, and what needs to be standardised.
+      </p>
+    </Prose>
+    <Figure
+      src="/images/itonics-design-system/audit.png"
+      caption="Purpose-directed inventory audit"
+    />
+    <Prose>
+      <p>
+        <strong>Establish rules and guidelines.</strong> After the audit, I
+        capture the existing patterns or determine the best practices to follow
+        as rules. I follow the Atomic Design approach (Brad Frost, 2016) to
+        organise our design system — with folders like Atoms, Molecules,
+        Organisms, Templates, Pages, and Extra Content.
+      </p>
+    </Prose>
+    <Figure
+      src="/images/itonics-design-system/rules.png"
+      caption="Rules and guidelines, organised with Atomic Design"
+    />
+  </CaseSection>
+
+  <CaseSection num="04" title="Deliverables">
+    <Prose>
+      <ul>
+        <li>Style guide and pattern library</li>
+        <li>Design specifications</li>
+        <li>A UI library built in Sketch to house the design files</li>
+        <li>System maintenance and updates</li>
+      </ul>
+    </Prose>
+    <Figure
+      src="/images/itonics-design-system/specs.png"
+      caption="Design specification — element hero banner"
+    />
+    <Figure
+      src="/images/itonics-design-system/cards.png"
+      caption="Design deliverable — card component"
+    />
+    <Figure
+      src="/images/itonics-design-system/detail-pages.png"
+      caption="Design deliverable — entity detail page"
+    />
+    <div class="my-8 grid gap-5 sm:grid-cols-2">
+      <figure>
+        <img
+          src="/images/itonics-design-system/before.png"
+          alt="Before"
+          loading="lazy"
+          class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+        />
+        <figcaption
+          class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
+        >
+          Before
+        </figcaption>
+      </figure>
+      <figure>
+        <img
+          src="/images/itonics-design-system/after.png"
+          alt="After"
+          loading="lazy"
+          class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+        />
+        <figcaption
+          class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
+        >
+          After
+        </figcaption>
+      </figure>
+    </div>
+  </CaseSection>
+
+  <CaseSection num="05" title="Learnings">
+    <Prose>
+      <p>
+        <strong>Establish rituals and processes to move things forward.</strong>
+        Since I was the only designer on the team, I could only work on the design
+        system in parallel with my day-to-day tasks. So I set up a roadmap and
+        checkpoints for its development. This helped me move things forward and
+        break the work into smaller, more manageable chunks.
+      </p>
+      <p>
+        <strong>Have the design system in mind.</strong> Always inspect what you
+        can build for the design system when you have a design task. On the other
+        hand, check what you already have in the system before making any new
+        design.
+      </p>
+      <p>
+        <strong>A design system is a living, ongoing project.</strong> Sometimes
+        the insufficiency of the guidelines shows during implementation. So
+        updating and improving the design system is just as important as creating
+        it.
+      </p>
+    </Prose>
+  </CaseSection>
+</CaseStudy>

@@ -1,0 +1,34 @@
+---
+// "At a glance" summary with three named slots: challenge, strategy, impact.
+---
+
+<div class="mx-auto max-w-5xl px-6 sm:px-10">
+  <div
+    class="grid gap-px overflow-hidden rounded-3xl bg-line/70 shadow-[0_18px_50px_-28px_rgba(16,24,40,0.3)] sm:grid-cols-3"
+  >
+    <div class="bg-card p-7">
+      <p class="mb-3 font-mono text-xs uppercase tracking-wide text-[#0041d9]">
+        The challenge
+      </p>
+      <div class="text-[15px] leading-relaxed text-ink/85">
+        <slot name="challenge" />
+      </div>
+    </div>
+    <div class="bg-card p-7">
+      <p class="mb-3 font-mono text-xs uppercase tracking-wide text-[#0041d9]">
+        Strategy
+      </p>
+      <div class="text-[15px] leading-relaxed text-ink/85">
+        <slot name="strategy" />
+      </div>
+    </div>
+    <div class="bg-card p-7">
+      <p class="mb-3 font-mono text-xs uppercase tracking-wide text-[#0041d9]">
+        Impact
+      </p>
+      <div class="text-[15px] leading-relaxed text-ink/85">
+        <slot name="impact" />
+      </div>
+    </div>
+  </div>
+</div>

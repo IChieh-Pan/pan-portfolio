@@ -1,0 +1,26 @@
+---
+// An image with an optional monospace caption.
+interface Props {
+  src: string;
+  alt?: string;
+  caption?: string;
+  class?: string;
+}
+const { src, alt = "", caption, class: className = "" } = Astro.props;
+---
+
+<figure class:list={["my-8", className]}>
+  <img
+    src={src}
+    alt={alt}
+    loading="lazy"
+    class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+  />
+  {
+    caption && (
+      <figcaption class="mt-3 font-mono text-xs uppercase tracking-wide text-muted">
+        {caption}
+      </figcaption>
+    )
+  }
+</figure>

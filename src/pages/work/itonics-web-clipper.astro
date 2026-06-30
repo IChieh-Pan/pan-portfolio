@@ -1,0 +1,232 @@
+---
+import CaseStudy from "../../layouts/CaseStudy.astro";
+import CaseSection from "../../components/CaseSection.astro";
+import Prose from "../../components/Prose.astro";
+import Figure from "../../components/Figure.astro";
+import Glance from "../../components/Glance.astro";
+---
+
+<CaseStudy
+  slug="itonics-web-clipper"
+  team="1 PM & 5 engineers (front-end & back-end)"
+>
+  <Glance>
+    <Fragment slot="challenge">
+      The clipping process required a lot of manual work — including specifying a
+      storage destination for every entry — which was time-consuming and
+      inefficient, limiting app usage and engagement.
+    </Fragment>
+    <Fragment slot="strategy">
+      Streamline the workflow with clearer navigation, smarter pre-fills, bulk
+      actions, and more flexible capture — shaped through a stakeholder workshop
+      and user research.
+    </Fragment>
+    <Fragment slot="impact">
+      4 of 5 users found the improved process straightforward and comprehensible;
+      the redesign moved into implementation, targeting Chrome and Firefox.
+    </Fragment>
+  </Glance>
+
+  <CaseSection num="01" title="Context">
+    <Prose>
+      <p>
+        ITONICS Web Clipper is a browser extension that helps users quickly
+        capture web content and save it to ITONICS Cloud. Some users use the Web
+        Clipper every day — especially those in executive roles — as an essential
+        way to add content into the system.
+      </p>
+      <p>
+        With the current Web Clipper, a user clicks the clipper icon in the
+        browser and a window appears where the page's title, description, and
+        image are captured. They edit the information if needed and hit save. The
+        content is uploaded to the Suite platform, where the clip becomes a post
+        in their feed. The extension is available for Chrome, Internet Explorer,
+        and Firefox.
+      </p>
+    </Prose>
+    <Figure
+      src="/images/itonics-web-clipper/current.jpg"
+      caption="How the current Web Clipper works"
+    />
+  </CaseSection>
+
+  <CaseSection num="02" title="Problems, goals & users">
+    <Prose>
+      <h3>Problems & goals</h3>
+      <p>
+        The clipping process requires a lot of manual work, including specifying
+        the data storage destination for each entry, which is time-consuming and
+        inefficient. We want to improve the clipping process so that we increase
+        app usage and user engagement.
+      </p>
+      <h3>Users</h3>
+      <p>
+        The primary users are content creators, content managers, or similar
+        executive roles, responsible for creating, editing, and publishing
+        content on the platform. The secondary users are project managers and
+        employees within the client's organisation — normally not as active as
+        the primary users.
+      </p>
+    </Prose>
+  </CaseSection>
+
+  <CaseSection num="03" title="User research">
+    <Prose>
+      <p>
+        To learn how users use the clipper and understand their pain points, I
+        conducted user interviews involving three internal and two external
+        users. I gathered qualitative data and analysed their motivations and
+        expectations, and their behaviours regarding collaboration. Key findings:
+      </p>
+      <ul>
+        <li>Users want an easy and quick clipping process</li>
+        <li>Clear indication of the clipping result can avoid errors</li>
+        <li>
+          Users want an uncomplicated way to share content while maintaining
+          privacy
+        </li>
+        <li>Users find it difficult to organise content when clipping in high volume</li>
+      </ul>
+    </Prose>
+  </CaseSection>
+
+  <CaseSection num="04" title="Ideation — stakeholder workshop">
+    <Prose>
+      <p>
+        I facilitated a design workshop with the key stakeholders — including the
+        CTO, a consultant, a content manager, the technical lead, and the product
+        manager. The "How might we" (HMW) technique allowed us to reframe insights
+        into opportunity areas. Some examples of our HMW statements:
+      </p>
+      <ul>
+        <li>How might we give users confidence during the clipping process?</li>
+        <li>How might we make the clipping process more swift — or more fun?</li>
+        <li>How might we provide a quick way to share the clips?</li>
+        <li>
+          How might we let users with different permissions access the clips?
+        </li>
+        <li>How might we leverage clip status to enable sharing between users?</li>
+      </ul>
+      <p>We used dot voting to prioritise our ideas and make decisions.</p>
+    </Prose>
+    <div class="my-8 grid gap-5 sm:grid-cols-2">
+      <figure>
+        <img
+          src="/images/itonics-web-clipper/workshop-1.jpg"
+          alt="Stakeholder workshop"
+          loading="lazy"
+          class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+        />
+        <figcaption
+          class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
+        >
+          Stakeholder workshop
+        </figcaption>
+      </figure>
+      <figure>
+        <img
+          src="/images/itonics-web-clipper/workshop-2.jpg"
+          alt="Dot voting and prioritisation"
+          loading="lazy"
+          class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+        />
+        <figcaption
+          class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
+        >
+          Dot voting & prioritisation
+        </figcaption>
+      </figure>
+    </div>
+    <Figure
+      src="/images/itonics-web-clipper/ideation.png"
+      caption="Crazy-8s ideation sketches"
+    />
+  </CaseSection>
+
+  <CaseSection num="05" title="Constraints & design suggestions">
+    <Prose>
+      <h3>Known constraints</h3>
+      <ul>
+        <li>The clip quality relies heavily on the web page structure</li>
+        <li>Clipped but unsaved data is lost when the browser session ends</li>
+        <li>A file storage destination is required for every clipping</li>
+        <li>Extension updates may be difficult with some browsers</li>
+      </ul>
+      <h3>Design suggestions</h3>
+      <ul>
+        <li>Clear navigation and interaction that give users better orientation</li>
+        <li>Clip more content from the webpage, gaining flexibility for later editing</li>
+        <li>
+          Remember the user's previous action as a pre-fill, saving time on
+          tedious configuration
+        </li>
+        <li>Optimise the workflow by introducing bulk actions</li>
+        <li>Extensive functions to help users deal with a massive number of entries</li>
+      </ul>
+    </Prose>
+  </CaseSection>
+
+  <CaseSection num="06" title="Design deliverables">
+    <Prose>
+      <p>
+        <strong>User task flow.</strong> With the decisions made during the
+        workshop and the constraints in mind, I drafted a task flow (happy path)
+        to illustrate the user's primary steps to accomplish the clipping process.
+      </p>
+    </Prose>
+    <Figure
+      src="/images/itonics-web-clipper/task-flow.png"
+      caption="User task flow — the happy path"
+    />
+    <Prose>
+      <p>
+        <strong>Wireframe.</strong> In the wireframing stage, I defined how the
+        Web Clipper page should look. I focused on two challenges: the position of
+        the configuration panel required to save clips, and how to help users
+        quickly navigate through the clips they want to edit.
+      </p>
+    </Prose>
+    <Figure
+      src="/images/itonics-web-clipper/wireframe.png"
+      caption="Wireframe explorations"
+    />
+    <Prose>
+      <p>
+        <strong>Deliverables.</strong> After deciding on the general layout and
+        interaction approach, I added visual attributes and detailed interactions
+        to the design.
+      </p>
+    </Prose>
+    <Figure
+      src="/images/itonics-web-clipper/mockup.png"
+      caption="Low- to high-fidelity prototype"
+    />
+  </CaseSection>
+
+  <CaseSection num="07" title="Validation">
+    <Prose>
+      <p>
+        We tested usability with five users to evaluate the improved clipper
+        workflow. Some insights from the results:
+      </p>
+      <ul>
+        <li>4 of 5 users found the clipping process straightforward and comprehensible</li>
+        <li>
+          3 of 5 users found the "Publish" and "Add as Draft" features helpful
+          when sharing clips with teammates
+        </li>
+        <li>
+          3 of 5 users were unsure whether clips would remain accessible after
+          closing the browser
+        </li>
+      </ul>
+      <p>
+        The improved Web Clipper received positive feedback from the team and
+        users. It is currently in the implementation stage, aiming to release on
+        Chrome and Firefox. As a next step, I'd like to further explore ways to
+        minimise the number of actions a user must take throughout the clipping
+        process.
+      </p>
+    </Prose>
+  </CaseSection>
+</CaseStudy>

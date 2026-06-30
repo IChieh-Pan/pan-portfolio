@@ -1,0 +1,20 @@
+---
+// A readable text column for case-study body copy. Styles common child
+// elements (strong, ul/li, h3) so pages can stay mostly plain markup.
+interface Props {
+  class?: string;
+}
+const { class: className = "" } = Astro.props;
+---
+
+<div
+  class:list={[
+    "max-w-[68ch] space-y-5 text-lg leading-relaxed text-ink/85",
+    "[&_strong]:font-semibold [&_strong]:text-ink",
+    "[&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5 [&_li]:marker:text-[#0041d9]",
+    "[&_h3]:pt-3 [&_h3]:font-display [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-ink",
+    className,
+  ]}
+>
+  <slot />
+</div>

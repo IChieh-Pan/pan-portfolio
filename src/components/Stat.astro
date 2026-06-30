@@ -1,0 +1,17 @@
+---
+// A single impact metric: big accent number + supporting label.
+interface Props {
+  value: string;
+  label: string;
+}
+const { value, label } = Astro.props;
+---
+
+<div
+  class="rounded-2xl bg-card p-6 shadow-[0_10px_40px_-28px_rgba(16,24,40,0.3)]"
+>
+  <p class="font-display text-3xl font-semibold text-[#0041d9] sm:text-4xl">
+    {value}
+  </p>
+  <p class="mt-2 text-sm leading-relaxed text-muted">{label}</p>
+</div>
