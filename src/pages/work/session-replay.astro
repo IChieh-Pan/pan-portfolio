@@ -12,6 +12,7 @@ import Stat from "../../components/Stat.astro";
   team="2 PMs, 9 engineers, a content writer & a support designer"
   externalLabel="newrelic.com"
   externalHref="https://newrelic.com/platform/session-replay"
+  coverPlain
 >
   <Glance>
     <Fragment slot="challenge">
@@ -34,28 +35,62 @@ import Stat from "../../components/Stat.astro";
 
   <CaseSection num="01" title="Discovery & definition">
     <Prose>
+      <h3>What it is</h3>
       <p>
         Session Replay is our number one requested feature from current and
         prospective customers. It provides visual context of what the end user
         was doing alongside the telemetry data of how the application was
-        behaving. Session Replay also expands New Relic's capabilities from
-        traditional app monitoring to Digital Experience Monitoring (DEM).
+        behaving.
       </p>
       <p>
-        Before I start, I need to understand what customers expect from a
-        session replay tool. I conducted a competitive analysis of session
-        replay features, mapping out the functional landscape and identifying
-        opportunities for differentiation.
+        <strong>
+          It also expands New Relic from traditional app monitoring into Digital
+          Experience Monitoring (DEM).
+        </strong>
+      </p>
+      <h3>Understanding the ask</h3>
+      <p>
+        Before starting, I needed to understand what customers expect from a
+        session replay tool — so I ran a competitive analysis, mapping the
+        functional landscape and identifying opportunities for differentiation.
       </p>
     </Prose>
-    <Figure
-      src="/images/session-replay/competitive-1.png"
-      caption="Competitive analysis — functional landscape"
-    />
-    <Figure
-      src="/images/session-replay/competitive-2.png"
-      caption="Competitive analysis — opportunities for differentiation"
-    />
+    <div class="my-8 grid grid-cols-2 gap-5">
+      <figure class="flex flex-col">
+        <div
+          class="flex flex-1 items-center justify-center overflow-hidden rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+        >
+          <img
+            src="/images/session-replay/competitive-1.png"
+            alt=""
+            loading="lazy"
+            class="w-full"
+          />
+        </div>
+        <figcaption
+          class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
+        >
+          Competitive analysis — functional landscape
+        </figcaption>
+      </figure>
+      <figure class="flex flex-col">
+        <div
+          class="flex flex-1 items-center justify-center overflow-hidden rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+        >
+          <img
+            src="/images/session-replay/competitive-2.png"
+            alt=""
+            loading="lazy"
+            class="w-full"
+          />
+        </div>
+        <figcaption
+          class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
+        >
+          Competitive analysis — opportunities for differentiation
+        </figcaption>
+      </figure>
+    </div>
     <Prose>
       <h3>Jobs-to-be-Done</h3>
       <p>
@@ -92,28 +127,64 @@ import Stat from "../../components/Stat.astro";
     <Prose>
       <h3>The friction of context-switching</h3>
       <p>
-        <strong>Why is troubleshooting so difficult?</strong> When developers troubleshoot
-        an issue, they hunt through a sea of fragmented data — logs, traces, and
-        timeline — to reconstruct what the user actually did leading up to an error.
-        Translating lines of text into a best guess of user behaviour creates cognitive
-        load and delays critical time-to-insight.
+        Troubleshooting means hunting through a sea of fragmented data to
+        reconstruct what the user actually did before an error — which creates
+        cognitive load and delays time-to-insight. That data lives in three
+        disconnected places:
       </p>
-      <p>
-        <strong>Design approach.</strong> When a developer is deep in a debugging
-        flow, the biggest productivity killer is context switching — jumping between
-        tabs to match a timestamp in a video to a specific line in a log file. I focused
-        on a unified view where the replay player, event trail, and session traces all
-        move together in real time. This follows the natural way developers troubleshoot:
-        they see a problem in the UI → identify the high-level event → reach for the granular
-        logs to find the root cause. By keeping these three layers side-by-side and in sync,
-        we remove the friction of context-switching, letting developers move from observing
-        what happened to understanding why it happened in one fluid motion.
-      </p>
+      <ul>
+        <li><strong>Logs</strong></li>
+        <li><strong>Traces</strong></li>
+        <li><strong>Timeline</strong></li>
+      </ul>
     </Prose>
-    <Figure
-      src="/images/session-replay/wireframe.png"
-      caption="Wireframe — unifying replay, event trail & session traces"
-    />
+
+    <Prose class="mt-10">
+      <h3>The approach: one synchronized view</h3>
+      <p>
+        The biggest productivity killer in a debugging flow is context-switching
+        — matching a timestamp in a video to a line in a log file. So I unified
+        three layers that move together in real time:
+      </p>
+      <ul>
+        <li><strong>Replay player</strong> — the visual experience the user saw</li>
+        <li>
+          <strong>Event trail</strong> — route changes, JavaScript errors &
+          custom events
+        </li>
+        <li><strong>Session traces</strong> — the underlying logs & network calls</li>
+      </ul>
+    </Prose>
+
+    <div class="mt-8 grid gap-8 md:grid-cols-[1fr_1.3fr] md:items-start">
+      <Prose>
+        <p>This mirrors how developers actually troubleshoot:</p>
+        <ol>
+          <li>See the problem in the UI</li>
+          <li>Identify the high-level event</li>
+          <li>Reach for the granular logs to find the root cause</li>
+        </ol>
+        <p>
+          Keeping the three layers side-by-side and in sync removes the friction
+          of context-switching — letting developers move from
+          <em>what happened</em> to <em>why it happened</em> in one fluid motion.
+        </p>
+      </Prose>
+
+      <figure>
+        <img
+          src="/images/session-replay/wireframe.png"
+          alt=""
+          loading="lazy"
+          class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+        />
+        <figcaption
+          class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
+        >
+          Wireframe — unifying replay, event trail & session traces
+        </figcaption>
+      </figure>
+    </div>
   </CaseSection>
 
   <CaseSection num="03" title="Distilling high-volume data">
@@ -209,8 +280,8 @@ import Stat from "../../components/Stat.astro";
         ensured that every technical signal is perfectly in sync with the user's
         visual journey. It lets developers see an error and the user's behaviour
         side-by-side, at the exact moment it happened. This balance of granular
-        detail and intuitive context is what ultimately cuts time-to-insight from
-        minutes to seconds.
+        detail and intuitive context is what ultimately
+        <strong>cuts time-to-insight from minutes to seconds.</strong>
       </p>
     </Prose>
     <Figure

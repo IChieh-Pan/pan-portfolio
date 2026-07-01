@@ -1,0 +1,20 @@
+---
+// Decorative lime blob shape used in the hero. Pass sizing/position via `class`.
+interface Props {
+  class?: string;
+}
+const { class: className = "" } = Astro.props;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 173 160"
+  fill="none"
+  aria-hidden="true"
+  class:list={["h-auto", className]}
+>
+  <path
+    d="M80.3314 21.0821C176.831 -33.4179 203.444 30.0821 129.831 72.5821C156.331 113.082 124.831 159.082 80.3314 159.082C39.1426 159.082 35.8314 131.082 44.8314 116.082C0.331537 124.582 -0.22351 108.98 15.8314 78.0821C-32.6682 36.0822 42.2263 -0.917787 80.3314 21.0821Z"
+    fill="#D7FF71"
+  ></path>
+</svg>

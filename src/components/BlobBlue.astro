@@ -1,0 +1,20 @@
+---
+// Decorative blue blob shape used in the hero. Pass sizing/position via `class`.
+interface Props {
+  class?: string;
+}
+const { class: className = "" } = Astro.props;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 196 118"
+  fill="none"
+  aria-hidden="true"
+  class:list={["h-auto", className]}
+>
+  <path
+    d="M174.06 51.0216C190.06 83.5216 172.06 123.522 121.56 101.022C121.56 126.522 51.0601 127.026 51.0601 71.5216C3.06013 68.0216 -45.4399 -10.9782 78.0601 22.5218C105.782 0.83799 154.06 -3.13462 181.56 2.02163C205.56 6.52163 194.56 37.0215 174.06 51.0216Z"
+    fill="#B1D6F1"
+  ></path>
+</svg>

@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { projects } from "../data/projects";
+import BlobBlue from "../components/BlobBlue.astro";
+import BlobLime from "../components/BlobLime.astro";
 
 // Your location powers the live clock in the top bar.
 // TODO: confirm your city (currently a guess).
@@ -14,29 +16,34 @@ const LINKS = {
   aiApp: "https://ai-content-aggregator.vercel.app/",
 };
 
-const CAREER = [
-  { org: "New Relic", role: "Sr. Product Designer", period: "2022 — now" },
-  { org: "dunnhumby", role: "Sr. Product Designer", period: "2021 — 2022" },
-  { org: "ITONICS", role: "UX/UI Designer", period: "2019 — 2020" },
-  { org: "Durch die Stadt", role: "UX/UI Designer", period: "2017 — 2018" },
-  { org: "ACER", role: "Design Specialist", period: "2015" },
+// Keyword tags for the About section — varied size / color / tilt so the
+// cloud feels playful rather than a tidy row. `cls` carries per-pill styling.
+const TAGS = [
+  { label: "Observability", cls: "px-5 py-2.5 text-lg bg-[#3e77b6] text-page -rotate-[5deg]" },
+  { label: "DevOps tooling", cls: "px-3.5 py-1.5 text-sm bg-[#FFF600] text-[#1b1b18] rotate-[4deg] mt-3" },
+  { label: "Data-intensive systems", cls: "px-4 py-2 text-base bg-[#d98fb9] text-[#1b1b18] -rotate-[3deg]" },
+  { label: "Enterprise SaaS", cls: "px-3.5 py-1.5 text-sm bg-[#FFF600] text-[#1b1b18] rotate-[6deg]" },
+  { label: "Design systems", cls: "px-4 py-2 text-base bg-[#3e77b6] text-page rotate-[3deg] mt-2" },
+  { label: "User research", cls: "px-5 py-2.5 text-lg bg-[#d98fb9] text-[#1b1b18] -rotate-[6deg]" },
+  { label: "Prototyping", cls: "px-3.5 py-1.5 text-sm bg-[#FFF600] text-[#1b1b18] rotate-[5deg]" },
+  { label: "AI-native products", cls: "px-4 py-2 text-base bg-[#d98fb9] text-[#1b1b18] -rotate-[4deg] mt-1" },
 ];
+
 ---
 
 <Layout>
   <!-- ===================== Top bar ===================== -->
   <header
-    class="fixed inset-x-0 top-0 z-50 mix-blend-difference"
-    style="color:#fff"
+    class="fixed inset-x-0 top-0 z-50 border-b border-line/60 bg-page"
   >
     <div
-      class="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 sm:px-10"
+      class="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 text-ink sm:px-10"
     >
       <a href="#top" class="font-display text-sm font-semibold tracking-tight">
         I-Chieh Pan
       </a>
       <nav class="flex items-center gap-6 font-sans text-xs tracking-wide">
-        <span class="hidden tabular-nums uppercase opacity-70 sm:inline">
+        <span class="hidden tabular-nums uppercase text-muted sm:inline">
           {LOCATION.city}&nbsp;<span id="clock">--:--:--</span>
         </span>
         <a href="#work" class="hover:opacity-60">Work</a>
@@ -51,39 +58,15 @@ const CAREER = [
     <section
       class="relative flex min-h-[92svh] flex-col items-center justify-center pt-28 pb-20 text-center"
     >
-      <!-- Floating image — left / upper (desktop only) -->
-      <figure
-        class="absolute left-0 top-[18%] z-0 hidden w-[clamp(180px,16vw,240px)] -rotate-3 xl:block"
-      >
-        <img
-          src="https://picsum.photos/seed/pan-desk/600/440"
-          alt=""
-          loading="lazy"
-          class="w-full rounded-2xl object-cover shadow-[0_18px_50px_-20px_rgba(16,24,40,0.35)]"
-        />
-        <figcaption
-          class="mt-2 text-left font-mono text-[11px] uppercase tracking-wide text-[#0041d9]"
-        >
-          [09:14] first coffee, first figma
-        </figcaption>
-      </figure>
+      <!-- Floating shape — left / upper (desktop only) -->
+      <BlobBlue
+        class="animate-float absolute left-0 top-[14%] z-0 hidden w-[clamp(180px,18vw,260px)] -rotate-[34deg] xl:block"
+      />
 
-      <!-- Floating image — right / lower (desktop only) -->
-      <figure
-        class="absolute right-0 bottom-[14%] z-0 hidden w-[clamp(180px,16vw,240px)] rotate-3 xl:block"
-      >
-        <img
-          src="https://picsum.photos/seed/pan-screen/600/440"
-          alt=""
-          loading="lazy"
-          class="w-full rounded-2xl object-cover shadow-[0_18px_50px_-20px_rgba(16,24,40,0.35)]"
-        />
-        <figcaption
-          class="mt-2 text-right font-mono text-[11px] uppercase tracking-wide text-[#0041d9]"
-        >
-          [16:07] watching the model think
-        </figcaption>
-      </figure>
+      <!-- Floating shape — right / lower (desktop only) -->
+      <BlobLime
+        class="animate-float-slow absolute right-0 bottom-[12%] z-0 hidden w-[clamp(150px,14vw,190px)] rotate-6 xl:block"
+      />
 
       <!-- Hero text -->
       <div class="relative z-10 max-w-3xl">
@@ -116,34 +99,12 @@ const CAREER = [
         </a>
       </div>
 
-      <!-- Image pair for tablet / mobile (below the text) -->
-      <div class="mt-14 grid w-full max-w-md grid-cols-2 gap-5 xl:hidden">
-        <figure class="-rotate-2">
-          <img
-            src="https://picsum.photos/seed/pan-desk/600/440"
-            alt=""
-            loading="lazy"
-            class="w-full rounded-2xl object-cover shadow-[0_18px_50px_-20px_rgba(16,24,40,0.35)]"
-          />
-          <figcaption
-            class="mt-2 text-left font-mono text-[11px] uppercase tracking-wide text-[#0041d9]"
-          >
-            [09:14] first coffee
-          </figcaption>
-        </figure>
-        <figure class="rotate-2">
-          <img
-            src="https://picsum.photos/seed/pan-screen/600/440"
-            alt=""
-            loading="lazy"
-            class="w-full rounded-2xl object-cover shadow-[0_18px_50px_-20px_rgba(16,24,40,0.35)]"
-          />
-          <figcaption
-            class="mt-2 text-left font-mono text-[11px] uppercase tracking-wide text-[#0041d9]"
-          >
-            [16:07] model thinking
-          </figcaption>
-        </figure>
+      <!-- Shape pair for tablet / mobile (below the text) -->
+      <div
+        class="mt-14 flex w-full max-w-sm items-center justify-center gap-10 xl:hidden"
+      >
+        <BlobBlue class="animate-float w-1/2 -rotate-[34deg]" />
+        <BlobLime class="animate-float-slow w-2/5 rotate-6" />
       </div>
     </section>
 
@@ -183,7 +144,7 @@ const CAREER = [
                 <h3 class="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
                   {p.title}
                 </h3>
-                <p class="mt-1 font-serif text-xl italic text-ink/80 sm:text-2xl">
+                <p class="mt-2 font-sans text-base leading-snug text-ink/75 sm:text-lg">
                   {p.subtitle}
                 </p>
                 <div class="mt-5 flex items-center justify-between">
@@ -216,63 +177,50 @@ const CAREER = [
             I'm I-Chieh, a senior product designer at New Relic with 7+ years
             delivering user-centered design for enterprise SaaS.
           </p>
-          <div class="mt-6 space-y-5 text-lg leading-relaxed text-muted">
-            <p>
-              I specialise in observability and DevOps tooling — translating
-              massive, data-intensive systems into intuitive experiences that
-              empower technical users. Most recently, I led the product design
-              for Session Replay, a feature adopted by over 1,000 accounts and
-              generating $3.52M in monthly recurring revenue within nine months.
-            </p>
-            <p>
-              I'm constantly adding to my hands-on coding skills to build the
-              best digital products I can — I recently built {" "}
+          <ul class="mt-8 flex flex-wrap items-center gap-x-3 gap-y-2">
+            {
+              TAGS.map((t) => (
+                <li
+                  class:list={[
+                    "inline-block rounded-full font-medium shadow-[0_8px_24px_-16px_rgba(16,24,40,0.4)] transition-transform duration-200 hover:rotate-0",
+                    t.cls,
+                  ]}
+                >
+                  {t.label}
+                </li>
+              ))
+            }
+            <li class="rotate-[5deg] shadow-[0_8px_24px_-16px_rgba(16,24,40,0.4)] transition-transform duration-200 hover:rotate-0">
               <a
                 href={LINKS.aiApp}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-[#0041d9] underline-offset-4 hover:underline"
-                >an AI news app</a
-              > with Claude Code, designed to keep UX professionals informed and
-              inspired.
-            </p>
-          </div>
-
-          <dl class="mt-10 space-y-3 border-t border-line/70 pt-6">
-            {
-              CAREER.map((c) => (
-                <div class="flex items-baseline justify-between gap-4 text-sm">
-                  <dt>
-                    <span class="font-medium text-ink">{c.org}</span>
-                    <span class="text-muted"> · {c.role}</span>
-                  </dt>
-                  <dd class="shrink-0 font-mono text-xs tabular-nums text-muted">
-                    {c.period}
-                  </dd>
-                </div>
-              ))
-            }
-          </dl>
+                class="inline-block rounded-full bg-[#3e77b6] px-4 py-2 text-base font-medium text-page"
+              >
+                AI news app ↗
+              </a>
+            </li>
+          </ul>
         </div>
 
-        <div>
+        <div class="pt-2 md:pl-6">
           <img
             src="/images/about/portrait.jpg"
             alt="I-Chieh Pan"
-            class="w-full rounded-card object-cover shadow-[0_18px_50px_-24px_rgba(16,24,40,0.3)]"
+            class="w-3/4 max-w-[300px] rounded-2xl object-cover shadow-[0_18px_50px_-24px_rgba(16,24,40,0.3)]"
           />
         </div>
       </div>
     </section>
 
     <!-- ===================== Contact ===================== -->
-    <section id="contact" class="scroll-mt-24 py-24 sm:py-36">
+    <section id="contact" class="scroll-mt-24 pt-24 pb-44 sm:pt-36 sm:pb-56">
       <p
         class="font-display font-semibold leading-[0.95] tracking-[-0.03em]"
         style="font-size:clamp(2rem,6vw,5rem)"
       >
         Let's make something
-        <span class="font-serif font-normal italic">worth keeping.</span>
+        <span class="ml-[0.3em] font-serif font-normal italic">worth keeping.</span>
       </p>
       <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3">
         <a
@@ -307,7 +255,7 @@ const CAREER = [
   <!-- ===================== Footer ===================== -->
   <footer class="border-t border-line">
     <div
-      class="mx-auto flex max-w-[1400px] flex-col gap-2 px-6 py-8 font-sans text-sm text-muted sm:flex-row sm:items-center sm:justify-between sm:px-10"
+      class="mx-auto flex max-w-[1400px] flex-col gap-2 px-6 py-8 font-sans text-xs text-muted sm:flex-row sm:items-center sm:justify-between sm:px-10"
     >
       <span>© {new Date().getFullYear()} I-Chieh Pan</span>
       <a href="#top" class="hover:text-ink">↑ Back to top</a>

@@ -55,6 +55,26 @@
   }
 }
 
+/* Gentle floating animation for the hero blobs. Animates the `translate`
+   property so it composes with each blob's `rotate` without conflict. */
+@keyframes float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -14px;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float 8s ease-in-out infinite;
+}
+
 /* Respect users who prefer less motion. */
 @media (prefers-reduced-motion: reduce) {
   html {
