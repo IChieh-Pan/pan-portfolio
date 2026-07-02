@@ -1,0 +1,15 @@
+---
+// A left-border "Why it mattered" style callout for case studies.
+interface Props {
+  label?: string;
+  class?: string;
+}
+const { label = "Why it mattered", class: className = "" } = Astro.props;
+---
+
+<aside class:list={["my-8 border-l-2 border-[#0041d9] pl-5", className]}>
+  <p class="mb-1.5 font-mono text-xs uppercase tracking-wide text-[#0041d9]">
+    {label}
+  </p>
+  <div class="text-sm leading-relaxed text-muted"><slot /></div>
+</aside>

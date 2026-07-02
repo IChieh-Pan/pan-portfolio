@@ -5,6 +5,7 @@ import Prose from "../../components/Prose.astro";
 import Figure from "../../components/Figure.astro";
 import Glance from "../../components/Glance.astro";
 import Stat from "../../components/Stat.astro";
+import Callout from "../../components/Callout.astro";
 ---
 
 <CaseStudy
@@ -13,7 +14,18 @@ import Stat from "../../components/Stat.astro";
   externalLabel="newrelic.com"
   externalHref="https://newrelic.com/platform/session-replay"
   coverPlain
+  readTime="6 min read"
 >
+  <!-- Top metrics strip -->
+  <div
+    slot="metrics"
+    class="mx-auto mt-12 grid max-w-5xl gap-5 px-6 sm:mt-16 sm:grid-cols-3 sm:px-10"
+  >
+    <Stat value="1,000+" label="Active accounts & 7M weekly sessions within six months." />
+    <Stat value="$3.52M" label="Monthly recurring revenue — a core Browser pillar." />
+    <Stat value="Minutes → seconds" label="From symptom to root cause, in one view." />
+  </div>
+
   <Glance>
     <Fragment slot="challenge">
       When front-end developers troubleshoot, they need to know both what the
@@ -33,7 +45,10 @@ import Stat from "../../components/Stat.astro";
     </Fragment>
   </Glance>
 
-  <CaseSection num="01" title="Discovery & definition">
+  <CaseSection
+    num="01"
+    title="Session Replay was our #1 request — so I began by defining what great looks like."
+  >
     <Prose>
       <h3>What it is</h3>
       <p>
@@ -44,8 +59,8 @@ import Stat from "../../components/Stat.astro";
       </p>
       <p>
         <strong>
-          It also expands New Relic from traditional app monitoring into Digital
-          Experience Monitoring (DEM).
+          It also expands New Relic's capability from traditional app monitoring
+          into Digital Experience Monitoring (DEM).
         </strong>
       </p>
       <h3>Understanding the ask</h3>
@@ -81,7 +96,7 @@ import Stat from "../../components/Stat.astro";
             src="/images/session-replay/competitive-2.png"
             alt=""
             loading="lazy"
-            class="w-full"
+            class="w-full origin-[left_90%] scale-150"
           />
         </div>
         <figcaption
@@ -123,9 +138,11 @@ import Stat from "../../components/Stat.astro";
     </Prose>
   </CaseSection>
 
-  <CaseSection num="02" title="Strategic framework">
+  <CaseSection
+    num="02"
+    title="Developers were losing time to context-switching — the fix was one synchronized view."
+  >
     <Prose>
-      <h3>The friction of context-switching</h3>
       <p>
         Troubleshooting means hunting through a sea of fragmented data to
         reconstruct what the user actually did before an error — which creates
@@ -166,18 +183,22 @@ import Stat from "../../components/Stat.astro";
         </ol>
         <p>
           Keeping the three layers side-by-side and in sync removes the friction
-          of context-switching — letting developers move from
+          of context-switching — letting developers move from{" "}
           <em>what happened</em> to <em>why it happened</em> in one fluid motion.
         </p>
       </Prose>
 
-      <figure>
-        <img
-          src="/images/session-replay/wireframe.png"
-          alt=""
-          loading="lazy"
-          class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
-        />
+      <figure class="mx-auto w-4/5">
+        <div
+          class="overflow-hidden rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+        >
+          <img
+            src="/images/session-replay/wireframe.png"
+            alt=""
+            loading="lazy"
+            class="w-full scale-110"
+          />
+        </div>
         <figcaption
           class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
         >
@@ -187,38 +208,82 @@ import Stat from "../../components/Stat.astro";
     </div>
   </CaseSection>
 
-  <CaseSection num="03" title="Distilling high-volume data">
-    <Prose>
-      <h3>Navigating the noise</h3>
-      <p>
-        Reviewing session replays is traditionally labour-intensive. By
-        overlaying event markers like JavaScript errors and route changes onto
-        the timeline, we provide engineers with clear visual cues. Here are some
-        explorations around designing a scrubber that doesn't just play back a
-        video, but actively surfaces the critical signals, allowing engineers to
-        jump straight to the root cause.
-      </p>
-    </Prose>
-    <Figure
-      src="/images/session-replay/scrubber.png"
-      caption="Scrubber explorations — surfacing critical signals"
-    />
-    <Prose>
-      <h3>Designing for high-density data</h3>
-      <p>
-        To help users parse long sessions without cognitive fatigue, I developed
-        a chapter system that organises dense route changes into a scannable
-        timeline. By clustering rapid-fire interactions, we reduce visual noise
-        while maintaining a 10px minimum hit-area for accessibility. This diagram
-        illustrates three logic models for grouping sub-second events — balancing
-        a high-level overview with granular accuracy.
-      </p>
-    </Prose>
-    <Figure
-      src="/images/session-replay/route-grouping.png"
-      caption="Three logic models for grouping sub-second route changes"
-    />
-    <Prose>
+  <CaseSection
+    num="03"
+    title="Long sessions are noisy — so the timeline surfaces only the signals that matter."
+  >
+    <div class="mt-10 grid gap-8 md:grid-cols-[1.3fr_1fr] md:items-start">
+      <div>
+        <Prose>
+          <h3>Navigating the noise</h3>
+          <p>
+            Reviewing session replays is traditionally labour-intensive. By
+            overlaying event markers like JavaScript errors and route changes
+            onto the timeline, we provide engineers with clear visual cues. Here
+            are some explorations around designing a scrubber that doesn't just
+            play back a video, but actively surfaces the critical signals,
+            allowing engineers to jump straight to the root cause.
+          </p>
+        </Prose>
+        <Callout>
+          Surfacing key events on the timeline lets engineers jump straight to
+          the root cause — no scrubbing required.
+        </Callout>
+      </div>
+      <figure class="mx-auto w-[85%]">
+        <img
+          src="/images/session-replay/scrubber.png"
+          alt=""
+          loading="lazy"
+          class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+        />
+        <figcaption
+          class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
+        >
+          Scrubber explorations — surfacing critical signals
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="mt-28 grid gap-8 md:grid-cols-[1.3fr_1fr] md:items-start">
+      <div>
+        <Prose>
+          <h3>Designing for high-density data</h3>
+          <p>
+            To help users parse long sessions without cognitive fatigue, I
+            developed a chapter system that organises dense route changes into a
+            scannable timeline. By clustering rapid-fire interactions, we reduce
+            visual noise while maintaining a 10px minimum hit-area for
+            accessibility. This diagram illustrates three logic models for
+            grouping sub-second events — balancing a high-level overview with
+            granular accuracy.
+          </p>
+        </Prose>
+        <Callout>
+          Grouping dense, rapid-fire events keeps long sessions scannable instead
+          of overwhelming.
+        </Callout>
+      </div>
+      <figure class="mx-auto w-[85%]">
+        <div
+          class="rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+        >
+          <img
+            src="/images/session-replay/route-grouping.png"
+            alt=""
+            loading="lazy"
+            class="w-full scale-90"
+          />
+        </div>
+        <figcaption
+          class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
+        >
+          Three logic models for grouping sub-second route changes
+        </figcaption>
+      </figure>
+    </div>
+
+    <Prose class="mt-12">
       <h3>Responsive markers for better legibility</h3>
       <p>
         To ensure the timeline and error markers remain useful on any screen
@@ -235,10 +300,14 @@ import Stat from "../../components/Stat.astro";
     <Figure
       src="/images/session-replay/chapter-list.png"
       caption="Chapter hover list across multiple URLs"
+      zoom="scale-110"
     />
   </CaseSection>
 
-  <CaseSection num="04" title="Validation">
+  <CaseSection
+    num="04"
+    title="I tested grouped vs. overlay markers. Grouping won on every dimension."
+  >
     <Prose>
       <p>
         I conducted an internal user test to validate this grouped approach
@@ -268,10 +337,19 @@ import Stat from "../../components/Stat.astro";
     <Figure
       src="/images/session-replay/marker-test.png"
       caption="Marker user test — grouped vs. overlay"
+      zoom="scale-110"
     />
+    <Callout>
+      Grouped markers create a natural heatmap — engineers can see{" "}
+      <em>where</em> to start investigating, not just <em>that</em> errors
+      occurred.
+    </Callout>
   </CaseSection>
 
-  <CaseSection num="05" title="Seeing it all come together">
+  <CaseSection
+    num="05"
+    title="The result isn't a video player — it's a synchronized diagnostic tool."
+  >
     <Prose>
       <p>
         The final design of New Relic Session Replay is not just a video player
@@ -280,7 +358,7 @@ import Stat from "../../components/Stat.astro";
         ensured that every technical signal is perfectly in sync with the user's
         visual journey. It lets developers see an error and the user's behaviour
         side-by-side, at the exact moment it happened. This balance of granular
-        detail and intuitive context is what ultimately
+        detail and intuitive context is what ultimately{" "}
         <strong>cuts time-to-insight from minutes to seconds.</strong>
       </p>
     </Prose>
@@ -290,20 +368,25 @@ import Stat from "../../components/Stat.astro";
     />
   </CaseSection>
 
-  <CaseSection num="06" title="Business & user impact">
-    <div class="grid gap-5 sm:grid-cols-3">
-      <Stat
-        value="1,000+"
-        label="Active accounts and 7M weekly sessions within six months of launch."
-      />
-      <Stat
-        value="$3.52M"
-        label="Monthly recurring revenue — a core pillar of New Relic's Browser capability."
-      />
-      <Stat
-        value="Minutes → seconds"
-        label="Eliminated context-switching with a single source of truth, from symptom to root cause."
-      />
-    </div>
+  <CaseSection
+    num="06"
+    title="The impact: a new revenue pillar, and troubleshooting in seconds."
+  >
+    <Prose>
+      <p>
+        Session Replay scaled to <strong>1,000+ active accounts</strong> and{" "}
+        <strong>7M weekly sessions</strong> within six months of launch,
+        generating <strong>$3.52M in monthly recurring revenue</strong> and
+        establishing it as a core pillar of New Relic's Browser capability.
+      </p>
+      <p>
+        By giving developers a single source of truth, it eliminated
+        context-switching — turning a symptom into a diagnosed root cause in one
+        fluid motion.
+      </p>
+    </Prose>
+    <p class="mt-6 font-medium text-[#0041d9]">
+      → Time-to-insight dropped from minutes to seconds.
+    </p>
   </CaseSection>
 </CaseStudy>
