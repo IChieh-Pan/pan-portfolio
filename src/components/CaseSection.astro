@@ -8,13 +8,10 @@ const { num, title } = Astro.props;
 ---
 
 <section class="mx-auto max-w-5xl border-t border-line/70 px-6 pt-14 sm:px-10 sm:pt-20">
-  <div class="mb-7 flex items-baseline gap-4">
-    {num && <span class="font-mono text-sm text-[#0041d9]">{num}</span>}
-    <h2
-      class="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
-    >
-      {title}
-    </h2>
-  </div>
+  <h2
+    class="mb-7 font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
+  >
+    {title}
+  </h2>
   <slot />
 </section>
