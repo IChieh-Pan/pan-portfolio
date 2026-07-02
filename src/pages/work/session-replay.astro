@@ -71,15 +71,15 @@ import Callout from "../../components/Callout.astro";
       </p>
     </Prose>
     <div class="my-8 grid grid-cols-2 gap-5">
-      <figure class="flex flex-col">
+      <figure>
         <div
-          class="flex flex-1 items-center justify-center overflow-hidden rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+          class="aspect-video overflow-hidden rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
         >
           <img
             src="/images/session-replay/competitive-1.png"
             alt=""
             loading="lazy"
-            class="w-full"
+            class="h-full w-full object-cover"
           />
         </div>
         <figcaption
@@ -88,15 +88,15 @@ import Callout from "../../components/Callout.astro";
           Competitive analysis — functional landscape
         </figcaption>
       </figure>
-      <figure class="flex flex-col">
+      <figure>
         <div
-          class="flex flex-1 items-center justify-center overflow-hidden rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+          class="aspect-video overflow-hidden rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
         >
           <img
             src="/images/session-replay/competitive-2.png"
             alt=""
             loading="lazy"
-            class="w-full origin-[left_90%] scale-150"
+            class="h-full w-full object-cover object-[0%_90%]"
           />
         </div>
         <figcaption
@@ -283,7 +283,7 @@ import Callout from "../../components/Callout.astro";
       </figure>
     </div>
 
-    <Prose class="mt-12">
+    <Prose class="mt-28">
       <h3>Responsive markers for better legibility</h3>
       <p>
         To ensure the timeline and error markers remain useful on any screen
@@ -293,28 +293,51 @@ import Callout from "../../components/Callout.astro";
         a clean workspace while preserving the detail within a tooltip.
       </p>
     </Prose>
-    <Figure
-      src="/images/session-replay/marker-merging.gif"
-      caption="Error markers merge as space tightens, like landmarks on a map"
-    />
-    <Figure
-      src="/images/session-replay/chapter-list.png"
-      caption="Chapter hover list across multiple URLs"
-      zoom="scale-110"
-    />
+    <div class="my-8 grid grid-cols-2 gap-5">
+      <figure>
+        <div
+          class="aspect-[1676/1098] overflow-hidden rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+        >
+          <img
+            src="/images/session-replay/marker-merging.gif"
+            alt=""
+            loading="lazy"
+            class="h-full w-full object-cover"
+          />
+        </div>
+        <figcaption
+          class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
+        >
+          Error markers merge as space tightens, like landmarks on a map
+        </figcaption>
+      </figure>
+      <figure>
+        <img
+          src="/images/session-replay/chapter-list.png"
+          alt=""
+          loading="lazy"
+          class="aspect-[1676/1098] w-full rounded-2xl object-cover shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+        />
+        <figcaption
+          class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
+        >
+          Chapter hover list across multiple URLs
+        </figcaption>
+      </figure>
+    </div>
   </CaseSection>
 
   <CaseSection
     num="04"
-    title="I tested grouped vs. overlay markers. Grouping won on every dimension."
+    title="When testing grouped vs. overlay markers, grouping won on every dimension."
   >
     <Prose>
       <p>
-        I conducted an internal user test to validate this grouped approach
-        against the overlay (no-grouping) approach on the timeline. My goal was
-        to determine which pattern best helps users maintain an eagle-eye view of
-        a session in a small space. The findings were definitive for the grouped
-        approach:
+        Partnering with the product manager, I ran an internal user test to
+        validate this grouped approach against the overlay (no-grouping) approach
+        on the timeline. Our goal was to determine which pattern best helps users
+        maintain an eagle-eye view of a session in a small space. The findings
+        were definitive for the grouped approach:
       </p>
       <ul>
         <li>
@@ -334,11 +357,23 @@ import Callout from "../../components/Callout.astro";
         </li>
       </ul>
     </Prose>
-    <Figure
-      src="/images/session-replay/marker-test.png"
-      caption="Marker user test — grouped vs. overlay"
-      zoom="scale-110"
-    />
+    <figure class="mx-auto mt-12 w-[70%]">
+      <div
+        class="rounded-2xl bg-card p-3 shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+      >
+        <img
+          src="/images/session-replay/marker-test.png"
+          alt=""
+          loading="lazy"
+          class="w-full rounded-lg"
+        />
+      </div>
+      <figcaption
+        class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
+      >
+        Marker user test — grouped vs. overlay
+      </figcaption>
+    </figure>
     <Callout>
       Grouped markers create a natural heatmap — engineers can see{" "}
       <em>where</em> to start investigating, not just <em>that</em> errors
@@ -362,10 +397,19 @@ import Callout from "../../components/Callout.astro";
         <strong>cuts time-to-insight from minutes to seconds.</strong>
       </p>
     </Prose>
-    <Figure
-      src="/images/session-replay/final.gif"
-      caption="The final synchronised diagnostic experience"
-    />
+    <figure class="mx-auto mt-16 w-[70%]">
+      <img
+        src="/images/session-replay/final.gif"
+        alt=""
+        loading="lazy"
+        class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+      />
+      <figcaption
+        class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
+      >
+        The final synchronised diagnostic experience
+      </figcaption>
+    </figure>
   </CaseSection>
 
   <CaseSection
