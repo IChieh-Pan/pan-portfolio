@@ -43,16 +43,14 @@ import Callout from "../../components/Callout.astro";
   </Glance>
 
   <CaseSection
-    title="Defining what personalization should mean for an observability agent."
+    title="Exploring how context powers personalization, and defining the scope."
   >
     <Prose>
       <p>
-        "We want personalization" is easy to say and hard to specify. The open
-        question wasn't whether to personalize — it was what the layers should
-        be, how they'd compose across an organization, how team-based operations
-        would interact with the model, and what "working" would even look like. I
-        led the design thinking that turned that ambition into
-        a <strong>concrete, buildable, measurable direction</strong>.
+        I started by exploring how context could sharpen personalization, and
+        defining the scope. From there, I worked with PM to map out how context composes
+        across an organization, how team-based operations interact with the
+        model, and what "working" would even look like.
       </p>
     </Prose>
   </CaseSection>
@@ -60,15 +58,14 @@ import Callout from "../../components/Callout.astro";
   <CaseSection title="Mapping the layered context model to observability.">
     <Prose>
       <p>
-        The taxonomy — identity, operational graph, indexed knowledge, team
-        defaults, declared rules, learned procedural and semantic memory,
-        user-authored templates — draws directly on how industry AI products
-        think about context. My contribution was working through which layers
+        The taxonomy borrows from how industry AI products already handle
+        context: identity, operational graph, indexed knowledge, declared rules,
+        learned memory, and user-authored templates. My contribution was working through which layers
         matter most for observability, how they'd interact with things specific
         to this domain (the entity graph, the on-call schedule, alert policies,
         existing runbooks), and <strong>where the observability-specific decisions
-        actually live</strong>. If you can show the matrix visually, do — it's the
-        clearest artifact of the applied thinking.
+        actually live</strong>. The deliverable was a matrix mapping these layers to where each one matters
+        most for observability.
       </p>
     </Prose>
   </CaseSection>
@@ -78,7 +75,7 @@ import Callout from "../../components/Callout.astro";
   >
     <Prose>
       <p>
-        New Relic's AI experience personalizes at the user, team, and
+        The AI experience personalizes at the user, team, and
         organization levels — an architecture that differs from most consumer AI.
         For a team-based operations tool, <strong>the team layer is load-bearing</strong>: it's
         where shared runbooks, ownership, and on-call defaults live. Getting that
@@ -93,7 +90,7 @@ import Callout from "../../components/Callout.astro";
     </Callout>
   </CaseSection>
 
-  <CaseSection title="Framing success in a form the team could measure.">
+  <CaseSection title="Framing the success the team could measure.">
     <Prose>
       <p>
         Adapted the learning-curve idea — same user, same task, day 60 quality
@@ -108,55 +105,12 @@ import Callout from "../../components/Callout.astro";
 
   <CaseSection title="What I delivered">
     <Prose>
-      <h3>Competitive analysis of AI-native products</h3>
-      <p>
-        A survey of how comparable AI products handle personalization, memory,
-        and user context — spanning consumer AI assistants, coding agents, and
-        enterprise AI copilots. I distilled the industry patterns and gaps into a
-        reference the team could point to when making product decisions, and used
-        it to surface which patterns translate cleanly to observability and which
-        don't.
-      </p>
-
-      <h3>Context-layer taxonomy matrix</h3>
-      <p>
-        A layered model mapping every source of context the agent might draw on —
-        identity, operational graph, indexed knowledge, team defaults, declared
-        rules, learned memory, user-authored templates — against properties like
-        authoring, update cadence, scope, decay risk, and user visibility.{" "}
-        <strong>Purpose:</strong> give the team a shared vocabulary for reasoning
-        about which layers to build first and how they should compose.
-      </p>
-
-      <h3>Team-level rules and behaviors matrix</h3>
-      <p>
-        A companion matrix concretely illustrating what team-level
-        personalization looks like in an observability context — vocabulary,
-        signal preferences, response format, workflow defaults, knowledge
-        sources, boundaries, routing. <strong>Purpose:</strong> make the abstract
-        "team layer" tangible enough to design and build against.
-      </p>
-
-      <h3>Signals matrix for measuring personalization effectiveness</h3>
-      <p>
-        A mapping of candidate evaluation signals — friction signals, outcome
-        alignment (hypothesis → RCA), trust signals (unmodified-use,
-        action-confirmation), hygiene metrics — to the layers of the
-        personalization stack they diagnose. <strong>Purpose:</strong> make "is
-        personalization working?" answerable in a form PM and engineering could
-        operationalize.
-      </p>
-
-      <h3>Design framework for the context layer</h3>
-      <p>
-        A set of applied design decisions connecting the abstract context model
-        to concrete product surfaces: the inheritance model (org → team → user),
-        citation and provenance in agent responses, the inspection-and-correction
-        surface ("what does the agent know about me?"), and cold-start behavior
-        for new users and new teams. <strong>Purpose:</strong> bridge the
-        systems-level thinking to decisions the product team could actually build
-        against.
-      </p>
+      <ul>
+        <li>Competitive analysis of AI-native products</li>
+        <li>Context-layer taxonomy matrix</li>
+        <li>Team-level rules and behaviors matrix</li>
+        <li>Design framework for the context layer</li>
+      </ul>
     </Prose>
   </CaseSection>
 </CaseStudy>

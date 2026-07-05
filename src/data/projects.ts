@@ -18,9 +18,9 @@ export interface Project {
 export const projects: Project[] = [
   {
     slug: "ai-context-layer",
-    client: "New Relic",
+    client: "Enterprise observability",
     title: "AI Personalization",
-    subtitle: "Personalization layer for New Relic AI Experience",
+    subtitle: "Personalization layer for an AI-native observability product",
     year: "2026",
     role: "UX strategist",
     // No cover image yet — a placeholder card shows until one is added.
