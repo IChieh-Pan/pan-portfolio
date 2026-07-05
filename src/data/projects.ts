@@ -23,7 +23,7 @@ export const projects: Project[] = [
     subtitle: "Personalization layer for an AI-native observability product",
     year: "2026",
     role: "UX strategist",
-    // No cover image yet — a placeholder card shows until one is added.
+    cover: "/images/ai-context-layer/cover.svg",
   },
   {
     slug: "session-replay",
@@ -51,15 +51,6 @@ export const projects: Project[] = [
     year: "2020",
     role: "Sole designer",
     cover: "/images/itonics-design-system/cover.png",
-  },
-  {
-    slug: "itonics-web-clipper",
-    client: "ITONICS",
-    title: "Web Clipper",
-    subtitle: "Standardizing how teams capture web insight",
-    year: "2019",
-    role: "UX/UI designer",
-    cover: "/images/itonics-web-clipper/cover.png",
   },
 ];
 
