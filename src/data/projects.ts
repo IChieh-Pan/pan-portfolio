@@ -12,10 +12,20 @@ export interface Project {
   subtitle: string;
   year: string;
   role: string;
-  cover: string;
+  cover?: string;
 }
 
 export const projects: Project[] = [
+  {
+    slug: "ai-context-layer",
+    client: "New Relic",
+    title:
+      "Bringing design thinking to the context layer of an AI-native product.",
+    subtitle: "Personalization for an observability agent.", // TODO: placeholder subtitle
+    year: "2025", // TODO: confirm
+    role: "Product Design", // TODO: confirm
+    // No cover image yet — a placeholder card shows until one is added.
+  },
   {
     slug: "session-replay",
     client: "New Relic",

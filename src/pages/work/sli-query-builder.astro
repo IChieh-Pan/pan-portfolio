@@ -5,12 +5,31 @@ import Prose from "../../components/Prose.astro";
 import Figure from "../../components/Figure.astro";
 import Glance from "../../components/Glance.astro";
 import Stat from "../../components/Stat.astro";
+import Callout from "../../components/Callout.astro";
 ---
 
 <CaseStudy
   slug="sli-query-builder"
   team="PM, engineering manager, 5 engineers & a content designer"
+  readTime="5 min read"
+  coverPlain
 >
+  <!-- Top metrics strip -->
+  <div
+    slot="metrics"
+    class="mx-auto mt-12 grid max-w-5xl gap-5 px-6 sm:mt-16 sm:grid-cols-3 sm:px-10"
+  >
+    <Stat
+      value="+16%"
+      label="Weekly active accounts (users +11%) within 8 weeks."
+    />
+    <Stat value="$1.52M" label="MRR at GA, with 1,500+ beta users." />
+    <Stat
+      value="$2M CRR"
+      label="Impact from filling the service-level creation gap."
+    />
+  </div>
+
   <Glance>
     <Fragment slot="challenge">
       Defining a Service Level Indicator (SLI) required advanced knowledge of
@@ -27,210 +46,313 @@ import Stat from "../../components/Stat.astro";
     </Fragment>
   </Glance>
 
-  <CaseSection num="01" title="The challenge">
-    <Prose>
-      <h3>The complexity of setting up SLIs</h3>
+  <CaseSection
+    num="01"
+    title="Setting up an SLI meant knowing NRQL, metrics, and schema — a steep barrier for non-power users."
+  >
+    <div class="grid gap-8 md:grid-cols-[1.3fr_1fr] md:items-start">
+      <Prose>
+        <h3>The complexity of setting up SLIs</h3>
+        <p>
+          Setting up a custom SLI in New Relic means writing NRQL queries into a
+          couple of blank input fields — which requires knowing the metric type,
+          the right function, attribute names, and more:
+        </p>
+        <ul>
+          <li>The service levels practice and the logic of an SLI</li>
+          <li>What to measure (e.g. latency, response time, throughput)</li>
+          <li>Your own telemetry schema and attribute names</li>
+          <li>A threshold value that is meaningful for your service</li>
+        </ul>
+        <p>
+          It's like building a filter for a spreadsheet you've never seen: you
+          know what you want to find, but not the column names, the data format,
+          or which operators to apply.
+        </p>
+      </Prose>
+      <figure>
+        <img
+          src="/images/sli-query-builder/v1-sli.png"
+          alt=""
+          loading="lazy"
+          class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+        />
+        <figcaption
+          class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
+        >
+          The original SLI setup — blank NRQL input fields
+        </figcaption>
+      </figure>
+    </div>
+
+    <Prose class="mt-16">
       <p>
-        Setting up a custom SLI in New Relic means filling NRQL queries into a
-        couple of blank input fields — and to do that, users need to know the
-        metric type, the right function, attribute names, and more. Some of the
-        details users need to know when writing an SLI query:
-      </p>
-      <ul>
-        <li>Understanding the service levels practice and the logic of an SLI</li>
-        <li>
-          Knowing what you could measure for your data (e.g. latency, response
-          time, throughput)
-        </li>
-        <li>Knowing their own telemetry schema and attribute names</li>
-        <li>Deciding a threshold value that is meaningful for their service</li>
-      </ul>
-      <p>
-        Think of it like building a filter for a spreadsheet you've never seen
-        before. You know what you want to find, but you don't know the column
-        names, the data format, or which operators to apply.
-      </p>
-    </Prose>
-    <Figure
-      src="/images/sli-query-builder/v1-sli.png"
-      caption="The original SLI setup — blank NRQL input fields"
-    />
-    <Prose>
-      <p>
-        <strong>Low task completion rate.</strong> From event tracking data, we
-        saw users struggled to complete the SLI setup, with only an 11.1%
-        completion rate. Another problem was users misconfiguring the good and
-        valid events, which leads to a 100% SLI — users thought their services
-        were healthy while in reality it was a misleading picture of their
-        service health.
+        <span class="block font-semibold text-[#0041d9]">Low task completion</span
+        >
+        Event tracking showed only an <strong>11.1% completion rate</strong>.
+        Worse, some users misconfigured the good and valid events — producing a
+        100% SLI that made an unhealthy service look healthy.
       </p>
     </Prose>
     <Figure
       src="/images/sli-query-builder/funnel.png"
       caption="SLI setup funnel — an 11.1% completion rate"
     />
+    <Callout>
+      An 11.1% completion rate meant the feature was effectively inaccessible —
+      the barrier was knowledge, not motivation.
+    </Callout>
   </CaseSection>
 
-  <CaseSection num="02" title="Discovery">
+  <CaseSection
+    num="02"
+    title="So I dug into who sets up SLIs, and exactly where they get stuck."
+  >
     <Prose>
       <h3>Our user group</h3>
       <p>
-        Service level management was introduced by Google SRE teams and is now
-        widely adopted across the industry. When designing the SLI query builder,
-        we needed to address three key personas:
+        Service level management was introduced by Google's SRE teams and is now
+        widely adopted across the industry. The builder needed to serve three key
+        personas:
       </p>
       <ul>
         <li>
-          <strong>SRE:</strong> automates infrastructure and resolves issues;
-          establishes performance baselines across teams and services.
+          <span class="font-semibold text-[#0041d9]">SRE</span> — automates
+          infrastructure and resolves issues; sets performance baselines across
+          teams and services.
         </li>
         <li>
-          <strong>Developer:</strong> monitors service uptime, performance, and
-          end-user experience.
+          <span class="font-semibold text-[#0041d9]">Developer</span> — monitors
+          service uptime, performance, and end-user experience.
         </li>
         <li>
-          <strong>Business leader:</strong> minimises costs from downtime and
-          drives operational efficiency.
+          <span class="font-semibold text-[#0041d9]">Business leader</span> —
+          minimises costs from downtime and drives operational efficiency.
         </li>
-      </ul>
-      <h3>Understanding the pain points</h3>
-      <p>
-        I partnered with a UX researcher and PM to gather customer feedback
-        through qualitative interviews. The research aimed to answer three key
-        questions:
-      </p>
-      <ul>
-        <li>What is blocking adoption?</li>
-        <li>What problems do users encounter during SLI setup?</li>
-        <li>Who is actually executing the setup flow?</li>
       </ul>
     </Prose>
-    <Figure
-      src="/images/sli-query-builder/user-interview.png"
-      caption="Qualitative user interviews"
-    />
-    <Prose>
-      <h3>Research findings</h3>
-      <p>The interviews surfaced three key insights:</p>
-      <ul>
-        <li>
-          <strong>SLI/SLO practice:</strong> some teams are not fully aware of
-          the benefit of service level management and don't know what would be a
-          good metric to measure, especially with no dedicated SRE team.
-        </li>
-        <li>
-          <strong>Ease of use:</strong> some customers are not certain about the
-          attributes within their telemetry schema, so they cross-check a lot
-          when using the query builder. Another common issue is unfamiliarity
-          with NRQL syntax.
-        </li>
-        <li>
-          <strong>Human error:</strong> customers report SLIs being inaccurate or
-          not working — which actually came from invalid good or bad event setup.
-        </li>
-      </ul>
+
+    <div class="mt-16 grid gap-8 md:grid-cols-[1.3fr_1fr] md:items-start">
+      <Prose>
+        <h3>Understanding the pain points</h3>
+        <p>
+          I partnered with a UX researcher and PM to gather customer feedback
+          through qualitative interviews, aiming to answer three questions:
+        </p>
+        <ul>
+          <li>What is blocking adoption?</li>
+          <li>What problems do users hit during SLI setup?</li>
+          <li>Who is actually executing the setup flow?</li>
+        </ul>
+      </Prose>
+      <figure>
+        <img
+          src="/images/sli-query-builder/user-interview.png"
+          alt=""
+          loading="lazy"
+          class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+        />
+        <figcaption
+          class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
+        >
+          Qualitative user interviews
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="mt-16 grid gap-8 md:grid-cols-[1.3fr_1fr] md:items-start">
+      <Prose>
+        <h3>Research findings</h3>
+        <p>The interviews surfaced three key insights:</p>
+        <ul>
+          <li>
+            <strong>SLI/SLO practice:</strong> some teams aren't aware of the
+            benefit of service level management, and don't know what makes a good
+            metric — especially with no dedicated SRE team.
+          </li>
+          <li>
+            <strong>Ease of use:</strong> many aren't certain about the
+            attributes in their telemetry schema, so they cross-check
+            constantly; NRQL syntax is another hurdle.
+          </li>
+          <li>
+            <strong>Human error:</strong> SLIs reported as inaccurate usually
+            traced back to an invalid good or bad event setup.
+          </li>
+        </ul>
+      </Prose>
+      <figure>
+        <img
+          src="/images/sli-query-builder/research-notes.png"
+          alt=""
+          loading="lazy"
+          class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+        />
+        <figcaption
+          class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
+        >
+          Research synthesis — note-taking table
+        </figcaption>
+      </figure>
+    </div>
+
+    <Prose class="mt-16">
       <h3>Known constraints</h3>
       <ul>
         <li>
-          There is always going to be some translation gap between a customer's
-          data and New Relic's data model — meaning there will be cases where
-          customers can't find any metric useful to them in an SLI.
+          There's always a translation gap between a customer's data and New
+          Relic's data model — sometimes no available metric is useful for an
+          SLI.
         </li>
         <li>
           Every SLI must be linked to an entity. For customers who prefer not to
-          tie an SLI to a specific technical component, the work-around is to use
-          a Workload as a logical container.
+          tie one to a specific component, the work-around is a Workload as a
+          logical container.
         </li>
       </ul>
     </Prose>
-    <Figure
-      src="/images/sli-query-builder/research-notes.png"
-      caption="Research synthesis — note-taking table"
-    />
   </CaseSection>
 
-  <CaseSection num="03" title="Design approach">
+  <CaseSection
+    num="03"
+    title="The fix: turn the query into guided decisions, with only valid options at each step."
+  >
     <Prose>
       <p>
-        A query is essentially a series of decisions. The design strategy is to
-        surface those decisions one at a time, in the right order, with only
-        valid options at each step.
+        A query is essentially a series of decisions. The strategy: surface those
+        decisions one at a time, in the right order, with only valid options at
+        each step.
       </p>
       <ul>
         <li>
-          <strong>Recognition over recall:</strong> instead of asking users to
-          remember or copy/paste attributes within each clause, we offer
-          dropdowns to lower the technical barrier. Users simply select from the
-          available data points — taking away cognitive load and preventing
-          human errors like typos.
+          <strong>Recognition over recall:</strong> instead of recalling or
+          pasting attributes into each clause, users pick from dropdowns of the
+          available data points — removing cognitive load and preventing typos.
         </li>
         <li>
-          <strong>Automation via smart templates:</strong> some SLIs are
-          typically used to measure the performance of certain entity types
-          (APM, Browser, database). By suggesting SLIs and thresholds based on
-          historic data, we eliminate the setup hurdle and make it accessible for
-          non-technical users. For power users, we still offer custom SLI setup.
+          <strong>Automation via smart templates:</strong> for common entity
+          types (APM, Browser, database), we suggest SLIs and thresholds from
+          historic data — accessible for non-experts, while power users keep
+          custom setup.
         </li>
         <li>
-          <strong>Prevent errors before they happen:</strong> we show a warning
-          and disable saving when we detect the same query for both good and
-          valid events. This guardrail makes sure what users configure is
-          actually meaningful, not just technically valid.
+          <strong>Prevent errors before they happen:</strong> we warn and disable
+          saving when the same query is used for both good and valid events — a
+          guardrail so what users configure is actually meaningful.
         </li>
         <li>
-          <strong>Simplify comparison by formatting:</strong> by changing the
-          query into a line-by-line format, we improve scannability and make it
-          easy to cross-check the valid versus the good/bad event.
+          <strong>Simplify comparison by formatting:</strong> a line-by-line
+          query format improves scannability and makes it easy to cross-check
+          valid vs. good/bad events.
         </li>
       </ul>
     </Prose>
-    <Figure
-      src="/images/sli-query-builder/builder-1.png"
-      caption="Recognition over recall — guided dropdowns"
-    />
-    <Figure
-      src="/images/sli-query-builder/builder-2.png"
-      caption="Automation via smart templates"
-    />
-    <Figure
-      src="/images/sli-query-builder/builder-3.png"
-      caption="Prevent errors before they happen"
-    />
-    <Figure
-      src="/images/sli-query-builder/builder-4.png"
-      caption="Line-by-line formatting for scannability"
-    />
-    <Figure
-      src="/images/sli-query-builder/final.gif"
-      caption="The improved SLI query builder in action"
-    />
-  </CaseSection>
+    <Callout>
+      Recognition over recall — letting users pick from valid options instead of
+      recalling NRQL — removed the biggest barrier to adoption.
+    </Callout>
 
-  <CaseSection num="04" title="Business impact">
-    <div class="grid gap-5 sm:grid-cols-3">
-      <Stat
-        value="+16%"
-        label="Weekly active accounts, with weekly active users up 11% within 8 weeks."
-      />
-      <Stat
-        value="$1.52M"
-        label="MRR at GA, plus 1,500+ beta users — reducing SLI misconfiguration."
-      />
-      <Stat
-        value="$2M CRR"
-        label="Business impact from filling the gap in the service level creation flow."
-      />
+    <div class="my-8 grid gap-5 sm:grid-cols-2">
+      <figure>
+        <img
+          src="/images/sli-query-builder/builder-1.png"
+          alt=""
+          loading="lazy"
+          class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+        />
+        <figcaption
+          class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
+        >
+          Recognition over recall — guided dropdowns
+        </figcaption>
+      </figure>
+      <figure>
+        <img
+          src="/images/sli-query-builder/builder-2.png"
+          alt=""
+          loading="lazy"
+          class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+        />
+        <figcaption
+          class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
+        >
+          Automation via smart templates
+        </figcaption>
+      </figure>
+      <figure>
+        <img
+          src="/images/sli-query-builder/builder-3.png"
+          alt=""
+          loading="lazy"
+          class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+        />
+        <figcaption
+          class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
+        >
+          Prevent errors before they happen
+        </figcaption>
+      </figure>
+      <figure>
+        <img
+          src="/images/sli-query-builder/builder-4.png"
+          alt=""
+          loading="lazy"
+          class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+        />
+        <figcaption
+          class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
+        >
+          Line-by-line formatting for scannability
+        </figcaption>
+      </figure>
     </div>
+
+    <figure class="mx-auto mt-12 w-[70%]">
+      <img
+        src="/images/sli-query-builder/final.gif"
+        alt=""
+        loading="lazy"
+        class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+      />
+      <figcaption
+        class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
+      >
+        The improved SLI query builder in action
+      </figcaption>
+    </figure>
   </CaseSection>
 
-  <CaseSection num="05" title="Looking back">
+  <CaseSection
+    num="04"
+    title="The impact: higher adoption and fewer broken SLIs."
+  >
     <Prose>
       <p>
-        The biggest UX risk in highly technical products is the silent failure.
-        Shift the memory burden from the user to the system. By requesting data
-        in incremental steps, we minimise the cognitive load required to recall
-        critical information. Bridging the gap between specialists and laypeople
-        demands a solution that is intuitive.
+        Within 8 weeks, <strong>weekly active accounts rose 16%</strong> and
+        weekly active users <strong>11%</strong>. The builder contributed to
+        <strong>1,500+ beta users</strong> and <strong>$1.52M MRR at GA</strong>,
+        with a <strong>$2M CRR</strong> impact from filling the gap in the
+        service-level creation flow.
+      </p>
+      <p>
+        Just as important, the guardrails cut the misconfigured SLIs that had
+        been quietly masking unhealthy services.
+      </p>
+    </Prose>
+  </CaseSection>
+
+  <CaseSection
+    num="05"
+    title="What this taught me about designing for technical users."
+  >
+    <Prose>
+      <p>
+        The biggest UX risk in a highly technical product is the
+        <strong>silent failure</strong>. The fix is to shift the memory burden
+        from the user to the system: by requesting data in incremental steps, we
+        minimise the cognitive load of recalling critical information. Bridging
+        the gap between specialists and laypeople demands a solution that is
+        genuinely intuitive.
       </p>
     </Prose>
   </CaseSection>

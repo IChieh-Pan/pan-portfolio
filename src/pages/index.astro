@@ -1,8 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { projects } from "../data/projects";
-import BlobBlue from "../components/BlobBlue.astro";
-import BlobLime from "../components/BlobLime.astro";
 
 // Your location powers the live clock in the top bar.
 // TODO: confirm your city (currently a guess).
@@ -58,14 +56,11 @@ const TAGS = [
     <section
       class="relative flex min-h-[92svh] flex-col items-center justify-center pt-28 pb-20 text-center"
     >
-      <!-- Floating shape — left / upper (desktop only) -->
-      <BlobBlue
-        class="animate-float absolute left-0 top-[14%] z-0 hidden w-[clamp(180px,18vw,260px)] -rotate-[34deg] xl:block"
-      />
-
-      <!-- Floating shape — right / lower (desktop only) -->
-      <BlobLime
-        class="animate-float-slow absolute right-0 bottom-[12%] z-0 hidden w-[clamp(150px,14vw,190px)] rotate-6 xl:block"
+      <!-- Floating animation (desktop only) -->
+      <img
+        src="/images/epitrochoid.gif"
+        alt=""
+        class="pointer-events-none absolute right-0 top-[calc(50%+200px)] z-0 hidden w-[clamp(240px,24vw,340px)] -translate-y-1/2 mix-blend-multiply xl:block"
       />
 
       <!-- Hero text -->
@@ -99,12 +94,13 @@ const TAGS = [
         </a>
       </div>
 
-      <!-- Shape pair for tablet / mobile (below the text) -->
-      <div
-        class="mt-14 flex w-full max-w-sm items-center justify-center gap-10 xl:hidden"
-      >
-        <BlobBlue class="animate-float w-1/2 -rotate-[34deg]" />
-        <BlobLime class="animate-float-slow w-2/5 rotate-6" />
+      <!-- Animation for tablet / mobile (below the text) -->
+      <div class="mt-12 flex justify-center xl:hidden">
+        <img
+          src="/images/epitrochoid.gif"
+          alt=""
+          class="w-64 mix-blend-multiply"
+        />
       </div>
     </section>
 
@@ -125,12 +121,22 @@ const TAGS = [
               class="group block overflow-hidden rounded-card bg-card shadow-[0_10px_40px_-24px_rgba(16,24,40,0.25)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_-24px_rgba(16,24,40,0.3)]"
             >
               <div class="overflow-hidden bg-surface">
-                <img
-                  src={p.cover}
-                  alt={`${p.client} — ${p.title}`}
-                  loading="lazy"
-                  class="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                />
+                {
+                  p.cover ? (
+                    <img
+                      src={p.cover}
+                      alt={`${p.client} — ${p.title}`}
+                      loading="lazy"
+                      class="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                    />
+                  ) : (
+                    <div class="flex aspect-[16/10] w-full items-center justify-center bg-[#0041d9]/[0.06]">
+                      <span class="font-mono text-xs uppercase tracking-wide text-[#0041d9]">
+                        {p.client}
+                      </span>
+                    </div>
+                  )
+                }
               </div>
               <div class="p-7 sm:p-8">
                 <div class="flex items-baseline justify-between gap-4">

@@ -104,17 +104,22 @@ const next = projects[(idx + 1) % projects.length];
   </section>
 
   <!-- Cover -->
-  <div class="mx-auto max-w-5xl px-6 sm:px-10">
-    <img
-      src={project.cover}
-      alt={`${project.title} cover`}
-      class:list={[
-        "w-full rounded-3xl",
-        coverWidth && `mx-auto ${coverWidth}`,
-        !coverPlain && "bg-card shadow-[0_24px_70px_-30px_rgba(16,24,40,0.35)]",
-      ]}
-    />
-  </div>
+  {
+    project.cover && (
+      <div class="mx-auto max-w-5xl px-6 sm:px-10">
+        <img
+          src={project.cover}
+          alt={`${project.title} cover`}
+          class:list={[
+            "w-full rounded-3xl",
+            coverWidth && `mx-auto ${coverWidth}`,
+            !coverPlain &&
+              "bg-card shadow-[0_24px_70px_-30px_rgba(16,24,40,0.35)]",
+          ]}
+        />
+      </div>
+    )
+  }
 
   <!-- Optional top metrics strip -->
   <slot name="metrics" />
