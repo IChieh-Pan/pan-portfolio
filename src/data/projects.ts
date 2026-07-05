@@ -19,11 +19,10 @@ export const projects: Project[] = [
   {
     slug: "ai-context-layer",
     client: "New Relic",
-    title:
-      "Bringing design thinking to the context layer of an AI-native product.",
-    subtitle: "Personalization for an observability agent.", // TODO: placeholder subtitle
-    year: "2025", // TODO: confirm
-    role: "Product Design", // TODO: confirm
+    title: "AI Personalization",
+    subtitle: "Personalization layer for New Relic AI Experience",
+    year: "2026",
+    role: "UX strategist",
     // No cover image yet — a placeholder card shows until one is added.
   },
   {

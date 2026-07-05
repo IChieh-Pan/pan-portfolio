@@ -2,17 +2,23 @@
 import CaseStudy from "../../layouts/CaseStudy.astro";
 import CaseSection from "../../components/CaseSection.astro";
 import Prose from "../../components/Prose.astro";
+import Glance from "../../components/Glance.astro";
+import Callout from "../../components/Callout.astro";
 ---
 
-<CaseStudy slug="ai-context-layer">
+<CaseStudy
+  slug="ai-context-layer"
+  team="1 PM, 2 engineers, 1 architect,<br />1 EM"
+  readTime="3 min read"
+>
   <section class="mx-auto max-w-5xl px-6 pt-2 sm:px-10">
     <Prose>
       <p>
-        New Relic is building its first AI-native product, and personalization
-        is central to it: the layer that shapes how the agent adapts to each
-        user, team, and organization. I shape the UX vision and strategy for that
-        layer. That means defining how personalization should work, and
-        partnering with product on the roadmap that prioritizes it. I ground the
+        AI personalization is used across industries to create relevant
+        recommendations and contextually appropriate experiences at scale. It's the layer that determines how the agent adapts to each
+        user, team, and organization. I shape <strong>the UX vision and
+        strategy</strong> for that layer. That means working with engineering and product to define how
+        personalization should work, and prioritizing it on the roadmap. I ground the
         direction in research and analytics, so it drives the outcomes that
         matter, like deeper engagement and faster time-to-resolution. The goal is AI capabilities
         that feel seamless, natural, and cohesive across every surface of the
@@ -20,6 +26,21 @@ import Prose from "../../components/Prose.astro";
       </p>
     </Prose>
   </section>
+
+  <Glance challengeLabel="The goal">
+    <Fragment slot="challenge">
+      Enhance the accuracy and relevance of the agent's answers by building AI
+      personalization logic into the system.
+    </Fragment>
+    <Fragment slot="strategy">
+      Map a layered context model to observability, make the team layer explicit,
+      and define a measurable bar for what "working" looks like.
+    </Fragment>
+    <Fragment slot="impact">
+      A shared vocabulary and decision-ready framework the product team could
+      prioritize and build against.
+    </Fragment>
+  </Glance>
 
   <CaseSection
     title="Defining what personalization should mean for an observability agent."
@@ -30,8 +51,8 @@ import Prose from "../../components/Prose.astro";
         question wasn't whether to personalize — it was what the layers should
         be, how they'd compose across an organization, how team-based operations
         would interact with the model, and what "working" would even look like. I
-        led the design thinking that turned that ambition into a concrete,
-        buildable, measurable direction.
+        led the design thinking that turned that ambition into
+        a <strong>concrete, buildable, measurable direction</strong>.
       </p>
     </Prose>
   </CaseSection>
@@ -45,8 +66,8 @@ import Prose from "../../components/Prose.astro";
         think about context. My contribution was working through which layers
         matter most for observability, how they'd interact with things specific
         to this domain (the entity graph, the on-call schedule, alert policies,
-        existing runbooks), and where the observability-specific decisions
-        actually live. If you can show the matrix visually, do — it's the
+        existing runbooks), and <strong>where the observability-specific decisions
+        actually live</strong>. If you can show the matrix visually, do — it's the
         clearest artifact of the applied thinking.
       </p>
     </Prose>
@@ -59,12 +80,17 @@ import Prose from "../../components/Prose.astro";
       <p>
         New Relic's AI experience personalizes at the user, team, and
         organization levels — an architecture that differs from most consumer AI.
-        For a team-based operations tool, the team layer is load-bearing: it's
+        For a team-based operations tool, <strong>the team layer is load-bearing</strong>: it's
         where shared runbooks, ownership, and on-call defaults live. Getting that
         layer right is what makes personalization feel cohesive across a whole
         organization, not just tuned to one person.
       </p>
     </Prose>
+    <Callout>
+      In a team-based operations tool, the team layer is where personalization
+      becomes cohesive across an organization, or fragments into per-user
+      tuning.
+    </Callout>
   </CaseSection>
 
   <CaseSection title="Framing success in a form the team could measure.">

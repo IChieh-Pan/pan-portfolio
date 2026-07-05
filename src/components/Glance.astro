@@ -1,5 +1,16 @@
 ---
 // "At a glance" summary with three named slots: challenge, strategy, impact.
+// Section labels are overridable (e.g. challengeLabel="The goal").
+interface Props {
+  challengeLabel?: string;
+  strategyLabel?: string;
+  impactLabel?: string;
+}
+const {
+  challengeLabel = "The challenge",
+  strategyLabel = "Strategy",
+  impactLabel = "Impact",
+} = Astro.props;
 ---
 
 <div class="mx-auto max-w-5xl px-6 sm:px-10">
@@ -8,7 +19,7 @@
   >
     <div class="bg-card p-7">
       <p class="mb-3 font-mono text-xs uppercase tracking-wide text-[#0041d9]">
-        The challenge
+        {challengeLabel}
       </p>
       <div class="text-[15px] leading-relaxed text-ink/85">
         <slot name="challenge" />
@@ -16,7 +27,7 @@
     </div>
     <div class="bg-card p-7">
       <p class="mb-3 font-mono text-xs uppercase tracking-wide text-[#0041d9]">
-        Strategy
+        {strategyLabel}
       </p>
       <div class="text-[15px] leading-relaxed text-ink/85">
         <slot name="strategy" />
@@ -24,7 +35,7 @@
     </div>
     <div class="bg-card p-7">
       <p class="mb-3 font-mono text-xs uppercase tracking-wide text-[#0041d9]">
-        Impact
+        {impactLabel}
       </p>
       <div class="text-[15px] leading-relaxed text-ink/85">
         <slot name="impact" />

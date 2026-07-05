@@ -73,7 +73,7 @@ const next = projects[(idx + 1) % projects.length];
             <dt class="font-mono text-xs uppercase tracking-wide text-muted">
               Team
             </dt>
-            <dd class="mt-1 text-sm">{team}</dd>
+            <dd class="mt-1 text-sm" set:html={team} />
           </div>
         )
       }
