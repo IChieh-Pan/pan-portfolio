@@ -2,25 +2,25 @@
 import Layout from "../layouts/Layout.astro";
 import { projects } from "../data/projects";
 
-// Your location powers the live clock in the top bar.
-// TODO: confirm your city (currently a guess).
-const LOCATION = { city: "Taipei", tz: "Asia/Taipei" };
-
 const LINKS = {
   linkedin: "https://www.linkedin.com/in/ichieh-pan-919344b3/",
   github: "https://github.com/ichieh-pan",
   resume:
-    "https://drive.google.com/file/d/1MVwI1dfrhawCBHaIXMVsvl0lk-nT-ZiO/view?usp=sharing",
+    "https://drive.google.com/file/d/1UEWd9_j2h4JUceHLuwtHoT5lVjwJmI8m/view?usp=sharing",
   aiApp: "https://ai-content-aggregator.vercel.app/",
 };
 
 // Career timeline (oldest → newest), left to right.
 const CAREER = [
-  { org: "Acer", year: "2015" },
-  { org: "Durch die Stadt", year: "2017" },
-  { org: "ITONICS", year: "2019" },
-  { org: "dunnhumby", year: "2021" },
-  { org: "New Relic", year: "2022–now" },
+  { org: "Acer", year: "2015", url: "https://www.acer.com" },
+  {
+    org: "Durch die Stadt",
+    year: "2017",
+    url: "https://intocities.com/berlin/durch-die-stadt-agentur-8856#ath=&atv=&categories=&lat=52.535773&lng=13.474769&scene=&search=&z=",
+  },
+  { org: "ITONICS", year: "2019", url: "https://www.itonics-innovation.com" },
+  { org: "dunnhumby", year: "2021", url: "https://www.dunnhumby.com" },
+  { org: "New Relic", year: "2022–now", url: "https://newrelic.com" },
 ];
 
 
@@ -34,16 +34,19 @@ const CAREER = [
     <div
       class="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 text-ink sm:px-10"
     >
-      <a href="#top" class="font-display text-sm font-semibold tracking-tight">
+      <a
+        href="#top"
+        class="font-display text-sm font-extrabold tracking-tight transition-colors hover:text-[#0041d9]"
+      >
         I-Chieh Pan
       </a>
       <nav class="flex items-center gap-6 font-sans text-xs tracking-wide">
         <span class="hidden tabular-nums uppercase text-muted sm:inline">
-          {LOCATION.city}&nbsp;<span id="clock">--:--:--</span>
+          On page&nbsp;<span id="clock">0:00</span>
         </span>
-        <a href="#work" class="hover:opacity-60">Work</a>
-        <a href="#about" class="hover:opacity-60">About</a>
-        <a href="#contact" class="hover:opacity-60">Contact</a>
+        <a href="#work" class="font-semibold uppercase hover:opacity-60">Work</a>
+        <a href="#about" class="font-semibold uppercase hover:opacity-60">About</a>
+        <a href="#contact" class="font-semibold uppercase hover:opacity-60">Contact</a>
       </nav>
     </div>
   </header>
@@ -53,11 +56,18 @@ const CAREER = [
     <section
       class="relative flex min-h-[92svh] flex-col items-center justify-center pt-28 pb-20 text-center"
     >
+      <!-- Neural-net graph, left of the heading (desktop only) -->
+      <img
+        src="/images/ann-graph.svg"
+        alt=""
+        class="pointer-events-none absolute left-[-1rem] top-[26%] z-0 hidden w-[clamp(200px,20vw,300px)] -translate-y-1/2 opacity-70 mix-blend-multiply xl:block"
+      />
+
       <!-- Floating animation (desktop only) -->
       <img
         src="/images/epitrochoid.gif"
         alt=""
-        class="pointer-events-none absolute right-0 top-[calc(50%+200px)] z-0 hidden w-[clamp(240px,24vw,340px)] -translate-y-1/2 mix-blend-multiply xl:block"
+        class="pointer-events-none absolute right-[-2rem] top-[calc(50%+200px)] z-0 hidden w-[clamp(240px,24vw,340px)] -translate-y-1/2 mix-blend-multiply xl:block"
       />
 
       <!-- Hero text -->
@@ -65,7 +75,7 @@ const CAREER = [
         <p
           class="mb-6 font-sans text-[22px] leading-relaxed text-[#0041d9] sm:whitespace-nowrap sm:text-[24px]"
         >
-          7+ years designing complex, data-heavy products.
+          8 years designing complex, data-heavy products.
         </p>
         <h1
           class="font-display font-semibold leading-[0.98] tracking-[-0.02em] text-[#0041d9]"
@@ -147,12 +157,12 @@ const CAREER = [
                 <h3 class="mt-2 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
                   {p.title}
                 </h3>
-                <p class="mt-2 font-sans text-base leading-snug text-ink/75 sm:text-lg">
+                <p class="mt-0.5 font-sans text-base leading-snug text-ink/75 sm:text-lg">
                   {p.subtitle}
                 </p>
-                <div class="mt-5 flex items-center justify-between">
+                <div class="mt-10 flex items-center justify-between">
                   <span class="font-sans text-xs uppercase tracking-wide text-muted">
-                    {p.role}
+                    {p.discipline}
                   </span>
                   <span class="font-sans text-sm font-medium text-[#0041d9] opacity-0 transition-opacity group-hover:opacity-100">
                     View case study →
@@ -179,8 +189,19 @@ const CAREER = [
           <p
             class="font-display text-2xl font-semibold leading-snug tracking-tight sm:text-3xl"
           >
-            I'm I-Chieh, a senior product designer at New Relic with 7+ years
-            delivering user-centered design for enterprise SaaS.
+            I'm I-Chieh, a senior product designer at New Relic with 8 years of
+            experience designing enterprise SaaS, specializing in data-intensive
+            systems and operational tooling.
+          </p>
+          <p
+            class="mt-6 font-display text-2xl font-semibold leading-snug tracking-tight sm:text-3xl"
+          >
+            Lately, that work has been moving out of static mockups. I now
+            prototype directly in <span class="font-semibold text-[#0041d9]"
+              >Claude Code</span
+            > with our <span class="font-semibold text-[#0041d9]">SDK and APIs</span
+            >, so I can iterate and test rapidly, getting to a faster answer on
+            whether we're building the right product.
           </p>
 
           <!-- Experience timeline -->
@@ -200,9 +221,22 @@ const CAREER = [
                       <span class="mt-4 font-mono text-xs tabular-nums text-muted">
                         {c.year}
                       </span>
-                      <span class="mt-1 text-xs font-medium text-ink">
-                        {c.org}
-                      </span>
+                      {
+                        c.url ? (
+                          <a
+                            href={c.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="mt-1 text-xs font-medium text-ink underline-offset-4 hover:text-[#0041d9] hover:underline"
+                          >
+                            {c.org}
+                          </a>
+                        ) : (
+                          <span class="mt-1 text-xs font-medium text-ink">
+                            {c.org}
+                          </span>
+                        )
+                      }
                     </li>
                   ))
                 }
@@ -213,26 +247,28 @@ const CAREER = [
 
         <div class="pt-2 md:pl-6">
           <img
-            src="/images/about/portrait-mono.png"
+            src="/images/about/portrait-color.png"
             alt="I-Chieh Pan"
-            class="w-[240px] rounded-2xl"
+            class="w-[240px]"
           />
         </div>
       </div>
     </section>
+  </main>
 
-    <!-- ===================== Contact ===================== -->
-    <section id="contact" class="scroll-mt-24 pt-24 pb-12 sm:pt-36">
-      <div
-        class="rounded-[2.5rem] bg-[#7910C9] px-8 py-16 text-white sm:px-14 sm:py-20"
-      >
+  <!-- ===================== Contact (full-bleed footer) ===================== -->
+  <section
+    id="contact"
+    class="mt-24 scroll-mt-24 bg-[#0041d9] text-white sm:mt-48"
+  >
+    <div class="mx-auto max-w-[1400px] px-6 py-16 sm:px-10 sm:py-20">
         <p
           class="font-display font-semibold leading-[0.95] tracking-[-0.03em]"
           style="font-size:clamp(2rem,6vw,5rem)"
         >
-          Let's make something
+          Let's make complex data
           <span class="ml-[0.3em] font-serif font-normal italic"
-            >worth keeping.</span
+            >feel simple.</span
           >
         </p>
         <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3">
@@ -252,14 +288,14 @@ const CAREER = [
             href={LINKS.github}
             target="_blank"
             rel="noopener noreferrer"
-            class="font-sans text-sm uppercase tracking-wide text-white/75 hover:text-white"
+            class="font-sans text-sm uppercase tracking-wide text-white/70 hover:text-white"
             >GitHub</a
           >
           <a
             href={LINKS.resume}
             target="_blank"
             rel="noopener noreferrer"
-            class="font-sans text-sm uppercase tracking-wide text-white/75 hover:text-white"
+            class="font-sans text-sm uppercase tracking-wide text-white/70 hover:text-white"
             >Résumé</a
           >
         </div>
@@ -271,21 +307,20 @@ const CAREER = [
         </div>
       </div>
     </section>
-  </main>
 
-  <!-- Live local clock — a small craft detail in the top bar. -->
-  <script is:inline define:vars={{ tz: LOCATION.tz }}>
+  <!-- Time-on-page counter — a small craft detail in the top bar. -->
+  <script is:inline>
     const el = document.getElementById("clock");
     if (el) {
-      const fmt = new Intl.DateTimeFormat("en-GB", {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: false,
-        timeZone: tz,
-      });
+      const start = Date.now();
       const tick = () => {
-        el.textContent = fmt.format(new Date());
+        const s = Math.floor((Date.now() - start) / 1000);
+        const h = Math.floor(s / 3600);
+        const m = Math.floor((s % 3600) / 60);
+        const sec = String(s % 60).padStart(2, "0");
+        el.textContent = h
+          ? `${h}:${String(m).padStart(2, "0")}:${sec}`
+          : `${m}:${sec}`;
       };
       tick();
       setInterval(tick, 1000);

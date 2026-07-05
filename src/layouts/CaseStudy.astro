@@ -56,12 +56,12 @@ const next = projects[(idx + 1) % projects.length];
     >
       {project.title}
     </h1>
-    <p class="mt-4 font-sans text-lg leading-snug text-ink/75 sm:text-xl">
+    <p class="mt-2 font-sans text-lg leading-snug text-ink/75 sm:text-xl">
       {project.subtitle}
     </p>
 
     <dl
-      class="mt-10 grid grid-cols-2 gap-6 border-t border-line/70 pt-8 sm:grid-cols-4"
+      class="mt-10 grid grid-cols-2 gap-x-12 gap-y-6 border-t border-line/70 pt-8 sm:grid-cols-4"
     >
       <div>
         <dt class="font-mono text-xs uppercase tracking-wide text-muted">Role</dt>
@@ -133,15 +133,15 @@ const next = projects[(idx + 1) % projects.length];
   <section class="mx-auto max-w-5xl px-6 pt-24 pb-24 sm:px-10 sm:pt-32">
     <a
       href={`/work/${next.slug}`}
-      class="group block rounded-3xl border-2 border-line px-8 py-12 transition-all duration-200 hover:-translate-y-1 hover:border-[#006a6c] sm:px-10 sm:py-16"
+      class="group block rounded-3xl border-2 border-line px-8 py-12 transition-all duration-200 hover:-translate-y-1 hover:border-[#002375] sm:px-10 sm:py-16"
     >
       <p class="font-mono text-xs uppercase tracking-wide text-muted">
         Next project
       </p>
       <p
-        class="mt-3 font-display text-3xl font-semibold tracking-tight text-[#006a6c] sm:text-5xl"
+        class="mt-3 font-display text-3xl font-semibold tracking-tight text-[#002375] sm:text-5xl"
       >
-        {next.client} — {next.title}
+        {next.client} — <span class="whitespace-nowrap">{next.title}</span>
       </p>
     </a>
   </section>

@@ -12,6 +12,8 @@ export interface Project {
   subtitle: string;
   year: string;
   role: string;
+  /** Short discipline label shown on the homepage work card. */
+  discipline: string;
   cover?: string;
 }
 
@@ -23,6 +25,7 @@ export const projects: Project[] = [
     subtitle: "Personalization layer for an AI-native observability product",
     year: "2026",
     role: "UX strategist",
+    discipline: "UX strategy",
     cover: "/images/ai-context-layer/cover.svg",
   },
   {
@@ -32,6 +35,7 @@ export const projects: Project[] = [
     subtitle: "Unified context for faster troubleshooting",
     year: "2024",
     role: "Design lead",
+    discipline: "Product design",
     cover: "/images/session-replay/cover.png",
   },
   {
@@ -41,6 +45,7 @@ export const projects: Project[] = [
     subtitle: "Making SLI setup accessible at scale",
     year: "2023",
     role: "Lead designer",
+    discipline: "Product design",
     cover: "/images/sli-query-builder/cover.png",
   },
   {
@@ -50,6 +55,7 @@ export const projects: Project[] = [
     subtitle: "Accelerating development with systematic design",
     year: "2020",
     role: "Sole designer",
+    discipline: "Product design",
     cover: "/images/itonics-design-system/cover.png",
   },
 ];
