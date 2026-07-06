@@ -131,12 +131,12 @@ const CAREER = [
                 {
                   p.cover ? (
                     p.coverPad ? (
-                      <div class="flex aspect-[16/10] w-full items-center justify-center bg-[#EAE6DF] p-6 sm:p-8">
+                      <div class="flex aspect-[16/10] w-full items-center justify-center bg-white p-6 sm:p-8">
                         <img
                           src={p.cover}
                           alt={`${p.client} — ${p.title}`}
                           loading="lazy"
-                          class="max-h-full w-full rounded-lg object-contain transition-transform duration-500 group-hover:scale-[1.03]"
+                          class="max-h-full w-full rounded-lg object-contain shadow-[0_12px_32px_-12px_rgba(16,24,40,0.45)] transition-transform duration-500 group-hover:scale-[1.03]"
                         />
                       </div>
                     ) : (
