@@ -25,7 +25,7 @@ export const projects: Project[] = [
     slug: "ai-context-layer",
     client: "Enterprise observability",
     title: "AI Personalization",
-    subtitle: "Personalization layer for an AI-native observability product",
+    subtitle: "Shaping how the AI reasons about context",
     year: "2026",
     role: "UX strategist",
     discipline: "UX strategy",
