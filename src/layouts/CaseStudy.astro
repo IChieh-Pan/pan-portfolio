@@ -10,6 +10,7 @@ interface Props {
   coverPlain?: boolean;
   readTime?: string;
   coverWidth?: string;
+  coverShadow?: boolean;
 }
 const {
   slug,
@@ -19,6 +20,7 @@ const {
   coverPlain = false,
   readTime,
   coverWidth,
+  coverShadow = false,
 } = Astro.props;
 
 const idx = projects.findIndex((p) => p.slug === slug);
@@ -115,6 +117,8 @@ const next = projects[(idx + 1) % projects.length];
             coverWidth && `mx-auto ${coverWidth}`,
             !coverPlain &&
               "bg-card shadow-[0_24px_70px_-30px_rgba(16,24,40,0.35)]",
+            coverShadow &&
+              "shadow-[0_24px_70px_-30px_rgba(16,24,40,0.45)]",
           ]}
         />
       </div>
