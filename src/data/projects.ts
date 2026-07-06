@@ -15,6 +15,9 @@ export interface Project {
   /** Short discipline label shown on the homepage work card. */
   discipline: string;
   cover?: string;
+  /** When true, the homepage card shows the cover contained on a warm
+      light-grey pad (for edge-to-edge screenshots that need breathing room). */
+  coverPad?: boolean;
 }
 
 export const projects: Project[] = [
@@ -47,6 +50,7 @@ export const projects: Project[] = [
     role: "Lead designer",
     discipline: "Product design",
     cover: "/images/sli-query-builder/cover.png",
+    coverPad: true,
   },
   {
     slug: "itonics-design-system",
