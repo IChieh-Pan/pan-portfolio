@@ -19,7 +19,7 @@ import Callout from "../../components/Callout.astro";
   <!-- Top metrics strip -->
   <div
     slot="metrics"
-    class="mx-auto mt-12 grid max-w-5xl gap-5 px-6 sm:mt-16 sm:grid-cols-3 sm:px-10"
+    class="mx-auto mt-24 grid max-w-5xl gap-5 px-6 sm:mt-32 sm:grid-cols-3 sm:px-10"
   >
     <Stat
       value="+16%"
@@ -77,7 +77,7 @@ import Callout from "../../components/Callout.astro";
           src="/images/sli-query-builder/v1-sli.png"
           alt=""
           loading="lazy"
-          class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+          class="w-full rounded-2xl"
         />
         <figcaption
           class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
@@ -99,6 +99,7 @@ import Callout from "../../components/Callout.astro";
     <Figure
       src="/images/sli-query-builder/funnel.png"
       caption="SLI setup funnel — an 11.1% completion rate"
+      class="mx-auto max-w-[70%]"
     />
     <Callout>
       An 11.1% completion rate meant the feature was effectively inaccessible —
@@ -152,7 +153,7 @@ import Callout from "../../components/Callout.astro";
           src="/images/sli-query-builder/user-interview.png"
           alt=""
           loading="lazy"
-          class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+          class="w-full rounded-2xl"
         />
         <figcaption
           class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
@@ -221,107 +222,87 @@ import Callout from "../../components/Callout.astro";
   >
     <Prose>
       <p>
-        A query is essentially a series of decisions. The strategy: surface those
-        decisions one at a time, in the right order, with only valid options at
-        each step.
+        A query is essentially a series of decisions. The design strategy is to
+        surface those decisions one at a time, in the right order, with only valid
+        options at each step.
       </p>
-      <ul>
-        <li>
-          <strong>Recognition over recall:</strong> instead of recalling or
-          pasting attributes into each clause, users pick from dropdowns of the
-          available data points — removing cognitive load and preventing typos.
-        </li>
-        <li>
-          <strong>Automation via smart templates:</strong> for common entity
-          types (APM, Browser, database), we suggest SLIs and thresholds from
-          historic data — accessible for non-experts, while power users keep
-          custom setup.
-        </li>
-        <li>
-          <strong>Prevent errors before they happen:</strong> we warn and disable
-          saving when the same query is used for both good and valid events — a
-          guardrail so what users configure is actually meaningful.
-        </li>
-        <li>
-          <strong>Simplify comparison by formatting:</strong> a line-by-line
-          query format improves scannability and makes it easy to cross-check
-          valid vs. good/bad events.
-        </li>
-      </ul>
     </Prose>
     <Callout>
       Recognition over recall — letting users pick from valid options instead of
       recalling NRQL — removed the biggest barrier to adoption.
     </Callout>
 
-    <div class="my-8 grid gap-5 sm:grid-cols-2">
-      <figure>
+    <div class="mt-10 space-y-24 sm:mt-12 sm:space-y-32">
+      <div class="grid items-start gap-6 md:grid-cols-2 md:gap-6">
+        <Prose>
+          <h3>Recognition over recall</h3>
+          <p>
+            Instead of asking users to remember or copy/paste attributes or data
+            points within each clause, we offer dropdowns to lower the technical
+            barrier. This allows users to simply select from all the available
+            data points. It takes away the cognitive load and prevents human
+            errors (e.g. typos).
+          </p>
+        </Prose>
         <img
           src="/images/sli-query-builder/builder-1.png"
           alt=""
           loading="lazy"
-          class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+          class="mx-auto w-[60%] rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
         />
-        <figcaption
-          class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
-        >
-          Recognition over recall — guided dropdowns
-        </figcaption>
-      </figure>
-      <figure>
+      </div>
+      <div class="grid items-start gap-6 md:grid-cols-2 md:gap-6">
+        <Prose>
+          <h3>Automation via smart templates</h3>
+          <p>
+            Some SLIs are typically used to measure the performance of certain
+            entity types (APM, Browser, database etc). By suggesting SLIs and
+            threshold based on historic data, we eliminate the setup hurdle, make
+            it accessible for non-technical users. For power users, we offer the
+            option for custom SLI setup.
+          </p>
+        </Prose>
         <img
           src="/images/sli-query-builder/builder-2.png"
           alt=""
           loading="lazy"
-          class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+          class="mx-auto w-[60%] rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
         />
-        <figcaption
-          class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
-        >
-          Automation via smart templates
-        </figcaption>
-      </figure>
-      <figure>
+      </div>
+      <div class="grid items-start gap-6 md:grid-cols-2 md:gap-6">
+        <Prose>
+          <h3>Prevent errors before they happen</h3>
+          <p>
+            We show a warning message and disabled saving when we detect same
+            query for both good and valid events. This sets a guardrail for users
+            and make sure what they configured is actually meaningful, not just
+            technically valid.
+          </p>
+        </Prose>
         <img
           src="/images/sli-query-builder/builder-3.png"
           alt=""
           loading="lazy"
-          class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+          class="mx-auto w-[60%] rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
         />
-        <figcaption
-          class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
-        >
-          Prevent errors before they happen
-        </figcaption>
-      </figure>
-      <figure>
+      </div>
+      <div class="grid items-start gap-6 md:grid-cols-2 md:gap-6">
+        <Prose>
+          <h3>Simplify comparison by formatting</h3>
+          <p>
+            By changing the query into a line-by-line format, we improve the
+            scannability and make it easy to cross-check the valid versus the
+            good/bad event.
+          </p>
+        </Prose>
         <img
           src="/images/sli-query-builder/builder-4.png"
           alt=""
           loading="lazy"
-          class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+          class="mx-auto w-[60%] rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
         />
-        <figcaption
-          class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
-        >
-          Line-by-line formatting for scannability
-        </figcaption>
-      </figure>
+      </div>
     </div>
-
-    <figure class="mx-auto mt-12 w-[70%]">
-      <img
-        src="/images/sli-query-builder/final.gif"
-        alt=""
-        loading="lazy"
-        class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
-      />
-      <figcaption
-        class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
-      >
-        The improved SLI query builder in action
-      </figcaption>
-    </figure>
   </CaseSection>
 
   <CaseSection
@@ -341,6 +322,20 @@ import Callout from "../../components/Callout.astro";
         been quietly masking unhealthy services.
       </p>
     </Prose>
+
+    <figure class="mx-auto mt-12 w-[70%]">
+      <img
+        src="/images/sli-query-builder/final.gif"
+        alt=""
+        loading="lazy"
+        class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+      />
+      <figcaption
+        class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
+      >
+        The improved SLI query builder in action
+      </figcaption>
+    </figure>
   </CaseSection>
 
   <CaseSection

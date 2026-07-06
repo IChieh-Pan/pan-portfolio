@@ -54,12 +54,12 @@ export const projects: Project[] = [
   },
   {
     slug: "itonics-design-system",
-    client: "ITONICS",
-    title: "Cloud Design System",
+    client: "ITONICS Cloud",
+    title: "Design System",
     subtitle: "Accelerating development with systematic design",
     year: "2020",
     role: "Sole designer",
-    discipline: "Product design",
+    discipline: "Design system",
     cover: "/images/itonics-design-system/cover.png",
   },
 ];

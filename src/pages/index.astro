@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import { projects } from "../data/projects";
 
 const LINKS = {
+  email: "mailto:mail@panichieh.com",
   linkedin: "https://www.linkedin.com/in/ichieh-pan-919344b3/",
   github: "https://github.com/ichieh-pan",
   resume:
@@ -295,6 +296,11 @@ const CAREER = [
             >
             <span class="transition-transform group-hover:translate-x-0.5">→</span>
           </a>
+          <a
+            href={LINKS.email}
+            class="font-sans text-sm uppercase tracking-wide text-white/70 hover:text-white"
+            >Email</a
+          >
           <a
             href={LINKS.github}
             target="_blank"
