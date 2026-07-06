@@ -31,7 +31,7 @@ function page(opts: { error?: boolean; locked?: boolean }): Response {
   const body = locked
     ? `<h1>Not available</h1><p class="sub">This case study isn't available to view right now.</p><p class="back"><a href="/">&larr; Back to portfolio</a></p>`
     : `<h1>Password&#8209;protected</h1>
-       <p class="sub">This case study covers unreleased work. Enter the password to view it.</p>
+       <p class="sub">Enter the password to view it.</p>
        <form method="POST">
          <input type="password" name="password" placeholder="Password" aria-label="Password" autocomplete="current-password" autofocus required />
          <button type="submit">View case study</button>
