@@ -58,11 +58,12 @@ import Callout from "../../components/Callout.astro";
         behaving.
       </p>
       <p>
-        <strong>
-          It also expands New Relic's capability from traditional app monitoring
-          into Digital Experience Monitoring (DEM).
-        </strong>
+        It also expands New Relic's capability from traditional app monitoring
+        into <strong>Digital Experience Monitoring (DEM)</strong>.
       </p>
+    </Prose>
+
+    <Prose class="mt-12">
       <h3>Understanding the ask</h3>
       <p>
         Before starting, I needed to understand what customers expect from a
@@ -114,7 +115,7 @@ import Callout from "../../components/Callout.astro";
         they prioritise time-to-insight — specifically the immediate visibility
         of key events on the replay timeline — and they appreciate the ability
         to quickly link errors, the user action, and data together for incident
-        triaging. I synthesised these findings into Jobs-to-be-Done statements.
+        triaging. I synthesised these findings into Jobs-to-be-Done statements:
       </p>
       <ul>
         <li>
@@ -136,6 +137,16 @@ import Callout from "../../components/Callout.astro";
         </li>
       </ul>
     </Prose>
+
+    <blockquote class="mx-auto my-12 max-w-3xl text-center">
+      <p class="font-serif text-[28px] italic leading-snug text-ink">
+        "The thing I'd love to see is some kind of summary that ties errors
+        together with the sessions."
+      </p>
+      <footer class="mt-4 font-mono text-xs uppercase tracking-wide text-muted">
+        New Relic engineer · internal interview
+      </footer>
+    </blockquote>
   </CaseSection>
 
   <CaseSection
@@ -144,10 +155,9 @@ import Callout from "../../components/Callout.astro";
   >
     <Prose>
       <p>
-        Troubleshooting means hunting through a sea of fragmented data to
-        reconstruct what the user actually did before an error — which creates
-        cognitive load and delays time-to-insight. That data lives in three
-        disconnected places:
+        Troubleshooting means reconstructing what the user did — from data
+        scattered across <strong>three disconnected places</strong>, each jump a
+        context switch that costs time:
       </p>
       <ul>
         <li><strong>Logs</strong></li>
@@ -333,12 +343,32 @@ import Callout from "../../components/Callout.astro";
   >
     <Prose>
       <p>
-        Partnering with the product manager, I ran an internal user test to
-        validate this grouped approach against the overlay (no-grouping) approach
-        on the timeline. Our goal was to determine which pattern best helps users
-        maintain an eagle-eye view of a session in a small space. The findings
-        were definitive for the grouped approach:
+        Partnering with the PM, I tested two ways to show errors on a crowded
+        timeline in a small space. The result was decisive.
       </p>
+    </Prose>
+    <div class="my-8 grid gap-5 sm:grid-cols-2">
+      <div class="rounded-2xl border border-line/70 p-6">
+        <p class="mb-2 font-mono text-xs uppercase tracking-wide text-muted">
+          Option A — Overlay
+        </p>
+        <p class="text-sm leading-relaxed text-ink/85">
+          Every marker stacked on the timeline. Overlapping error sets fight for
+          the same space, and the view gets cluttered fast.
+        </p>
+      </div>
+      <div class="rounded-2xl border-2 border-[#0041d9] bg-[#0041d9]/[0.03] p-6">
+        <p class="mb-2 font-mono text-xs uppercase tracking-wide text-[#0041d9]">
+          Option B — Grouped ✓
+        </p>
+        <p class="text-sm leading-relaxed text-ink/85">
+          Markers cluster into squares. Scannable and precise, and the deepening
+          red forms a natural heatmap of where issues concentrate.
+        </p>
+      </div>
+    </div>
+    <Prose>
+      <p>Grouping won on every dimension we tested:</p>
       <ul>
         <li>
           <strong>Cognitive ease:</strong> the grouped view was "easier for the
