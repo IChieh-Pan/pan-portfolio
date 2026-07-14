@@ -413,6 +413,47 @@ import Callout from "../../components/Callout.astro";
 
   <CaseSection
     num="05"
+    title="How it fits into a real troubleshooting flow."
+  >
+    <Prose>
+      <p>
+        Session Replay gives engineers a direct way to replay a user's actions
+        and behavior and quickly identify what went wrong. The steps below follow
+        one real error from a monitoring alert to its root cause — the kind of
+        end-to-end visibility that lets engineers correlate the actions leading
+        up to an error faster and reduce time to resolution.
+      </p>
+    </Prose>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:items-start sm:gap-3">
+      <figure class="flex w-[240px] flex-col items-center sm:w-[150px]">
+        <img src="/images/session-replay/browser-summary.jpg" alt="" loading="lazy" class="h-auto w-full sm:h-28 sm:w-auto" />
+        <figcaption class="mt-2 text-center text-[11px] leading-tight text-ink/70"><span class="block font-semibold text-ink">1 · Browser summary</span>error-rate spike</figcaption>
+      </figure>
+      <div class="flex shrink-0 items-center text-lg text-[#0041d9] sm:h-28" aria-hidden="true"><span class="sm:hidden">&darr;</span><span class="hidden sm:inline">&rarr;</span></div>
+      <figure class="flex w-[240px] flex-col items-center sm:w-[150px]">
+        <img src="/images/session-replay/errors-inbox.png" alt="" loading="lazy" class="h-auto w-full sm:h-28 sm:w-auto" />
+        <figcaption class="mt-2 text-center text-[11px] leading-tight text-ink/70"><span class="block font-semibold text-ink">2 · Errors Inbox</span>triage the group</figcaption>
+      </figure>
+      <div class="flex shrink-0 items-center text-lg text-[#0041d9] sm:h-28" aria-hidden="true"><span class="sm:hidden">&darr;</span><span class="hidden sm:inline">&rarr;</span></div>
+      <figure class="flex w-[240px] flex-col items-center sm:w-[150px]">
+        <img src="/images/session-replay/inbox-occurrence.jpg" alt="" loading="lazy" class="h-auto w-full sm:h-28 sm:w-auto" />
+        <figcaption class="mt-2 text-center text-[11px] leading-tight text-ink/70"><span class="block font-semibold text-ink">3 · Error occurrence</span>linked to the session</figcaption>
+      </figure>
+      <div class="flex shrink-0 items-center text-lg text-[#0041d9] sm:h-28" aria-hidden="true"><span class="sm:hidden">&darr;</span><span class="hidden sm:inline">&rarr;</span></div>
+      <figure class="flex w-[240px] flex-col items-center sm:w-[150px]">
+        <img src="/images/session-replay/session-opened.png" alt="" loading="lazy" class="h-auto w-full sm:h-28 sm:w-auto" />
+        <figcaption class="mt-2 text-center text-[11px] leading-tight text-ink/70"><span class="block font-semibold text-ink">4 · Session opened</span>replay + events</figcaption>
+      </figure>
+      <div class="flex shrink-0 items-center text-lg text-[#0041d9] sm:h-28" aria-hidden="true"><span class="sm:hidden">&darr;</span><span class="hidden sm:inline">&rarr;</span></div>
+      <figure class="flex w-[240px] flex-col items-center sm:w-[150px]">
+        <img src="/images/session-replay/traces-error.png" alt="" loading="lazy" class="h-auto w-full sm:h-28 sm:w-auto" />
+        <figcaption class="mt-2 text-center text-[11px] leading-tight text-ink/70"><span class="block font-semibold text-ink">5 · Session trace</span>root-cause error</figcaption>
+      </figure>
+    </div>
+  </CaseSection>
+
+  <CaseSection
+    num="06"
     title="The result isn't a video player — it's a synchronized diagnostic tool."
   >
     <Prose>
@@ -443,7 +484,7 @@ import Callout from "../../components/Callout.astro";
   </CaseSection>
 
   <CaseSection
-    num="06"
+    num="07"
     title="The impact: a new revenue pillar, and troubleshooting in seconds."
   >
     <Prose>
