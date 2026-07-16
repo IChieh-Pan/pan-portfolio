@@ -11,6 +11,7 @@ interface Props {
   readTime?: string;
   coverWidth?: string;
   coverShadow?: boolean;
+  coverOverride?: string;
 }
 const {
   slug,
@@ -21,11 +22,14 @@ const {
   readTime,
   coverWidth,
   coverShadow = false,
+  coverOverride,
 } = Astro.props;
 
 const idx = projects.findIndex((p) => p.slug === slug);
 const project = projects[idx];
 const next = projects[(idx + 1) % projects.length];
+// Detail-page hero image; falls back to the card cover when not overridden.
+const heroCover = coverOverride ?? project.cover;
 ---
 
 <Layout title={`${project.title} — I-Chieh Pan`} description={project.subtitle}>
@@ -107,10 +111,10 @@ const next = projects[(idx + 1) % projects.length];
 
   <!-- Cover -->
   {
-    project.cover && (
+    heroCover && (
       <div class="mx-auto mt-6 mb-6 max-w-5xl px-6 sm:mb-10 sm:mt-10 sm:px-10">
         <img
-          src={project.cover}
+          src={heroCover}
           alt={`${project.title} cover`}
           class:list={[
             "w-full rounded-3xl",
