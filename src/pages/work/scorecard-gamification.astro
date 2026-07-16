@@ -12,22 +12,21 @@ import Callout from "../../components/Callout.astro";
   readTime="7 min read"
   coverPlain
 >
-  <Glance>
+  <Glance challengeLabel="Problem" strategyLabel="Solution" impactLabel="Outcome">
     <Fragment slot="challenge">
-      Of 117 customers with active Scorecards, only ~28% engaged enough to move
-      the needle. Compliance managers couldn't say which rules mattered most, and
-      engineers had no reason to care. Leadership's brief was a single word:
-      gamification.
+      Engineering leaders lack visibility into service maturity, and struggle to
+      drive adoption of best practices — ownership is unclear, and teams have no
+      incentive to improve.
     </Fragment>
     <Fragment slot="strategy">
-      Interrogate "gamification" into concrete mechanics, then invent a leveling
-      model that fits New Relic's inverted data model without breaking the
-      flexibility that makes it different.
+      Levels, weights, and team leaderboards inside Scorecards, plus service
+      catalogs for clear ownership and compliance trends over time — turning
+      best-practice adoption into healthy competition.
     </Fragment>
     <Fragment slot="impact">
-      A shipped leveling, weights, and leaderboard system — anchored by a
-      visibility matrix that kept the game metaphor from leaking across the
-      product.
+      Compliance shifts from a manual administrative chore to a culture of
+      ownership — improving service maturity and clarifying accountability across
+      the org.
     </Fragment>
   </Glance>
 
@@ -50,6 +49,34 @@ import Callout from "../../components/Callout.astro";
       </p>
     </Prose>
   </section>
+
+  <CaseSection title="Who it's for, and why it matters">
+    <Prose>
+      <p>
+        The work served two roles: <strong>engineering leaders</strong> (primary)
+        and <strong>compliance managers</strong> (secondary). Each of their pain
+        points maps to a specific part of the solution:
+      </p>
+      <ul>
+        <li>
+          <strong>Engineering leaders struggle with low standards adoption across
+          teams.</strong> Automated gamification uses competitive levels to drive
+          compliance participation.
+        </li>
+        <li>
+          <strong>Compliance managers spend days manually auditing service
+          ownership.</strong> Centralized service catalogs define clear
+          responsibility for every microservice, with each service's score
+          visible inline, so ownership can be audited in seconds.
+        </li>
+        <li>
+          <strong>Engineering leaders lack visibility into security
+          progress.</strong> Compliance trending pinpoints the specific teams
+          that need resource support to meet security benchmarks.
+        </li>
+      </ul>
+    </Prose>
+  </CaseSection>
 
   <CaseSection num="01" title="The word I couldn't take at face value">
     <Prose>
@@ -340,18 +367,34 @@ import Callout from "../../components/Callout.astro";
     </aside>
   </CaseSection>
 
-  <CaseSection num="07" title="Craft">
+  <CaseSection num="07" title="What shipped">
+    <Prose>
+      <p>The solution shipped as four connected capabilities:</p>
+      <ul>
+        <li><strong>Gamified Scorecards</strong> — competitive levels and
+          configurable weights prioritize the engineering rules that matter,
+          motivating teams to improve compliance.</li>
+        <li><strong>Dynamic team leaderboards</strong> — inside Scorecards, rank
+          engineering teams by accumulated score to foster healthy competition
+          and drive operational excellence.</li>
+        <li><strong>Service catalogs</strong> — define clear ownership for every
+          microservice, with each service's score visible inline, so ownership
+          can be audited in seconds.</li>
+        <li><strong>Compliance trending</strong> — visualizes adherence to
+          standards over time, so leaders can spot high-performing teams and those
+          that need support.</li>
+      </ul>
+    </Prose>
     <aside
       class="my-8 rounded-xl border border-dashed border-[#0041d9]/40 bg-[#0041d9]/[0.04] px-5 py-4"
     >
       <p class="mb-1 font-mono text-xs uppercase tracking-wide text-[#0041d9]">
-        Draft note — to fill in (keep short)
+        Draft note — to fill in
       </p>
       <p class="text-sm leading-relaxed text-muted">
-        3–5 Figma frames + production gifs showing how the visibility matrix
-        translated to real UI: scorecard detail page with rule/level tags, catalog
-        progression drawer, weights configuration flow, team leaderboard with
-        medal badging.
+        Add a Figma frame / production gif for each capability below (levels &amp;
+        weights on a scorecard, the team leaderboard, the service catalog with
+        scores, and the compliance-trend view).
       </p>
     </aside>
     <div class="my-8 grid gap-5 sm:grid-cols-2">
@@ -359,28 +402,28 @@ import Callout from "../../components/Callout.astro";
         class="flex min-h-[200px] items-center justify-center rounded-2xl border-2 border-dashed border-line bg-surface px-6 text-center"
       >
         <p class="font-mono text-xs uppercase tracking-wide text-muted">
-          [ image — scorecard detail: rule/level tags ]
+          [ image — Gamified Scorecards: levels &amp; weights ]
         </p>
       </div>
       <div
         class="flex min-h-[200px] items-center justify-center rounded-2xl border-2 border-dashed border-line bg-surface px-6 text-center"
       >
         <p class="font-mono text-xs uppercase tracking-wide text-muted">
-          [ image — catalog progression drawer ]
+          [ image — Dynamic team leaderboard ]
         </p>
       </div>
       <div
         class="flex min-h-[200px] items-center justify-center rounded-2xl border-2 border-dashed border-line bg-surface px-6 text-center"
       >
         <p class="font-mono text-xs uppercase tracking-wide text-muted">
-          [ image — weights configuration flow ]
+          [ image — Service catalog with per-service scores ]
         </p>
       </div>
       <div
         class="flex min-h-[200px] items-center justify-center rounded-2xl border-2 border-dashed border-line bg-surface px-6 text-center"
       >
         <p class="font-mono text-xs uppercase tracking-wide text-muted">
-          [ image — team leaderboard with medal badging ]
+          [ image — Compliance trending over time ]
         </p>
       </div>
     </div>
