@@ -1,5 +1,7 @@
 ---
-// An image with an optional monospace caption.
+// An image (or looping video) with an optional monospace caption.
+// A `src` ending in .mp4/.webm renders an autoplaying, muted, looping video —
+// use for screen recordings instead of heavy GIFs.
 // `zoom` (e.g. "scale-110") enlarges the image inside a fixed-size, clipped
 // card — useful for source images that have whitespace baked into the file.
 interface Props {
@@ -10,11 +12,24 @@ interface Props {
   zoom?: string;
 }
 const { src, alt = "", caption, class: className = "", zoom } = Astro.props;
+const isVideo = /\.(mp4|webm)$/i.test(src);
+const cardClass =
+  "w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]";
 ---
 
 <figure class:list={["my-8", className]}>
   {
-    zoom ? (
+    isVideo ? (
+      <video
+        src={src}
+        autoplay
+        loop
+        muted
+        playsinline
+        aria-label={alt}
+        class={cardClass}
+      />
+    ) : zoom ? (
       <div class="overflow-hidden rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]">
         <img src={src} alt={alt} loading="lazy" class:list={["w-full", zoom]} />
       </div>
@@ -23,7 +38,7 @@ const { src, alt = "", caption, class: className = "", zoom } = Astro.props;
         src={src}
         alt={alt}
         loading="lazy"
-        class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+        class={cardClass}
       />
     )
   }

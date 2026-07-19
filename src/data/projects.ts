@@ -39,7 +39,7 @@ export const projects: Project[] = [
     year: "2025",
     role: "Lead designer",
     discipline: "Product design",
-    cover: "/images/scorecard-gamification/cover.svg",
+    cover: "/images/scorecard-gamification/cover.png",
   },
   {
     slug: "session-replay",
