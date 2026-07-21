@@ -12,7 +12,6 @@ import Callout from "../../components/Callout.astro";
   team="PM, EM & engineering (incl. architect)"
   readTime="7 min read"
   coverPlain
-  coverShadow
 >
   <Glance challengeLabel="Challenge" strategyLabel="Solution" impactLabel="Outcome">
     <Fragment slot="challenge">
@@ -331,7 +330,7 @@ import Callout from "../../components/Callout.astro";
     </Callout>
   </CaseSection>
 
-  <CaseSection num="03" title="Designing the leveling experience">
+  <CaseSection num="03" title="Designing how a team levels up">
     <Prose>
       <p>
         If entities are scored through rules, then the rule is the only place a
@@ -366,7 +365,7 @@ import Callout from "../../components/Callout.astro";
     <Figure
       src="/images/scorecard-gamification/leveling-setup.mp4"
       caption="Setup: assigning each rule to a maturity level (Below basic → Advanced)"
-      class="mx-auto max-w-3xl"
+      class="mx-auto max-w-2xl"
     />
 
     <div class="mt-10 grid gap-8 md:grid-cols-2 md:items-start">
@@ -387,22 +386,9 @@ import Callout from "../../components/Callout.astro";
       leveling ride on top of New Relic's flexible model instead of requiring us to
       rebuild it.
     </Callout>
-
-    <figure class="mx-auto my-12 max-w-3xl text-center sm:my-16">
-      <blockquote
-        class="font-display text-[24px] font-medium italic leading-snug tracking-tight text-ink"
-      >
-        “The distinctions between basic, intermediate, and mature… that's my
-        favorite thing. It helps teams not try to do everything all at once, in
-        any order. There's a sequence to this, and a measured way to do it.”
-      </blockquote>
-      <figcaption class="mt-5 font-mono text-xs uppercase tracking-wide text-muted">
-        Engineering leader, customer validation session
-      </figcaption>
-    </figure>
   </CaseSection>
 
-  <CaseSection num="04" title="The leaderboard: from rich badging to one clear ranking">
+  <CaseSection num="04" title="Designing how teams compare">
     <Prose>
       <p>
         Levels and weights answered <em>how a team makes progress</em>. The
@@ -493,9 +479,8 @@ import Callout from "../../components/Callout.astro";
     <Prose class="mt-14">
       <p>
         A quick round of internal testing made the pattern clear. Even engineering
-        managers, the people closest to this data, struggled to correlate the
-        badges, icons, and numbers with what they actually meant. The information
-        was all there; the meaning wasn't. Richness had become noise.
+        managers, the people closest to this data, struggled to connect the badges,
+        icons, and numbers to what they actually meant.
       </p>
       <p>
         So I cut hard and made the leaderboard as simple and direct as I could: a
@@ -545,6 +530,18 @@ import Callout from "../../components/Callout.astro";
   </CaseSection>
 
   <CaseSection num="06" title="Outcomes and reflection">
+    <figure class="mx-auto mb-12 max-w-3xl text-center">
+      <blockquote
+        class="font-display text-[24px] font-medium italic leading-snug tracking-tight text-ink"
+      >
+        “The distinctions between basic, intermediate, and mature… that's my
+        favorite thing. It helps teams not try to do everything all at once, in
+        any order. There's a sequence to this, and a measured way to do it.”
+      </blockquote>
+      <figcaption class="mt-5 font-mono text-xs uppercase tracking-wide text-muted">
+        Engineering leader, customer validation session
+      </figcaption>
+    </figure>
     <aside
       class="my-8 rounded-xl border border-dashed border-[#0041d9]/40 bg-[#0041d9]/[0.04] px-5 py-4"
     >
