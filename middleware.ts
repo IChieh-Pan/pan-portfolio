@@ -75,7 +75,11 @@ function page(opts: { error?: boolean; locked?: boolean }): Response {
   );
 }
 
+const GATE_ENABLED = false;
+
 export default async function middleware(request: Request): Promise<Response | undefined> {
+  if (!GATE_ENABLED) return;
+
   const PASS = process.env.CASE_STUDY_PASSWORD;
   if (!PASS) return page({ locked: true });
 
