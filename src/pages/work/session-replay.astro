@@ -70,42 +70,11 @@ import Callout from "../../components/Callout.astro";
         functional landscape and identifying opportunities for differentiation.
       </p>
     </Prose>
-    <div class="my-8 grid grid-cols-2 gap-5">
-      <figure>
-        <div
-          class="aspect-video overflow-hidden rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
-        >
-          <img
-            src="/images/session-replay/competitive-1.png"
-            alt=""
-            loading="lazy"
-            class="h-full w-full object-cover"
-          />
-        </div>
-        <figcaption
-          class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
-        >
-          Competitive analysis — functional landscape
-        </figcaption>
-      </figure>
-      <figure>
-        <div
-          class="aspect-video overflow-hidden rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
-        >
-          <img
-            src="/images/session-replay/competitive-2.png"
-            alt=""
-            loading="lazy"
-            class="h-full w-full object-cover object-[0%_90%]"
-          />
-        </div>
-        <figcaption
-          class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
-        >
-          Competitive analysis — opportunities for differentiation
-        </figcaption>
-      </figure>
-    </div>
+    <Figure
+      src="/images/session-replay/user-journey-competitive-analysis.png"
+      caption="User journey mapping and competitive analysis — functional landscape and opportunities for differentiation"
+      class="my-8"
+    />
     <Prose>
       <h3>Jobs-to-be-Done</h3>
       <p>
@@ -329,7 +298,7 @@ import Callout from "../../components/Callout.astro";
 
   <CaseSection
     num="04"
-    title="When testing grouped vs. overlay markers, grouping won on every dimension."
+    title="Stakeholders disagreed on grouped vs. overlay markers — so I let user research decide."
   >
     <Prose>
       <p>
@@ -359,13 +328,13 @@ import Callout from "../../components/Callout.astro";
     </Prose>
     <figure class="mx-auto mt-12 w-[70%]">
       <div
-        class="rounded-2xl bg-card p-3 shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+        class="overflow-hidden rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
       >
         <img
-          src="/images/session-replay/marker-test.png"
+          src="/images/session-replay/marker-test-and-survey.png"
           alt=""
           loading="lazy"
-          class="w-full rounded-lg"
+          class="w-full"
         />
       </div>
       <figcaption
@@ -374,7 +343,7 @@ import Callout from "../../components/Callout.astro";
         Marker user test — grouped vs. overlay
       </figcaption>
     </figure>
-    <Callout>
+    <Callout class="mx-auto w-[70%]">
       Grouped markers create a natural heatmap — engineers can see{" "}
       <em>where</em> to start investigating, not just <em>that</em> errors
       occurred.
@@ -397,7 +366,23 @@ import Callout from "../../components/Callout.astro";
         <strong>cuts time-to-insight from minutes to seconds.</strong>
       </p>
     </Prose>
+    <figure class="mx-auto mt-12 w-full">
+      <img
+        src="/images/session-replay/entry-points-golden-path.png"
+        alt=""
+        loading="lazy"
+        class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+      />
+      <figcaption
+        class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
+      >
+        Every entry point into Session Replay, and the golden path from signal to session
+      </figcaption>
+    </figure>
     <figure class="mx-auto mt-16 w-[70%]">
+      <p class="mb-3 flex items-center gap-2 font-mono text-xs uppercase tracking-wide text-[#0041d9]">
+        <span aria-hidden="true" class="text-lg leading-none">✦</span> Shipped
+      </p>
       <img
         src="/images/session-replay/final.gif"
         alt=""

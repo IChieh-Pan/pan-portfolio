@@ -12,23 +12,23 @@ import Callout from "../../components/Callout.astro";
   team="PM, EM & engineering (incl. architect)"
   readTime="7 min read"
   coverPlain
+  coverWidth="max-w-[70%]"
 >
   <Glance challengeLabel="Challenge" strategyLabel="Solution" impactLabel="Outcome">
     <Fragment slot="challenge">
-      Scorecards told teams how mature their services were, but the data alone
-      didn't change behavior. Usage was low, and compliance managers had no
-      way to say which rules mattered most or to rally teams around improving.
+      Scorecards usage was low, and that meant more than a UX gap: it meant
+      <strong>lost revenue</strong>. Compliance managers, meanwhile, had no way
+      to flag which rules mattered most.
     </Fragment>
     <Fragment slot="strategy">
-      A gamified layer on Scorecards: maturity levels, configurable weights, and
-      a team leaderboard, fit to New Relic's rule-based model rather than the
-      competitor pattern. I led the direction and aligned Engineering and Product
-      leaders behind it, naming the trade-offs to earn buy-in.
+      I led the direction and aligned Engineering and Product behind it. The
+      result: a gamified layer fit to New Relic's own rule-based model, with{" "}
+      <strong>maturity levels, weights, and a team leaderboard</strong>.
     </Fragment>
     <Fragment slot="impact">
-      Turns best-practice adoption from an administrative chore into a culture of
-      ownership: teams can see how they level up, what to fix next, and how they
-      rank against their peers.
+      <strong>+12% Scorecards usage, +8% lift in the metric the suite is priced
+      on</strong> after launch. Teams can now see how they level up, what to
+      fix next, and how they rank.
     </Fragment>
   </Glance>
 
@@ -43,11 +43,6 @@ import Callout from "../../components/Callout.astro";
         told us why: because every rule counted equally, compliance managers
         couldn't flag what carried the most risk, and engineering teams had no way
         to tell what to fix first.
-      </p>
-      <p>
-        <strong>Gamification</strong> is a direct and common way to solve problems
-        like these. As the product designer, I designed that experience for
-        Scorecards: <strong>maturity levels, weights, and a team leaderboard</strong>.
       </p>
     </Prose>
   </section>
@@ -80,7 +75,7 @@ import Callout from "../../components/Callout.astro";
     </Prose>
   </CaseSection>
 
-  <CaseSection title="Our approach">
+  <CaseSection title="Approach">
     <Prose>
       <p>
         Rather than rebuild Scorecards to match how competitors do gamification,
@@ -99,7 +94,7 @@ import Callout from "../../components/Callout.astro";
     </Prose>
   </CaseSection>
 
-  <CaseSection num="01" title="How New Relic Scorecards actually work">
+  <CaseSection num="01" title="How Scorecards actually work">
     <Prose>
       <p>
         Every design decision came back to one thing: how a scorecard actually
@@ -200,51 +195,41 @@ import Callout from "../../components/Callout.astro";
         The scoring model: entities roll up into a rule score, rules average into a scorecard score
       </figcaption>
     </figure>
-    <Prose>
-      <p>
-        It's a flexible, composable model: <strong>the same service can be
-        measured against different criteria in different scorecards</strong>.
-        Powerful for customers, and the reason leveling wasn't a simple add-on.
-      </p>
-    </Prose>
+    <Callout label="The catch">
+      It's a flexible, composable model: the same service can be measured
+      against different criteria in different scorecards. Powerful for
+      customers, and the reason leveling wasn't a simple add-on.
+    </Callout>
   </CaseSection>
 
   <CaseSection num="02" title="A more flexible model, a harder problem">
     <Prose>
       <h3>How competitors do it</h3>
       <p>
-        Before designing anything, I benchmarked how the category already handles
-        this, studying Cortex, Rely.io, and Port. Gamifying Scorecards centers on
-        the idea of leveling: giving a service a named level it can climb, like
-        Bronze, then Silver, then Gold, as it meets more of a scorecard's
-        requirements. It's the established pattern, and all three do it the same
-        clean way.
+        Before designing anything, I benchmarked Cortex, Rely.io, and Port. All
+        three gamify Scorecards the same way: a service{" "}
+        <strong>attaches directly to a scorecard</strong> and climbs named
+        levels (Bronze → Silver → Gold) as it passes more of that scorecard's
+        checks. The level lives on the entity, scoped to one scorecard.
       </p>
-      <p>
-        In their model, a service{" "}
-        <strong>attaches directly to a scorecard</strong> and climbs its levels as
-        it passes more of that scorecard's checks. The level is an attribute of the
-        entity, scoped to one scorecard.
-      </p>
-      <h3>Our data model works differently</h3>
+      <h3>Why that doesn't work for New Relic</h3>
       <ul>
-        <li>Entities aren't scored by a scorecard directly;{" "}
-          <strong>they're scored by its rules</strong>.</li>
-        <li>A service isn't simply "in" a scorecard the way it is in Cortex. It
-          sits in the intersection of that scorecard's rules.</li>
+        <li>
+          <strong>Entities aren't scored by a scorecard directly</strong> —
+          they're scored by its rules.
+        </li>
+        <li>
+          <strong>A service isn't simply "in" a scorecard</strong> the way it
+          is in Cortex; it sits in the intersection of that scorecard's rules.
+        </li>
+        <li>
+          That's deliberate: rule-level scoring is what lets customers compose
+          rules freely and reuse entities across scorecards. But it also means
+          {" "}<strong>there's no single "level" baked into a scorecard for an
+          entity to climb</strong> — the flexibility that makes the model
+          powerful is exactly what made leveling hard.
+        </li>
       </ul>
-      <p>
-        And that flexibility is exactly the point. Scoring at the rule level is
-        what lets customers orchestrate how they want to measure things: composing
-        rules freely and reusing the same entities across scorecards.
-      </p>
-      <h3>The trade-off that made leveling hard</h3>
-      <p>
-        New Relic's flexibility has a flip side: there's no single "level" baked into a
-        scorecard for an entity to climb. Adding a straightforward leveling layer
-        on top of it was the real design problem. More freedom for the customer,
-        less obvious a place to hang the gamification.
-      </p>
     </Prose>
     <figure class="mt-8 mb-14">
       <div class="grid gap-5 sm:grid-cols-2">
@@ -330,15 +315,12 @@ import Callout from "../../components/Callout.astro";
     </Callout>
   </CaseSection>
 
-  <CaseSection num="03" title="Designing how a team levels up">
+  <CaseSection num="03" title="How a team levels up">
     <Prose>
       <p>
-        If entities are scored through rules, then the rule is the only place a
-        level can actually live. So rather than attach a level to the scorecard as
-        a whole, we attached it to each <strong>rule</strong>. Working with the PM,
-        EM, and the team's architect, we designed a model that{" "}
-        <strong>layered leveling onto the existing rule structure</strong> instead
-        of fighting it:
+        If entities are scored through rules, the rule is the only place a
+        level can live. So working with the PM, EM, and the team's architect,
+        we attached leveling to the <strong>rule</strong>, not the scorecard:
       </p>
       <ul>
         <li>
@@ -355,21 +337,32 @@ import Callout from "../../components/Callout.astro";
           treating every rule as equal.
         </li>
       </ul>
+    </Prose>
+
+    <Callout label="A trade-off I made on scope">
+      Weights ship via API only, not through a UI. Designing a setup screen would
+      have added real interface complexity and cognitive load for a step
+      compliance managers reach for occasionally, not one every user needs up
+      front. With levels and the leaderboard already adding new surface area,
+      cutting the UI here was deliberate, not an oversight.
+    </Callout>
+
+    <Prose class="mt-6">
       <p>
-        I designed the setup flow so an author can drag each rule into the level it
-        belongs to. The other views build on that setup: the scorecard view shows
-        its rules grouped by level, and the entity view shows how mature each
-        service is and how they're spread across the levels.
+        I designed the setup flow: an author drags each rule into the level it
+        belongs to.
       </p>
     </Prose>
 
-    <Figure
-      src="/images/scorecard-gamification/leveling-setup.mp4"
-      caption="Setup: assigning each rule to a maturity level (Below basic → Advanced)"
-      class="mx-auto max-w-2xl"
-    />
+    <div class="mt-10 rounded-2xl border border-line bg-card/25 p-6">
+      <Figure
+        src="/images/scorecard-gamification/leveling-setup.mp4"
+        caption="Setup: assigning each rule to a maturity level (Below basic → Advanced)"
+        class="mx-auto max-w-2xl my-0"
+      />
+    </div>
 
-    <div class="mt-10 grid gap-8 md:grid-cols-2 md:items-start">
+    <div class="mt-8 grid gap-8 md:grid-cols-2 md:items-start">
       <Figure
         src="/images/scorecard-gamification/scorecard-detail.jpg"
         caption="Scorecard view: rules grouped by the maturity level they define"
@@ -483,26 +476,7 @@ import Callout from "../../components/Callout.astro";
         managers, the people closest to this data, struggled to connect the badges,
         icons, and numbers to what they actually meant.
       </p>
-      <p>
-        So I cut hard and made the leaderboard as simple and direct as I could: a
-        podium for the top three, teams ranked by one{" "}
-        <strong>team score</strong> on the same scale for everyone, and nothing
-        else competing for attention. The per-scorecard detail still lives one
-        level deeper, on a team's own page. Given how much complexity levels and
-        weights already introduced, protecting that clarity was the right trade.
-      </p>
     </Prose>
-
-    <div class="mx-auto mt-10 max-w-2xl">
-      <p class="mb-3 flex items-center gap-2 font-mono text-xs uppercase tracking-wide text-[#0041d9]">
-        <span aria-hidden="true">✦</span> Final design
-      </p>
-      <Figure
-        src="/images/scorecard-gamification/leaderboard-final.png"
-        caption="A podium and one team score per team, with the detail one level deeper"
-        class="my-0"
-      />
-    </div>
 
     <Callout label="The trade I made explicit">
       The final leaderboard gives up inline per-scorecard detail to gain a
@@ -528,6 +502,50 @@ import Callout from "../../components/Callout.astro";
           where each service stands and where to invest next.</li>
       </ul>
     </Prose>
+
+    <div class="mt-10 rounded-2xl border border-line bg-card/25 p-6">
+      <div class="mx-auto max-w-2xl">
+        <p class="mb-3 flex items-center gap-2 font-mono text-xs uppercase tracking-wide text-[#0041d9]">
+          <span aria-hidden="true" class="text-lg leading-none">✦</span> Shipped
+        </p>
+        <Figure
+          src="/images/scorecard-gamification/leaderboard-demo.mp4"
+          caption="From the scorecards overview to the team leaderboard, live in production"
+          class="my-0"
+        />
+      </div>
+    </div>
+
+    <div class="mt-5 grid grid-cols-4 gap-4">
+      <div class="rounded-2xl border border-line bg-card/60 p-4">
+        <p class="font-display text-sm font-semibold text-[#0041d9]">Group by team</p>
+        <p class="mt-1.5 text-sm leading-relaxed text-muted">
+          Switching Group by from None to Team is what turns individual
+          scorecards into a team-level leaderboard.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-line bg-card/60 p-4">
+        <p class="font-display text-sm font-semibold text-[#0041d9]">Podium spotlight</p>
+        <p class="mt-1.5 text-sm leading-relaxed text-muted">
+          The top three teams get a medal, a team score, and how many entities
+          they cover, so recognition is instant.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-line bg-card/60 p-4">
+        <p class="font-display text-sm font-semibold text-[#0041d9]">Score vs. growth ranking</p>
+        <p class="mt-1.5 text-sm leading-relaxed text-muted">
+          A toggle separates who's highest right now from who's improved the
+          most, so leading and improving don't get confused.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-line bg-card/60 p-4">
+        <p class="font-display text-sm font-semibold text-[#0041d9]">7 days / 1 month / 3 months</p>
+        <p class="mt-1.5 text-sm leading-relaxed text-muted">
+          Switching the time window shows whether a team's climb is a blip or
+          a real trend.
+        </p>
+      </div>
+    </div>
   </CaseSection>
 
   <CaseSection num="06" title="Outcomes and reflection">
@@ -543,19 +561,19 @@ import Callout from "../../components/Callout.astro";
         Engineering leader, customer validation session
       </figcaption>
     </figure>
-    <aside
-      class="my-8 rounded-xl border border-dashed border-[#0041d9]/40 bg-[#0041d9]/[0.04] px-5 py-4"
-    >
-      <p class="mb-1 font-mono text-xs uppercase tracking-wide text-[#0041d9]">
-        Draft note: to fill in
+    <Callout label="What moved">
+      Scorecards usage rose 12% after launch, and the consumption metric the
+      suite is priced on rose 8%. Gamification moved the number that actually
+      mattered to the business, not just an engagement stat.
+    </Callout>
+    <Prose>
+      <p>
+        If I could redo one part of this, I'd have the data-model conversation
+        with Engineering <strong>before</strong> sketching anything, not after
+        a scrapped first pass. Benchmarking competitors was useful, but
+        building toward their pattern before checking it against our own model
+        cost real time.
       </p>
-      <p class="text-sm leading-relaxed text-muted">
-        Post-launch signal (adoption / engagement change, a customer or internal
-        quote, deals cited); one directional line is fine if there are no hard
-        numbers yet. Then one honest "what I'd do differently," e.g. a surface
-        where leveling should have shown up differently, or front-loading the
-        rule-level constraint conversation with Eng earlier.
-      </p>
-    </aside>
+    </Prose>
   </CaseSection>
 </CaseStudy>
