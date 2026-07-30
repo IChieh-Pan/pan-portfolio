@@ -52,17 +52,6 @@ export const projects: Project[] = [
     cover: "/images/session-replay/cover.png",
   },
   {
-    slug: "sli-query-builder",
-    client: "New Relic",
-    title: "SLI Query Builder",
-    subtitle: "Making SLI setup accessible at scale",
-    year: "2023",
-    role: "Lead designer",
-    discipline: "Product design",
-    cover: "/images/sli-query-builder/cover.png",
-    coverPad: true,
-  },
-  {
     slug: "itonics-design-system",
     client: "ITONICS Cloud",
     title: "Design System",
