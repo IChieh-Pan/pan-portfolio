@@ -32,6 +32,16 @@ export const projects: Project[] = [
     cover: "/images/ai-context-layer/cover.svg",
   },
   {
+    slug: "scorecard-gamification",
+    client: "New Relic",
+    title: "Scorecards & Gamification",
+    subtitle: "Drive engineering standards and ownership",
+    year: "2025",
+    role: "Lead designer",
+    discipline: "Product design",
+    cover: "/images/scorecard-gamification/cover.png",
+  },
+  {
     slug: "session-replay",
     client: "New Relic",
     title: "Session Replay",

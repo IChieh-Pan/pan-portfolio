@@ -1,0 +1,579 @@
+---
+import CaseStudy from "../../layouts/CaseStudy.astro";
+import CaseSection from "../../components/CaseSection.astro";
+import Prose from "../../components/Prose.astro";
+import Figure from "../../components/Figure.astro";
+import Glance from "../../components/Glance.astro";
+import Callout from "../../components/Callout.astro";
+---
+
+<CaseStudy
+  slug="scorecard-gamification"
+  team="PM, EM & engineering (incl. architect)"
+  readTime="7 min read"
+  coverPlain
+  coverWidth="max-w-[70%]"
+>
+  <Glance challengeLabel="Challenge" strategyLabel="Solution" impactLabel="Outcome">
+    <Fragment slot="challenge">
+      Scorecards usage was low, and that meant more than a UX gap: it meant
+      <strong>lost revenue</strong>. Compliance managers, meanwhile, had no way
+      to flag which rules mattered most.
+    </Fragment>
+    <Fragment slot="strategy">
+      I led the direction and aligned Engineering and Product behind it. The
+      result: a gamified layer fit to New Relic's own rule-based model, with{" "}
+      <strong>maturity levels, weights, and a team leaderboard</strong>.
+    </Fragment>
+    <Fragment slot="impact">
+      <strong>+12% Scorecards usage, +8% lift in the metric the suite is priced
+      on</strong> after launch. Teams can now see how they level up, what to
+      fix next, and how they rank.
+    </Fragment>
+  </Glance>
+
+  <section class="mx-auto max-w-5xl px-6 sm:px-10">
+    <Prose>
+      <p>
+        Scorecards is how New Relic customers hold their engineering organization
+        to a bar: quality, security, ownership, production readiness. It measures
+        services against rules the customer defines and rolls the results into a
+        score. But a score on a dashboard doesn't, by itself, change how teams
+        behave. Our data analysis showed usage was low, and customer conversations
+        told us why: because every rule counted equally, compliance managers
+        couldn't flag what carried the most risk, and engineering teams had no way
+        to tell what to fix first.
+      </p>
+    </Prose>
+  </section>
+
+  <CaseSection title="Who we designed for">
+    <Prose>
+      <p>
+        The work served two roles: <strong>engineering leaders</strong> (primary)
+        and <strong>compliance managers</strong> (secondary). Each pain point maps
+        to a specific part of the solution:
+      </p>
+      <ul>
+        <li>
+          <strong>Engineering leaders struggle with low standards adoption across
+          teams.</strong> Levels and a team leaderboard turn improvement into
+          visible progress and healthy competition.
+        </li>
+        <li>
+          <strong>Compliance managers can't express what matters most.</strong>{" "}
+          Configurable weights let them prioritize the rules that carry the most
+          risk, so a score reflects real priorities rather than counting every rule
+          equally.
+        </li>
+        <li>
+          <strong>Leaders lack a read on where to invest.</strong> Maturity
+          distribution and trends over time pinpoint the teams and services that
+          need support to reach the next level.
+        </li>
+      </ul>
+    </Prose>
+  </CaseSection>
+
+  <CaseSection title="Approach">
+    <Prose>
+      <p>
+        Rather than rebuild Scorecards to match how competitors do gamification,
+        we layered it onto the model New Relic already had. That meant three
+        connected moves —
+      </p>
+      <ul>
+        <li><strong>Maturity levels</strong> to give teams something to climb,</li>
+        <li><strong>Weights</strong> to give rules different priorities, and</li>
+        <li><strong>A leaderboard</strong> to turn progress into healthy competition.</li>
+      </ul>
+      <p>
+        The hard part was fitting each onto a rule-based model that was never
+        designed for leveling. The sections below walk through how.
+      </p>
+    </Prose>
+  </CaseSection>
+
+  <CaseSection num="01" title="How Scorecards actually work">
+    <Prose>
+      <p>
+        Every design decision came back to one thing: how a scorecard actually
+        gets scored. It works like this:
+      </p>
+      <ul>
+        <li>A Scorecard is a set of rules.</li>
+        <li>
+          Each rule is a query that checks a group of entities (services,
+          browser apps, and so on) and marks each one pass or fail.
+        </li>
+        <li>
+          A rule's score is entities passed ÷ entities checked, and the
+          scorecard's score is the average of its rules.
+        </li>
+      </ul>
+    </Prose>
+
+    <figure class="my-10">
+      <div class="rounded-2xl border border-line bg-card/60 px-4 py-6 sm:px-6">
+        <svg
+          viewBox="0 0 760 300"
+          class="mx-auto w-full max-w-2xl"
+          role="img"
+          aria-label="Concept diagram: entities roll up into a rule score, and rules average into a scorecard score"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          font-family="ui-sans-serif, system-ui, sans-serif"
+        >
+          <defs>
+            <marker id="scArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M0 0L10 5L0 10z" fill="#6c685f" />
+            </marker>
+          </defs>
+
+          <!-- Column labels -->
+          <text x="20" y="20" fill="#6c685f" font-size="11" letter-spacing="1.5" font-family="ui-monospace, monospace">ENTITIES</text>
+          <text x="235" y="20" fill="#6c685f" font-size="11" letter-spacing="1.5" font-family="ui-monospace, monospace">RULES</text>
+          <text x="565" y="20" fill="#6c685f" font-size="11" letter-spacing="1.5" font-family="ui-monospace, monospace">SCORECARD</text>
+
+          <!-- Entities: row 1 (2/5) -->
+          <circle cx="24" cy="75" r="6" fill="#0041d9"/>
+          <circle cx="44" cy="75" r="6" fill="#0041d9"/>
+          <circle cx="64" cy="75" r="6" fill="#f2e8e3" stroke="#d9d5cc"/>
+          <circle cx="84" cy="75" r="6" fill="#f2e8e3" stroke="#d9d5cc"/>
+          <circle cx="104" cy="75" r="6" fill="#f2e8e3" stroke="#d9d5cc"/>
+          <!-- Entities: row 2 (3/5) -->
+          <circle cx="24" cy="150" r="6" fill="#0041d9"/>
+          <circle cx="44" cy="150" r="6" fill="#0041d9"/>
+          <circle cx="64" cy="150" r="6" fill="#0041d9"/>
+          <circle cx="84" cy="150" r="6" fill="#f2e8e3" stroke="#d9d5cc"/>
+          <circle cx="104" cy="150" r="6" fill="#f2e8e3" stroke="#d9d5cc"/>
+          <!-- Entities: row 3 (1/5) -->
+          <circle cx="24" cy="225" r="6" fill="#0041d9"/>
+          <circle cx="44" cy="225" r="6" fill="#f2e8e3" stroke="#d9d5cc"/>
+          <circle cx="64" cy="225" r="6" fill="#f2e8e3" stroke="#d9d5cc"/>
+          <circle cx="84" cy="225" r="6" fill="#f2e8e3" stroke="#d9d5cc"/>
+          <circle cx="104" cy="225" r="6" fill="#f2e8e3" stroke="#d9d5cc"/>
+
+          <!-- Entities -> Rules -->
+          <line x1="122" y1="75" x2="205" y2="75" stroke="#6c685f" stroke-width="1.5" marker-end="url(#scArrow)"/>
+          <line x1="122" y1="150" x2="205" y2="150" stroke="#6c685f" stroke-width="1.5" marker-end="url(#scArrow)"/>
+          <line x1="122" y1="225" x2="205" y2="225" stroke="#6c685f" stroke-width="1.5" marker-end="url(#scArrow)"/>
+
+          <!-- Rule nodes -->
+          <rect x="212" y="53" width="168" height="44" rx="8" fill="#ffffff" stroke="#514d45" stroke-width="1.5"/>
+          <text x="228" y="72" fill="#514d45" font-size="13" font-weight="600">Rule</text>
+          <text x="228" y="88" fill="#6c685f" font-size="10" font-family="ui-monospace, monospace">a query</text>
+          <text x="364" y="80" fill="#514d45" font-size="13" font-weight="700" text-anchor="end" font-family="ui-monospace, monospace">40%</text>
+
+          <rect x="212" y="128" width="168" height="44" rx="8" fill="#ffffff" stroke="#514d45" stroke-width="1.5"/>
+          <text x="228" y="147" fill="#514d45" font-size="13" font-weight="600">Rule</text>
+          <text x="228" y="163" fill="#6c685f" font-size="10" font-family="ui-monospace, monospace">a query</text>
+          <text x="364" y="155" fill="#514d45" font-size="13" font-weight="700" text-anchor="end" font-family="ui-monospace, monospace">60%</text>
+
+          <rect x="212" y="203" width="168" height="44" rx="8" fill="#ffffff" stroke="#514d45" stroke-width="1.5"/>
+          <text x="228" y="222" fill="#514d45" font-size="13" font-weight="600">Rule</text>
+          <text x="228" y="238" fill="#6c685f" font-size="10" font-family="ui-monospace, monospace">a query</text>
+          <text x="364" y="230" fill="#514d45" font-size="13" font-weight="700" text-anchor="end" font-family="ui-monospace, monospace">20%</text>
+
+          <!-- Rules -> Scorecard (converge) -->
+          <line x1="382" y1="75" x2="556" y2="150" stroke="#6c685f" stroke-width="1.5" marker-end="url(#scArrow)"/>
+          <line x1="382" y1="150" x2="556" y2="150" stroke="#6c685f" stroke-width="1.5" marker-end="url(#scArrow)"/>
+          <line x1="382" y1="225" x2="556" y2="150" stroke="#6c685f" stroke-width="1.5" marker-end="url(#scArrow)"/>
+
+          <!-- Scorecard node -->
+          <rect x="560" y="110" width="180" height="80" rx="10" fill="#ffffff" stroke="#0041d9" stroke-width="2"/>
+          <text x="578" y="140" fill="#0041d9" font-size="14" font-weight="700">Scorecard</text>
+          <text x="578" y="158" fill="#6c685f" font-size="10" font-family="ui-monospace, monospace">avg of rules</text>
+          <text x="722" y="182" fill="#0041d9" font-size="20" font-weight="700" text-anchor="end">40%</text>
+
+          <!-- Annotations -->
+          <text x="24" y="273" fill="#6c685f" font-size="11" font-family="ui-monospace, monospace">&#9679; pass&#160;&#160;&#9675; fail</text>
+          <text x="212" y="273" fill="#6c685f" font-size="11" font-family="ui-monospace, monospace">rule = passed &#247; checked</text>
+        </svg>
+      </div>
+      <figcaption class="mt-3 font-mono text-xs uppercase tracking-wide text-muted">
+        The scoring model: entities roll up into a rule score, rules average into a scorecard score
+      </figcaption>
+    </figure>
+    <Callout label="The catch">
+      It's a flexible, composable model: the same service can be measured
+      against different criteria in different scorecards. Powerful for
+      customers, and the reason leveling wasn't a simple add-on.
+    </Callout>
+  </CaseSection>
+
+  <CaseSection num="02" title="A more flexible model, a harder problem">
+    <Prose>
+      <h3>How competitors do it</h3>
+      <p>
+        Before designing anything, I benchmarked Cortex, Rely.io, and Port. All
+        three gamify Scorecards the same way: a service{" "}
+        <strong>attaches directly to a scorecard</strong> and climbs named
+        levels (Bronze → Silver → Gold) as it passes more of that scorecard's
+        checks. The level lives on the entity, scoped to one scorecard.
+      </p>
+      <h3>Why that doesn't work for New Relic</h3>
+      <ul>
+        <li>
+          <strong>Entities aren't scored by a scorecard directly</strong> —
+          they're scored by its rules.
+        </li>
+        <li>
+          <strong>A service isn't simply "in" a scorecard</strong> the way it
+          is in Cortex; it sits in the intersection of that scorecard's rules.
+        </li>
+        <li>
+          That's deliberate: rule-level scoring is what lets customers compose
+          rules freely and reuse entities across scorecards. But it also means
+          {" "}<strong>there's no single "level" baked into a scorecard for an
+          entity to climb</strong> — the flexibility that makes the model
+          powerful is exactly what made leveling hard.
+        </li>
+      </ul>
+    </Prose>
+    <figure class="mt-8 mb-14">
+      <div class="grid gap-5 sm:grid-cols-2">
+        <!-- Competitor model -->
+        <div class="rounded-2xl border border-line bg-card/60 p-6">
+          <p class="font-mono text-[11px] uppercase tracking-wide text-muted">Competitors</p>
+          <svg viewBox="0 0 360 210" class="mt-3 w-full" fill="none" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif, system-ui, sans-serif">
+            <!-- Scorecard -->
+            <rect x="120" y="14" width="120" height="38" rx="8" fill="#ffffff" stroke="#514d45" stroke-width="1.5"/>
+            <text x="180" y="38" text-anchor="middle" font-size="13" font-weight="600" fill="#514d45">Scorecard</text>
+            <!-- connectors -->
+            <line x1="180" y1="52" x2="65" y2="130" stroke="#6c685f" stroke-width="1.5"/>
+            <line x1="180" y1="52" x2="180" y2="130" stroke="#6c685f" stroke-width="1.5"/>
+            <line x1="180" y1="52" x2="295" y2="130" stroke="#6c685f" stroke-width="1.5"/>
+            <!-- entities carry a level -->
+            <rect x="22" y="130" width="86" height="44" rx="8" fill="#f7f5f0" stroke="#d9d5cc"/>
+            <circle cx="42" cy="152" r="5" fill="#b06b3a"/>
+            <text x="54" y="156" font-size="12" fill="#514d45">Entity</text>
+            <text x="65" y="169" text-anchor="middle" font-size="9" fill="#6c685f" font-family="ui-monospace, monospace">Bronze</text>
+            <rect x="137" y="130" width="86" height="44" rx="8" fill="#f7f5f0" stroke="#d9d5cc"/>
+            <circle cx="157" cy="152" r="5" fill="#9aa0a6"/>
+            <text x="169" y="156" font-size="12" fill="#514d45">Entity</text>
+            <text x="180" y="169" text-anchor="middle" font-size="9" fill="#6c685f" font-family="ui-monospace, monospace">Silver</text>
+            <rect x="252" y="130" width="86" height="44" rx="8" fill="#f7f5f0" stroke="#d9d5cc"/>
+            <circle cx="272" cy="152" r="5" fill="#c9a227"/>
+            <text x="284" y="156" font-size="12" fill="#514d45">Entity</text>
+            <text x="295" y="169" text-anchor="middle" font-size="9" fill="#6c685f" font-family="ui-monospace, monospace">Gold</text>
+          </svg>
+          <p class="mt-3 text-xs leading-relaxed text-muted">
+            The entity attaches directly to a scorecard, so its level (Bronze,
+            Silver, or Gold) is just an attribute there.
+          </p>
+        </div>
+
+        <!-- New Relic model -->
+        <div class="rounded-2xl border border-line bg-card/60 p-6">
+          <p class="font-mono text-[11px] uppercase tracking-wide text-[#0041d9]">New Relic</p>
+          <svg viewBox="0 0 360 210" class="mt-3 w-full" fill="none" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif, system-ui, sans-serif">
+            <!-- Scorecard -->
+            <rect x="120" y="10" width="120" height="36" rx="8" fill="#ffffff" stroke="#0041d9" stroke-width="1.5"/>
+            <text x="180" y="33" text-anchor="middle" font-size="13" font-weight="600" fill="#0041d9">Scorecard</text>
+            <!-- scorecard -> rules -->
+            <line x1="180" y1="46" x2="65" y2="86" stroke="#6c685f" stroke-width="1.5"/>
+            <line x1="180" y1="46" x2="180" y2="86" stroke="#6c685f" stroke-width="1.5"/>
+            <line x1="180" y1="46" x2="295" y2="86" stroke="#6c685f" stroke-width="1.5"/>
+            <!-- rules -->
+            <rect x="30" y="86" width="70" height="30" rx="7" fill="#ffffff" stroke="#514d45" stroke-width="1.5"/>
+            <text x="65" y="105" text-anchor="middle" font-size="11" fill="#514d45">Rule</text>
+            <rect x="145" y="86" width="70" height="30" rx="7" fill="#ffffff" stroke="#514d45" stroke-width="1.5"/>
+            <text x="180" y="105" text-anchor="middle" font-size="11" fill="#514d45">Rule</text>
+            <rect x="260" y="86" width="70" height="30" rx="7" fill="#ffffff" stroke="#514d45" stroke-width="1.5"/>
+            <text x="295" y="105" text-anchor="middle" font-size="11" fill="#514d45">Rule</text>
+            <!-- rules -> entities -->
+            <line x1="65" y1="116" x2="65" y2="140" stroke="#6c685f" stroke-width="1.5"/>
+            <line x1="180" y1="116" x2="180" y2="140" stroke="#6c685f" stroke-width="1.5"/>
+            <line x1="295" y1="116" x2="295" y2="140" stroke="#6c685f" stroke-width="1.5"/>
+            <!-- entity dots per rule -->
+            <circle cx="50" cy="150" r="4.5" fill="#0041d9"/>
+            <circle cx="65" cy="150" r="4.5" fill="#f2e8e3" stroke="#d9d5cc"/>
+            <circle cx="80" cy="150" r="4.5" fill="#0041d9"/>
+            <circle cx="165" cy="150" r="4.5" fill="#0041d9"/>
+            <circle cx="180" cy="150" r="4.5" fill="#0041d9"/>
+            <circle cx="195" cy="150" r="4.5" fill="#f2e8e3" stroke="#d9d5cc"/>
+            <circle cx="280" cy="150" r="4.5" fill="#f2e8e3" stroke="#d9d5cc"/>
+            <circle cx="295" cy="150" r="4.5" fill="#0041d9"/>
+            <circle cx="310" cy="150" r="4.5" fill="#f2e8e3" stroke="#d9d5cc"/>
+            <text x="180" y="182" text-anchor="middle" font-size="10" fill="#6c685f" font-family="ui-monospace, monospace">entities&#160;(&#9679;&#160;pass&#160;&#160;&#9675;&#160;fail)</text>
+          </svg>
+          <p class="mt-3 text-xs leading-relaxed text-muted">
+            Entities are scored through rules, so there is no single entity level
+            to attach a badge to.
+          </p>
+        </div>
+      </div>
+      <figcaption class="mt-3 font-mono text-xs uppercase tracking-wide text-muted">
+        Why leveling is straightforward for competitors, but not for New Relic
+      </figcaption>
+    </figure>
+    <Callout label="The real question">
+      New Relic's model is multi-dimensional: entity → rule → scorecard, then grouped by
+      team or not at all. How do we surface leveling gracefully across every one
+      of those dimensions, without overwhelming the interface?
+    </Callout>
+  </CaseSection>
+
+  <CaseSection num="03" title="How a team levels up">
+    <Prose>
+      <p>
+        If entities are scored through rules, the rule is the only place a
+        level can live. So working with the PM, EM, and the team's architect,
+        we attached leveling to the <strong>rule</strong>, not the scorecard:
+      </p>
+      <ul>
+        <li>
+          Each rule in a scorecard is assigned to a <strong>maturity level</strong>:
+          Below basic, Basic, Intermediate, or Advanced.
+        </li>
+        <li>
+          An entity's maturity level is the <strong>highest level whose rules it's
+          passing</strong>, so progress is something a team can actually climb.
+        </li>
+        <li>
+          <strong>Weights</strong>, set up through the API, let a compliance
+          manager mark which rules matter most, so the score and the level reflect real priorities rather than
+          treating every rule as equal.
+        </li>
+      </ul>
+    </Prose>
+
+    <Callout label="A trade-off I made on scope">
+      Weights ship via API only, not through a UI. Designing a setup screen would
+      have added real interface complexity and cognitive load for a step
+      compliance managers reach for occasionally, not one every user needs up
+      front. With levels and the leaderboard already adding new surface area,
+      cutting the UI here was deliberate, not an oversight.
+    </Callout>
+
+    <Prose class="mt-6">
+      <p>
+        I designed the setup flow: an author drags each rule into the level it
+        belongs to.
+      </p>
+    </Prose>
+
+    <div class="mt-10 rounded-2xl border border-line bg-card/25 p-6">
+      <Figure
+        src="/images/scorecard-gamification/leveling-setup.mp4"
+        caption="Setup: assigning each rule to a maturity level (Below basic → Advanced)"
+        class="mx-auto max-w-2xl my-0"
+      />
+    </div>
+
+    <div class="mt-8 grid gap-8 md:grid-cols-2 md:items-start">
+      <Figure
+        src="/images/scorecard-gamification/scorecard-detail.jpg"
+        caption="Scorecard view: rules grouped by the maturity level they define"
+        class="my-0"
+      />
+      <Figure
+        src="/images/scorecard-gamification/entity-maturity.png"
+        caption="Entity view: maturity distribution and per-entity progress"
+        class="my-0"
+      />
+    </div>
+
+    <Callout>
+      Levels don't live on the scorecard; they live on its rules. That one move let
+      leveling ride on top of New Relic's flexible model instead of requiring us to
+      rebuild it.
+    </Callout>
+  </CaseSection>
+
+  <CaseSection num="04" title="Designing how teams compare">
+    <Prose>
+      <p>
+        Levels and weights answered <em>how a team makes progress</em>. The
+        leaderboard asked a different question: when we crown a team, what exactly
+        are we ranking? It's the piece that changed the most between my early
+        explorations and what shipped.
+      </p>
+      <p>
+        Most of my early directions leaned into richness, each trying a different
+        way to pack in badges, levels, and per-rule detail:
+      </p>
+    </Prose>
+
+    <div class="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-4">
+        <div>
+          <div class="mb-1.5 font-mono text-sm font-semibold text-[#0041d9]">A</div>
+          <img
+            src="/images/scorecard-gamification/leaderboard-expl-1-badgecounts.png"
+            alt="Leaderboard with a podium and per-team badge counts"
+            loading="lazy"
+            class="w-full rounded-lg border border-line bg-white shadow-[0_6px_20px_-12px_rgba(16,24,40,0.3)]"
+          />
+        </div>
+        <div>
+          <div class="mb-1.5 font-mono text-sm font-semibold text-[#0041d9]">B</div>
+          <img
+            src="/images/scorecard-gamification/leaderboard-expl-2-named.png"
+            alt="Leaderboard with named tier badges and rank numbers"
+            loading="lazy"
+            class="w-full rounded-lg border border-line bg-white shadow-[0_6px_20px_-12px_rgba(16,24,40,0.3)]"
+          />
+        </div>
+        <div>
+          <div class="mb-1.5 font-mono text-sm font-semibold text-[#0041d9]">C</div>
+          <img
+            src="/images/scorecard-gamification/leaderboard-expl-3-transparency.png"
+            alt="Leaderboard encoding level through filled and faded badges, with per-rule detail"
+            loading="lazy"
+            class="w-full rounded-lg border border-line bg-white shadow-[0_6px_20px_-12px_rgba(16,24,40,0.3)]"
+          />
+        </div>
+        <div>
+          <div class="mb-1.5 font-mono text-sm font-semibold text-[#0041d9]">D</div>
+          <img
+            src="/images/scorecard-gamification/leaderboard-expl-4-barchart.png"
+            alt="Leaderboard breaking every scorecard into per-level bar charts"
+            loading="lazy"
+            class="w-full rounded-lg border border-line bg-white shadow-[0_6px_20px_-12px_rgba(16,24,40,0.3)]"
+          />
+        </div>
+    </div>
+
+    <div class="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="rounded-2xl border border-line bg-card/60 p-4">
+        <p class="font-display text-sm font-semibold text-[#0041d9]">A. Medals + badge counts</p>
+        <p class="mt-1.5 text-sm leading-relaxed text-muted">
+          A podium plus a row of badge counts per level. Showed breadth of
+          achievement, but counting badges rewarded teams that simply owned more
+          scorecards, and the row was busy to read.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-line bg-card/60 p-4">
+        <p class="font-display text-sm font-semibold text-[#0041d9]">B. Named tier badges</p>
+        <p class="mt-1.5 text-sm leading-relaxed text-muted">
+          Memorable identities like “DevOps guru” or “The innovator.” Characterful,
+          but the label needed decoding, and pairing it with rank numbers and
+          scores was hard to correlate.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-line bg-card/60 p-4">
+        <p class="font-display text-sm font-semibold text-[#0041d9]">C. Badge transparency</p>
+        <p class="mt-1.5 text-sm leading-relaxed text-muted">
+          Level encoded with filled vs. faded badges, expandable to per-rule
+          detail. Precise, but the transparency states were subtle and the detail
+          dense.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-line bg-card/60 p-4">
+        <p class="font-display text-sm font-semibold text-[#0041d9]">D. Per-level bar charts</p>
+        <p class="mt-1.5 text-sm leading-relaxed text-muted">
+          Every scorecard broken into Basic / Bronze / Silver / Gold bars. The most
+          detailed design, and the hardest to scan; it makes it hard to know who's
+          ahead.
+        </p>
+      </div>
+    </div>
+
+    <Prose class="mt-14">
+      <p>
+        A quick round of internal testing made the pattern clear. Even engineering
+        managers, the people closest to this data, struggled to connect the badges,
+        icons, and numbers to what they actually meant.
+      </p>
+    </Prose>
+
+    <Callout label="The trade I made explicit">
+      The final leaderboard gives up inline per-scorecard detail to gain a
+      comparison that reads in a second. Naming that trade-off is what let the team
+      land on it with confidence, and know exactly what they'd trade to get the
+      detail back later.
+    </Callout>
+  </CaseSection>
+
+  <CaseSection num="05" title="What shipped">
+    <Prose>
+      <p>The design shipped as a connected set of capabilities:</p>
+      <ul>
+        <li><strong>Maturity levels</strong> — rules assigned to Below basic →
+          Advanced, so teams have a level to climb rather than a flat percentage.</li>
+        <li><strong>Configurable weights</strong> — compliance managers prioritize
+          the rules that carry the most risk, so the score reflects what actually
+          matters.</li>
+        <li><strong>Team leaderboard</strong> — teams ranked by one accumulated
+          score to foster healthy competition and drive operational excellence.</li>
+        <li><strong>Entity progression &amp; reporting</strong> — maturity
+          distribution, per-entity profiles, and rule performance over time show
+          where each service stands and where to invest next.</li>
+      </ul>
+    </Prose>
+
+    <div class="mt-10 rounded-2xl border border-line bg-card/25 p-6">
+      <div class="mx-auto max-w-2xl">
+        <p class="mb-3 flex items-center gap-2 font-mono text-xs uppercase tracking-wide text-[#0041d9]">
+          <span aria-hidden="true" class="text-lg leading-none">✦</span> Shipped
+        </p>
+        <Figure
+          src="/images/scorecard-gamification/leaderboard-demo.mp4"
+          caption="From the scorecards overview to the team leaderboard, live in production"
+          class="my-0"
+        />
+      </div>
+    </div>
+
+    <div class="mt-5 grid grid-cols-4 gap-4">
+      <div class="rounded-2xl border border-line bg-card/60 p-4">
+        <p class="font-display text-sm font-semibold text-[#0041d9]">Group by team</p>
+        <p class="mt-1.5 text-sm leading-relaxed text-muted">
+          Switching Group by from None to Team is what turns individual
+          scorecards into a team-level leaderboard.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-line bg-card/60 p-4">
+        <p class="font-display text-sm font-semibold text-[#0041d9]">Podium spotlight</p>
+        <p class="mt-1.5 text-sm leading-relaxed text-muted">
+          The top three teams get a medal, a team score, and how many entities
+          they cover, so recognition is instant.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-line bg-card/60 p-4">
+        <p class="font-display text-sm font-semibold text-[#0041d9]">Score vs. growth ranking</p>
+        <p class="mt-1.5 text-sm leading-relaxed text-muted">
+          A toggle separates who's highest right now from who's improved the
+          most, so leading and improving don't get confused.
+        </p>
+      </div>
+      <div class="rounded-2xl border border-line bg-card/60 p-4">
+        <p class="font-display text-sm font-semibold text-[#0041d9]">7 days / 1 month / 3 months</p>
+        <p class="mt-1.5 text-sm leading-relaxed text-muted">
+          Switching the time window shows whether a team's climb is a blip or
+          a real trend.
+        </p>
+      </div>
+    </div>
+  </CaseSection>
+
+  <CaseSection num="06" title="Outcomes and reflection">
+    <figure class="mx-auto mb-12 max-w-3xl text-center">
+      <blockquote
+        class="font-display text-[24px] font-medium italic leading-snug tracking-tight text-ink"
+      >
+        “The distinctions between basic, intermediate, and mature… that's my
+        favorite thing. It helps teams not try to do everything all at once, in
+        any order. There's a sequence to this, and a measured way to do it.”
+      </blockquote>
+      <figcaption class="mt-5 font-mono text-xs uppercase tracking-wide text-muted">
+        Engineering leader, customer validation session
+      </figcaption>
+    </figure>
+    <Callout label="What moved">
+      Scorecards usage rose 12% after launch, and the consumption metric the
+      suite is priced on rose 8%. Gamification moved the number that actually
+      mattered to the business, not just an engagement stat.
+    </Callout>
+    <Prose>
+      <p>
+        If I could redo one part of this, I'd have the data-model conversation
+        with Engineering <strong>before</strong> sketching anything, not after
+        a scrapped first pass. Benchmarking competitors was useful, but
+        building toward their pattern before checking it against our own model
+        cost real time.
+      </p>
+    </Prose>
+  </CaseSection>
+</CaseStudy>
