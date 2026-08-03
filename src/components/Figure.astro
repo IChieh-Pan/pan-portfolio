@@ -10,11 +10,22 @@ interface Props {
   caption?: string;
   class?: string;
   zoom?: string;
+  /** Skip the white card background/shadow — for images with their own
+      transparent or non-white background. */
+  plain?: boolean;
 }
-const { src, alt = "", caption, class: className = "", zoom } = Astro.props;
+const {
+  src,
+  alt = "",
+  caption,
+  class: className = "",
+  zoom,
+  plain = false,
+} = Astro.props;
 const isVideo = /\.(mp4|webm)$/i.test(src);
-const cardClass =
-  "w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]";
+const cardClass = plain
+  ? "w-full rounded-2xl"
+  : "w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]";
 ---
 
 <figure class:list={["my-8", className]}>
