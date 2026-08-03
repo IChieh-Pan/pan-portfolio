@@ -13,6 +13,7 @@ import Callout from "../../components/Callout.astro";
   readTime="7 min read"
   coverPlain
   coverWidth="max-w-[70%]"
+  coverShadow
 >
   <Glance challengeLabel="Challenge" strategyLabel="Solution" impactLabel="Outcome">
     <Fragment slot="challenge">
@@ -340,11 +341,11 @@ import Callout from "../../components/Callout.astro";
     </Prose>
 
     <Callout label="A trade-off I made on scope">
-      Weights ship via API only, not through a UI. Designing a setup screen would
-      have added real interface complexity and cognitive load for a step
-      compliance managers reach for occasionally, not one every user needs up
-      front. With levels and the leaderboard already adding new surface area,
-      cutting the UI here was deliberate, not an oversight.
+      For weights, I made a conscious call to only support setup through the
+      API, not a UI. A setup screen would have added real complexity and
+      cognitive load for a feature compliance managers don't use regularly.
+      The trade-off: I cut that UI convenience in return for shipping levels
+      and the leaderboard without piling on even more new UIs.
     </Callout>
 
     <Prose class="mt-6">
@@ -382,7 +383,7 @@ import Callout from "../../components/Callout.astro";
     </Callout>
   </CaseSection>
 
-  <CaseSection num="04" title="Designing how teams compare">
+  <CaseSection num="04" title="Designing how teams compare (iterations and testing)">
     <Prose>
       <p>
         Levels and weights answered <em>how a team makes progress</em>. The
@@ -478,7 +479,7 @@ import Callout from "../../components/Callout.astro";
       </p>
     </Prose>
 
-    <Callout label="The trade I made explicit">
+    <Callout label="The trade-off">
       The final leaderboard gives up inline per-scorecard detail to gain a
       comparison that reads in a second. Naming that trade-off is what let the team
       land on it with confidence, and know exactly what they'd trade to get the

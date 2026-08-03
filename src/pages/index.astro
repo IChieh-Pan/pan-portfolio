@@ -132,12 +132,39 @@ const CAREER = [
                 {
                   p.cover ? (
                     p.coverPad ? (
-                      <div class="flex aspect-[16/10] w-full items-center justify-center bg-surface p-6 sm:p-8">
+                      <div class="flex aspect-[16/10] w-full items-start justify-center bg-surface p-6 sm:p-8">
                         <img
                           src={p.cover}
                           alt={`${p.client} — ${p.title}`}
                           loading="lazy"
-                          class="max-h-full rounded-lg object-contain shadow-[0_12px_32px_-12px_rgba(16,24,40,0.45)] transition-transform duration-500 group-hover:scale-[1.03]"
+                          class:list={[
+                            "max-h-full rounded-lg object-contain shadow-[0_12px_32px_-12px_rgba(16,24,40,0.45)] transition-transform duration-500",
+                            p.coverPadScale === 92
+                              ? "scale-[0.92] group-hover:scale-[0.948]"
+                              : p.coverPadScale === 96
+                                ? "scale-[0.96] group-hover:scale-[0.988]"
+                                : "group-hover:scale-[1.03]",
+                          ]}
+                        />
+                      </div>
+                    ) : p.coverScale ? (
+                      <div class="aspect-[16/10] w-full overflow-hidden bg-surface">
+                        <img
+                          src={p.cover}
+                          alt={`${p.client} — ${p.title}`}
+                          loading="lazy"
+                          class:list={[
+                            "h-full w-full object-cover transition-transform duration-500",
+                            p.coverScale === 85
+                              ? "scale-[0.85] group-hover:scale-[0.876]"
+                              : p.coverScale === 82
+                                ? "scale-[0.82] shadow-[0_24px_60px_-16px_rgba(16,24,40,0.35)] group-hover:scale-[0.845]"
+                                : p.coverScale === 86
+                                  ? "scale-[0.86] rounded-[8px] shadow-[0_8px_22px_-6px_rgba(16,24,40,0.35)] group-hover:scale-[0.886]"
+                                  : p.coverScale === 84
+                                    ? "scale-[0.84] rounded-[8px] shadow-[0_8px_22px_-6px_rgba(16,24,40,0.35)] group-hover:scale-[0.865]"
+                                    : "scale-90 group-hover:scale-[0.927]",
+                          ]}
                         />
                       </div>
                     ) : (

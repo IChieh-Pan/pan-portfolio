@@ -122,7 +122,7 @@ const heroCover = coverOverride ?? project.cover;
             !coverPlain &&
               "bg-card shadow-[0_24px_70px_-30px_rgba(16,24,40,0.35)]",
             coverShadow &&
-              "shadow-[0_10px_28px_-8px_rgba(0,0,0,0.6)]",
+              "shadow-[0_10px_28px_-8px_rgba(16,24,40,0.35)]",
           ]}
         />
       </div>
@@ -166,19 +166,19 @@ const heroCover = coverOverride ?? project.cover;
   <!-- Lightbox: click any content image to view the full, uncropped original -->
   <div
     id="lightbox"
-    class="fixed inset-0 z-[100] hidden cursor-zoom-out items-center justify-center bg-ink/90 p-4 backdrop-blur-sm sm:p-8"
+    class="fixed inset-0 z-[100] hidden cursor-zoom-out items-center justify-center bg-page p-4 backdrop-blur-sm sm:p-8"
     aria-hidden="true"
   >
     <img
       id="lightbox-img"
       src=""
       alt=""
-      class="max-h-[92vh] max-w-[94vw] rounded-lg object-contain shadow-2xl"
+      class="max-h-[92vh] max-w-[94vw] rounded-lg object-contain"
     />
     <button
       id="lightbox-close"
       aria-label="Close"
-      class="fixed right-5 top-5 font-mono text-xs uppercase tracking-wide text-page/70 hover:text-page"
+      class="fixed right-5 top-5 font-mono text-xs uppercase tracking-wide text-ink/70 hover:text-ink"
     >
       Close ✕
     </button>

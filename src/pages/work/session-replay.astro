@@ -14,12 +14,14 @@ import Callout from "../../components/Callout.astro";
   externalLabel="newrelic.com"
   externalHref="https://newrelic.com/platform/session-replay"
   coverPlain
+  coverShadow
+  coverWidth="max-w-[670px]"
   readTime="6 min read"
 >
   <!-- Top metrics strip -->
   <div
     slot="metrics"
-    class="mx-auto mt-12 grid max-w-5xl gap-5 px-6 sm:mt-16 sm:grid-cols-3 sm:px-10"
+    class="mx-auto mt-24 grid max-w-5xl gap-5 px-6 sm:mt-32 sm:grid-cols-3 sm:px-10"
   >
     <Stat value="1,000+" label="Active accounts & 7M weekly sessions within six months." />
     <Stat value="$3.52M" label="Monthly recurring revenue — a core Browser pillar." />
@@ -191,69 +193,61 @@ import Callout from "../../components/Callout.astro";
     num="03"
     title="Long sessions are noisy — so the timeline surfaces only the signals that matter."
   >
-    <div class="mt-10 grid gap-8 md:grid-cols-[1.3fr_1fr] md:items-start">
-      <div>
-        <Prose>
-          <h3>Navigating the noise</h3>
-          <p>
-            Reviewing session replays is traditionally labour-intensive. By
-            overlaying event markers like JavaScript errors and route changes
-            onto the timeline, we provide engineers with clear visual cues. Here
-            are some explorations around designing a scrubber that doesn't just
-            play back a video, but actively surfaces the critical signals,
-            allowing engineers to jump straight to the root cause.
-          </p>
-        </Prose>
-        <Callout>
-          Surfacing key events on the timeline lets engineers jump straight to
-          the root cause — no scrubbing required.
-        </Callout>
-      </div>
-      <figure class="mx-auto w-[85%]">
+    <div class="mt-10">
+      <Prose>
+        <h3>Navigating the noise</h3>
+        <p>
+          Reviewing session replays is traditionally labour-intensive. By
+          overlaying event markers like JavaScript errors and route changes
+          onto the timeline, we provide engineers with clear visual cues. Here
+          are some explorations around designing a scrubber that doesn't just
+          play back a video, but actively surfaces the critical signals,
+          allowing engineers to jump straight to the root cause.
+        </p>
+      </Prose>
+      <Callout>
+        Surfacing key events on the timeline lets engineers jump straight to
+        the root cause — no scrubbing required.
+      </Callout>
+      <figure class="mx-auto mt-8 w-[60%]">
         <img
-          src="/images/session-replay/scrubber.png"
+          src="/images/session-replay/scrubber-iterations.png"
           alt=""
           loading="lazy"
-          class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+          class="w-full"
         />
         <figcaption
           class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
         >
-          Scrubber explorations — surfacing critical signals
+          Scrubber iterations — from one dot per event to countable clusters
         </figcaption>
       </figure>
     </div>
 
-    <div class="mt-28 grid gap-8 md:grid-cols-[1.3fr_1fr] md:items-start">
-      <div>
-        <Prose>
-          <h3>Designing for high-density data</h3>
-          <p>
-            To help users parse long sessions without cognitive fatigue, I
-            developed a chapter system that organises dense route changes into a
-            scannable timeline. By clustering rapid-fire interactions, we reduce
-            visual noise while maintaining a 10px minimum hit-area for
-            accessibility. This diagram illustrates three logic models for
-            grouping sub-second events — balancing a high-level overview with
-            granular accuracy.
-          </p>
-        </Prose>
-        <Callout>
-          Grouping dense, rapid-fire events keeps long sessions scannable instead
-          of overwhelming.
-        </Callout>
-      </div>
-      <figure class="mx-auto w-[85%]">
-        <div
-          class="rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
-        >
-          <img
-            src="/images/session-replay/route-grouping.png"
-            alt=""
-            loading="lazy"
-            class="w-full scale-90"
-          />
-        </div>
+    <div class="mt-28">
+      <Prose>
+        <h3>Designing for high-density data</h3>
+        <p>
+          To help users parse long sessions without cognitive fatigue, I
+          developed a chapter system that organises dense route changes into a
+          scannable timeline. By clustering rapid-fire interactions, we reduce
+          visual noise while maintaining a 10px minimum hit-area for
+          accessibility. This diagram illustrates three logic models for
+          grouping sub-second events — balancing a high-level overview with
+          granular accuracy.
+        </p>
+      </Prose>
+      <Callout>
+        Grouping dense, rapid-fire events keeps long sessions scannable instead
+        of overwhelming.
+      </Callout>
+      <figure class="mx-auto mt-8 w-[60%]">
+        <img
+          src="/images/session-replay/route-grouping.png"
+          alt=""
+          loading="lazy"
+          class="w-full"
+        />
         <figcaption
           class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
         >
@@ -292,7 +286,7 @@ import Callout from "../../components/Callout.astro";
       </figure>
       <figure>
         <img
-          src="/images/session-replay/chapter-list.png"
+          src="/images/session-replay/session-opened.png"
           alt=""
           loading="lazy"
           class="aspect-[1676/1098] w-full rounded-2xl object-cover shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
@@ -316,26 +310,6 @@ import Callout from "../../components/Callout.astro";
         timeline in a small space. The result was decisive.
       </p>
     </Prose>
-    <div class="my-8 grid gap-5 sm:grid-cols-2">
-      <div class="rounded-2xl border border-line/70 p-6">
-        <p class="mb-2 font-mono text-xs uppercase tracking-wide text-muted">
-          Option A — Overlay
-        </p>
-        <p class="text-sm leading-relaxed text-ink/85">
-          Every marker stacked on the timeline. Overlapping error sets fight for
-          the same space, and the view gets cluttered fast.
-        </p>
-      </div>
-      <div class="rounded-2xl border-2 border-[#0041d9] bg-[#0041d9]/[0.03] p-6">
-        <p class="mb-2 font-mono text-xs uppercase tracking-wide text-[#0041d9]">
-          Option B — Grouped ✓
-        </p>
-        <p class="text-sm leading-relaxed text-ink/85">
-          Markers cluster into squares. Scannable and precise, and the deepening
-          red forms a natural heatmap of where issues concentrate.
-        </p>
-      </div>
-    </div>
     <Prose>
       <p>Grouping won on every dimension we tested:</p>
       <ul>
@@ -442,7 +416,7 @@ import Callout from "../../components/Callout.astro";
         src="/images/session-replay/entry-points-golden-path.png"
         alt=""
         loading="lazy"
-        class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+        class="w-full"
       />
       <figcaption
         class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
@@ -450,22 +424,16 @@ import Callout from "../../components/Callout.astro";
         Every entry point into Session Replay, and the golden path from signal to session
       </figcaption>
     </figure>
-    <figure class="mx-auto mt-16 w-[70%]">
+    <div class="mx-auto mt-16 w-[70%]">
       <p class="mb-3 flex items-center gap-2 font-mono text-xs uppercase tracking-wide text-[#0041d9]">
         <span aria-hidden="true" class="text-lg leading-none">✦</span> Shipped
       </p>
-      <img
-        src="/images/session-replay/final.gif"
-        alt=""
-        loading="lazy"
-        class="w-full rounded-2xl bg-card shadow-[0_18px_50px_-24px_rgba(16,24,40,0.28)]"
+      <Figure
+        src="/images/session-replay/final.mp4"
+        caption="The final synchronised diagnostic experience"
+        class="my-0"
       />
-      <figcaption
-        class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
-      >
-        The final synchronised diagnostic experience
-      </figcaption>
-    </figure>
+    </div>
   </CaseSection>
 
   <CaseSection

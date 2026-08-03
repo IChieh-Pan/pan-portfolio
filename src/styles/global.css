@@ -22,6 +22,7 @@
 
   /* Radii */
   --radius-card: 1.75rem;
+  --radius-2xl: 0.5rem; /* 8px — overrides Tailwind's default 1rem for rounded-2xl */
 }
 
 /* ----------------------------------------------------------------------------
