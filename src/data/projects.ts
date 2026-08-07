@@ -41,7 +41,7 @@ export const projects: Project[] = [
   {
     slug: "scorecard-gamification",
     client: "New Relic",
-    title: "Scorecards & Gamification",
+    title: "Scorecard Gamification",
     subtitle: "Drive engineering standards and ownership",
     year: "2025",
     role: "Lead designer",
