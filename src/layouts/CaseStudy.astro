@@ -12,17 +12,21 @@ interface Props {
   coverWidth?: string;
   coverShadow?: boolean;
   coverOverride?: string;
+  coverSpacing?: string;
+  externalCategory?: string;
 }
 const {
   slug,
   team,
   externalLabel,
   externalHref,
+  externalCategory = "Live",
   coverPlain = false,
   readTime,
   coverWidth,
   coverShadow = false,
   coverOverride,
+  coverSpacing = "mt-6 mb-6 sm:mt-10 sm:mb-10",
 } = Astro.props;
 
 const idx = projects.findIndex((p) => p.slug === slug);
@@ -91,7 +95,7 @@ const heroCover = coverOverride ?? project.cover;
         externalHref && (
           <div>
             <dt class="font-mono text-xs uppercase tracking-wide text-muted">
-              Live
+              {externalCategory}
             </dt>
             <dd class="mt-1 text-sm">
               <a
@@ -112,7 +116,7 @@ const heroCover = coverOverride ?? project.cover;
   <!-- Cover -->
   {
     heroCover && (
-      <div class="mx-auto mt-6 mb-6 max-w-5xl px-6 sm:mb-10 sm:mt-10 sm:px-10">
+      <div class:list={["mx-auto max-w-5xl px-6 sm:px-10", coverSpacing]}>
         <img
           src={heroCover}
           alt={`${project.title} cover`}

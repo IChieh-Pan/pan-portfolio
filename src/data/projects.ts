@@ -25,19 +25,12 @@ export interface Project {
       edge-to-edge, no padding) for screenshots that read too busy at full
       size. Supported values: 90, 86, 85, 84, 82. */
   coverScale?: 90 | 86 | 85 | 84 | 82;
+  /** Zooms a full-bleed cover in by 10% (crops in further, no
+      surrounding gap since it's enlarging rather than shrinking). */
+  coverEnlarge?: boolean;
 }
 
 export const projects: Project[] = [
-  {
-    slug: "ai-context-layer",
-    client: "Enterprise observability",
-    title: "AI Personalization",
-    subtitle: "Shaping how the AI reasons about context",
-    year: "2026",
-    role: "UX strategist",
-    discipline: "UX strategy",
-    cover: "/images/ai-context-layer/cover.svg",
-  },
   {
     slug: "scorecard-gamification",
     client: "New Relic",
@@ -48,6 +41,17 @@ export const projects: Project[] = [
     discipline: "Product design",
     cover: "/images/scorecard-gamification/cover.png",
     coverScale: 84,
+  },
+  {
+    slug: "itonics-design-system",
+    client: "ITONICS Cloud",
+    title: "Design System",
+    subtitle: "Accelerating development with systematic design",
+    year: "2020",
+    role: "Sole designer",
+    discipline: "Design system",
+    cover: "/images/itonics-design-system/cover.png",
+    coverEnlarge: true,
   },
   {
     slug: "session-replay",

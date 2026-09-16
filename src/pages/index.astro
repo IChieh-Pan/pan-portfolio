@@ -162,7 +162,7 @@ const CAREER = [
                                 : p.coverScale === 86
                                   ? "scale-[0.86] rounded-[8px] shadow-[0_8px_22px_-6px_rgba(16,24,40,0.35)] group-hover:scale-[0.886]"
                                   : p.coverScale === 84
-                                    ? "scale-[0.84] rounded-[8px] shadow-[0_8px_22px_-6px_rgba(16,24,40,0.35)] group-hover:scale-[0.865]"
+                                    ? "scale-[0.84] rounded-[8px] shadow-[0_8px_22px_-6px_rgba(16,24,40,0.18)] group-hover:scale-[0.865]"
                                     : "scale-90 group-hover:scale-[0.927]",
                           ]}
                         />
@@ -172,7 +172,12 @@ const CAREER = [
                         src={p.cover}
                         alt={`${p.client} — ${p.title}`}
                         loading="lazy"
-                        class="aspect-[16/10] w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                        class:list={[
+                          "aspect-[16/10] w-full object-cover transition-transform duration-500",
+                          p.coverEnlarge
+                            ? "scale-[1.07] group-hover:scale-[1.1]"
+                            : "group-hover:scale-[1.03]",
+                        ]}
                       />
                     )
                   ) : (
