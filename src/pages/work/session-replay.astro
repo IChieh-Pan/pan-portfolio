@@ -368,31 +368,33 @@ import Callout from "../../components/Callout.astro";
         up to an error faster and reduce time to resolution.
       </p>
     </Prose>
-    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row sm:items-start sm:gap-3">
-      <figure class="flex w-[240px] flex-col items-center sm:w-[150px]">
-        <img src="/images/session-replay/browser-summary.jpg" alt="" loading="lazy" class="h-auto w-full sm:h-28 sm:w-auto" />
+    <div class="relative left-1/2 mt-10 w-[69vw] -translate-x-1/2 px-6 sm:px-10">
+    <div class="flex flex-col items-center justify-center gap-3 sm:flex-row sm:items-start sm:gap-3">
+      <figure class="flex w-[280px] flex-col items-center sm:w-[210px]">
+        <img src="/images/session-replay/browser-summary.jpg" alt="" loading="lazy" class="h-auto w-full sm:h-40 sm:w-auto" />
         <figcaption class="mt-2 text-center text-[11px] leading-tight text-ink/70"><span class="block font-semibold text-ink">1 · Browser summary</span>error-rate spike</figcaption>
       </figure>
-      <div class="flex shrink-0 items-center text-lg text-[#0041d9] sm:h-28" aria-hidden="true"><span class="sm:hidden">&darr;</span><span class="hidden sm:inline">&rarr;</span></div>
-      <figure class="flex w-[240px] flex-col items-center sm:w-[150px]">
-        <img src="/images/session-replay/errors-inbox.png" alt="" loading="lazy" class="h-auto w-full sm:h-28 sm:w-auto" />
+      <div class="flex shrink-0 items-center text-lg text-[#0041d9] sm:h-40" aria-hidden="true"><span class="sm:hidden">&darr;</span><span class="hidden sm:inline">&rarr;</span></div>
+      <figure class="flex w-[280px] flex-col items-center sm:w-[210px]">
+        <img src="/images/session-replay/errors-inbox.png" alt="" loading="lazy" class="h-auto w-full sm:h-40 sm:w-auto" />
         <figcaption class="mt-2 text-center text-[11px] leading-tight text-ink/70"><span class="block font-semibold text-ink">2 · Errors Inbox</span>triage the group</figcaption>
       </figure>
-      <div class="flex shrink-0 items-center text-lg text-[#0041d9] sm:h-28" aria-hidden="true"><span class="sm:hidden">&darr;</span><span class="hidden sm:inline">&rarr;</span></div>
-      <figure class="flex w-[240px] flex-col items-center sm:w-[150px]">
-        <img src="/images/session-replay/inbox-occurrence.jpg" alt="" loading="lazy" class="h-auto w-full sm:h-28 sm:w-auto" />
+      <div class="flex shrink-0 items-center text-lg text-[#0041d9] sm:h-40" aria-hidden="true"><span class="sm:hidden">&darr;</span><span class="hidden sm:inline">&rarr;</span></div>
+      <figure class="flex w-[280px] flex-col items-center sm:w-[210px]">
+        <img src="/images/session-replay/inbox-occurrence.jpg" alt="" loading="lazy" class="h-auto w-full sm:h-40 sm:w-auto" />
         <figcaption class="mt-2 text-center text-[11px] leading-tight text-ink/70"><span class="block font-semibold text-ink">3 · Error occurrence</span>linked to the session</figcaption>
       </figure>
-      <div class="flex shrink-0 items-center text-lg text-[#0041d9] sm:h-28" aria-hidden="true"><span class="sm:hidden">&darr;</span><span class="hidden sm:inline">&rarr;</span></div>
-      <figure class="flex w-[240px] flex-col items-center sm:w-[150px]">
-        <img src="/images/session-replay/session-opened.png" alt="" loading="lazy" class="h-auto w-full sm:h-28 sm:w-auto" />
+      <div class="flex shrink-0 items-center text-lg text-[#0041d9] sm:h-40" aria-hidden="true"><span class="sm:hidden">&darr;</span><span class="hidden sm:inline">&rarr;</span></div>
+      <figure class="flex w-[280px] flex-col items-center sm:w-[210px]">
+        <img src="/images/session-replay/session-opened.png" alt="" loading="lazy" class="h-auto w-full sm:h-40 sm:w-auto" />
         <figcaption class="mt-2 text-center text-[11px] leading-tight text-ink/70"><span class="block font-semibold text-ink">4 · Session opened</span>replay + events</figcaption>
       </figure>
-      <div class="flex shrink-0 items-center text-lg text-[#0041d9] sm:h-28" aria-hidden="true"><span class="sm:hidden">&darr;</span><span class="hidden sm:inline">&rarr;</span></div>
-      <figure class="flex w-[240px] flex-col items-center sm:w-[150px]">
-        <img src="/images/session-replay/traces-error.png" alt="" loading="lazy" class="h-auto w-full sm:h-28 sm:w-auto" />
+      <div class="flex shrink-0 items-center text-lg text-[#0041d9] sm:h-40" aria-hidden="true"><span class="sm:hidden">&darr;</span><span class="hidden sm:inline">&rarr;</span></div>
+      <figure class="flex w-[280px] flex-col items-center sm:w-[210px]">
+        <img src="/images/session-replay/traces-error.png" alt="" loading="lazy" class="h-auto w-full sm:h-40 sm:w-auto" />
         <figcaption class="mt-2 text-center text-[11px] leading-tight text-ink/70"><span class="block font-semibold text-ink">5 · Session trace</span>root-cause error</figcaption>
       </figure>
+    </div>
     </div>
   </CaseSection>
 
@@ -412,6 +414,7 @@ import Callout from "../../components/Callout.astro";
         <strong>cuts time-to-insight from minutes to seconds.</strong>
       </p>
     </Prose>
+    <div class="relative left-1/2 w-[69vw] -translate-x-1/2 px-6 sm:px-10">
     <figure class="mx-auto mt-12 w-full">
       <img
         src="/images/session-replay/entry-points-golden-path.png"
@@ -420,11 +423,12 @@ import Callout from "../../components/Callout.astro";
         class="w-full"
       />
       <figcaption
-        class="mt-3 font-mono text-xs uppercase tracking-wide text-muted"
+        class="mt-6 font-mono text-xs uppercase tracking-wide text-muted"
       >
         Every entry point into Session Replay, and the golden path from signal to session
       </figcaption>
     </figure>
+    </div>
     <div class="mx-auto mt-16 w-[70%]">
       <p class="mb-3 flex items-center gap-2 font-mono text-xs uppercase tracking-wide text-[#0041d9]">
         <span aria-hidden="true" class="text-lg leading-none">✦</span> Shipped
