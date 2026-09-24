@@ -28,19 +28,23 @@ export interface Project {
   /** Zooms a full-bleed cover in by 10% (crops in further, no
       surrounding gap since it's enlarging rather than shrinking). */
   coverEnlarge?: boolean;
+  /** When true, the project is skipped by the homepage grid and the
+      "next project" cycle, but its case-study page and data stay intact
+      and reachable by direct URL. Toggle this instead of deleting the
+      page/entry when swapping which case studies are surfaced. */
+  hidden?: boolean;
 }
 
 export const projects: Project[] = [
   {
-    slug: "scorecard-gamification",
-    client: "New Relic",
-    title: "Scorecard Gamification",
-    subtitle: "Drive engineering standards and ownership",
-    year: "2025",
-    role: "Lead designer",
-    discipline: "Product design",
-    cover: "/images/scorecard-gamification/cover.png",
-    coverScale: 84,
+    slug: "ai-context-layer",
+    client: "Enterprise observability",
+    title: "AI Personalization",
+    subtitle: "Shaping how the AI reasons about context",
+    year: "2026",
+    role: "UX strategist",
+    discipline: "UX strategy",
+    cover: "/images/ai-context-layer/cover.svg",
   },
   {
     slug: "itonics-design-system",
@@ -52,6 +56,18 @@ export const projects: Project[] = [
     discipline: "Design system",
     cover: "/images/itonics-design-system/cover.png",
     coverEnlarge: true,
+    hidden: true,
+  },
+  {
+    slug: "scorecard-gamification",
+    client: "New Relic",
+    title: "Scorecard Gamification",
+    subtitle: "Drive engineering standards and ownership",
+    year: "2025",
+    role: "Lead designer",
+    discipline: "Product design",
+    cover: "/images/scorecard-gamification/cover.png",
+    coverScale: 84,
   },
   {
     slug: "session-replay",
@@ -80,4 +96,9 @@ export const projects: Project[] = [
 
 export function getProject(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);
+}
+
+/** Projects shown on the homepage grid and cycled through by "next project" links. */
+export function getVisibleProjects(): Project[] {
+  return projects.filter((p) => !p.hidden);
 }

@@ -1,0 +1,166 @@
+---
+import CaseStudy from "../../layouts/CaseStudy.astro";
+import CaseSection from "../../components/CaseSection.astro";
+import Prose from "../../components/Prose.astro";
+import Glance from "../../components/Glance.astro";
+import Callout from "../../components/Callout.astro";
+---
+
+<CaseStudy
+  slug="ai-context-layer"
+  team="1 PM, 2 engineers, 1 architect,<br />1 EM"
+  readTime="3 min read"
+  coverWidth="max-w-[70%]"
+  coverOverride="/images/ai-context-layer/ai-native-ui.png"
+>
+  <Glance challengeLabel="The goal">
+    <Fragment slot="challenge">
+      Enhance the accuracy and relevance of the agent's answers by building AI
+      personalization logic into the system.
+    </Fragment>
+    <Fragment slot="strategy">
+      Map a layered context model to observability, make the team layer explicit,
+      and define a measurable bar for what "working" looks like.
+    </Fragment>
+    <Fragment slot="impact">
+      A shared vocabulary and decision-ready framework the product team could
+      prioritize and build against.
+    </Fragment>
+  </Glance>
+
+  <section class="mx-auto max-w-5xl px-6 sm:px-10">
+    <Prose>
+      <p>
+        AI personalization is used across industries to create relevant
+        recommendations and contextually appropriate experiences at scale. It's the layer that determines how the agent adapts to each
+        user, team, and organization. I shape <strong>the UX vision and
+        strategy</strong> for that layer. That means working with engineering and product to define how
+        personalization should work, and prioritizing it on the roadmap. I ground the
+        direction in research and analytics, so it drives the outcomes that
+        matter, like deeper engagement and faster time-to-resolution. The goal is AI capabilities
+        that feel seamless, natural, and cohesive across every surface of the
+        product.
+      </p>
+    </Prose>
+  </section>
+
+  <CaseSection
+    title="Exploring how context powers personalization, and defining the scope."
+  >
+    <Prose>
+      <p>
+        I started by exploring how context could sharpen personalization, and
+        defining the scope. From there, I worked with PM to map out how context composes
+        across an organization, how team-based operations interact with the
+        model, and what "working" would even look like.
+      </p>
+    </Prose>
+  </CaseSection>
+
+  <CaseSection title="Mapping the layered context model to observability.">
+    <Prose>
+      <p>
+        The taxonomy borrows from how industry AI products already handle
+        context: identity, operational graph, indexed knowledge, declared rules,
+        learned memory, and user-authored templates. My contribution was working through which layers
+        matter most for observability, how they'd interact with things specific
+        to this domain (the entity graph, the on-call schedule, alert policies,
+        existing runbooks), and <strong>where the observability-specific decisions
+        actually live</strong>. The deliverable was a matrix mapping these layers to where each one matters
+        most for observability.
+      </p>
+    </Prose>
+  </CaseSection>
+
+  <CaseSection
+    title="Personalizing at the team and org level, not just the user."
+  >
+    <Prose>
+      <p>
+        The AI experience personalizes at the user, team, and
+        organization levels — an architecture that differs from most consumer AI.
+        For a team-based operations tool, <strong>the team layer is load-bearing</strong>: it's
+        where shared runbooks, ownership, and on-call defaults live. Getting that
+        layer right is what makes personalization feel cohesive across a whole
+        organization, not just tuned to one person.
+      </p>
+    </Prose>
+    <Callout>
+      In a team-based operations tool, the team layer is where personalization
+      becomes cohesive across an organization, or fragments into per-user
+      tuning.
+    </Callout>
+  </CaseSection>
+
+  <CaseSection title="Framing the success the team could measure.">
+    <Prose>
+      <p>
+        Adapted the learning-curve idea — same user, same task, day 60 quality
+        vs day 1 — as a way to make "personalization is working" concrete for PM
+        and engineering. Not a novel evaluation concept in AI, but naming it
+        clearly gave the team a shared target and moved the conversation from
+        "add personalization" to "here's what we'd need to see to believe it's
+        helping."
+      </p>
+    </Prose>
+  </CaseSection>
+
+  <CaseSection title="From research to a design strategy">
+    <!-- Flow: three research artifacts converge into the framework, which drives the outcome -->
+    <div
+      class="mt-8 mb-12 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4"
+    >
+      <div class="flex flex-col gap-2">
+        <div class="rounded-xl border border-line bg-card px-4 py-2.5 text-center text-sm font-medium text-ink">
+          UX patterns
+        </div>
+        <div class="rounded-xl border border-line bg-card px-4 py-2.5 text-center text-sm font-medium text-ink">
+          Category taxonomy
+        </div>
+        <div class="rounded-xl border border-line bg-card px-4 py-2.5 text-center text-sm font-medium text-ink">
+          Mental models
+        </div>
+      </div>
+      <div class="flex items-center justify-center text-2xl leading-none text-[#0041d9]">
+        <span class="hidden sm:inline">&rarr;</span>
+        <span class="sm:hidden">&darr;</span>
+      </div>
+      <div class="rounded-xl border-2 border-[#0041d9] bg-[#0041d9]/[0.04] px-5 py-4 text-center">
+        <p class="font-display text-base font-semibold text-ink">
+          Design framework
+        </p>
+        <p class="mt-1 font-mono text-[11px] uppercase tracking-wide text-muted">
+          synthesis
+        </p>
+      </div>
+      <div class="flex items-center justify-center text-2xl leading-none text-[#0041d9]">
+        <span class="hidden sm:inline">&rarr;</span>
+        <span class="sm:hidden">&darr;</span>
+      </div>
+      <div class="flex items-center rounded-xl bg-[#0041d9] px-5 py-4 text-center">
+        <p class="font-display text-base font-semibold text-white">
+          More relevant, accurate AI
+        </p>
+      </div>
+    </div>
+
+    <Prose>
+      <p><strong>What I delivered:</strong></p>
+      <ul>
+        <li><strong>The UX patterns of AI personalization</strong> — Surveyed
+          major AI products to distill personalization into the core patterns
+          that guide our design direction: legibility, editability, scope
+          control, and origin.</li>
+        <li><strong>Personalization category taxonomy</strong> — Mapped how AI
+          products break personalization into distinct user-facing features,
+          giving us a clear catalog of the options to draw from.</li>
+        <li><strong>Mental models of personalization</strong> — Identified the
+          three mental models AI products build on, and what each one actually
+          personalizes, so we could pick the model best suited to our product.</li>
+        <li><strong>Personalization design framework</strong> — Synthesized the
+          patterns, taxonomy, and mental models into a design framework that maps
+          personalization onto our product and points to what to build first.</li>
+      </ul>
+    </Prose>
+  </CaseSection>
+</CaseStudy>

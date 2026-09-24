@@ -1,6 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { projects } from "../data/projects";
+import { getVisibleProjects } from "../data/projects";
+
+const projects = getVisibleProjects();
 
 const LINKS = {
   email: "mailto:mail@panichieh.com",

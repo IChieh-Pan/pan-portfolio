@@ -1,6 +1,6 @@
 ---
 import Layout from "./Layout.astro";
-import { projects } from "../data/projects";
+import { projects, getVisibleProjects } from "../data/projects";
 
 interface Props {
   slug: string;
@@ -29,9 +29,15 @@ const {
   coverSpacing = "mt-6 mb-6 sm:mt-10 sm:mb-10",
 } = Astro.props;
 
-const idx = projects.findIndex((p) => p.slug === slug);
-const project = projects[idx];
-const next = projects[(idx + 1) % projects.length];
+const project = projects.find((p) => p.slug === slug);
+// "Next project" only ever cycles through visible projects, even when the
+// current page itself is hidden (reachable by direct URL, not from the grid).
+const visibleProjects = getVisibleProjects();
+const visibleIdx = visibleProjects.findIndex((p) => p.slug === slug);
+const next =
+  visibleIdx >= 0
+    ? visibleProjects[(visibleIdx + 1) % visibleProjects.length]
+    : visibleProjects[0];
 // Detail-page hero image; falls back to the card cover when not overridden.
 const heroCover = coverOverride ?? project.cover;
 ---
