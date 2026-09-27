@@ -1,0 +1,50 @@
+---
+// Unlisted, curated view of selected work for a specific application.
+// Not linked from the homepage or nav — reachable only by direct URL.
+import Layout from "../layouts/Layout.astro";
+import WorkGrid from "../components/WorkGrid.astro";
+import { projects as allProjects } from "../data/projects";
+
+const FEATURED_SLUGS = [
+  "ai-context-layer",
+  "sli-query-builder",
+  "itonics-design-system",
+  "session-replay",
+];
+const projects = FEATURED_SLUGS.map((slug) =>
+  allProjects.find((p) => p.slug === slug),
+).filter((p): p is NonNullable<typeof p> => Boolean(p));
+---
+
+<Layout
+  title="I-Chieh Pan"
+  description="Selected work in expert-facing, configuration-heavy design."
+>
+  <header class="border-b border-line/60 bg-page">
+    <div
+      class="mx-auto flex max-w-[1400px] items-center px-6 py-5 text-ink sm:px-10"
+    >
+      <span class="font-display text-sm font-extrabold tracking-tight">
+        I-Chieh Pan
+      </span>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-[1400px] px-6 py-16 sm:px-10 sm:py-24">
+    <div class="max-w-2xl">
+      <p class="font-sans text-[20px] leading-relaxed text-[#0041d9] sm:text-[22px]">
+        A few projects most relevant to designing expert-facing, configuration-heavy tools.
+      </p>
+      <h1
+        class="mt-4 font-display font-semibold leading-[0.98] tracking-[-0.02em] text-[#0041d9]"
+        style="font-size:clamp(2rem,5vw,3.5rem)"
+      >
+        Turning deep complexity into something experts can move fast in.
+      </h1>
+    </div>
+
+    <div class="mt-16">
+      <WorkGrid projects={projects} />
+    </div>
+  </main>
+</Layout>
